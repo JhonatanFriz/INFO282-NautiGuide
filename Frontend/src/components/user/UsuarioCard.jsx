@@ -4,6 +4,7 @@ const UsuarioCard = ({usuario}) => {
             <strong>Nombre:</strong> {usuario.name}<br />
             <strong>RUT:</strong> {usuario.rut}<br />
             <strong>Email:</strong> {usuario.mail}<br />
+            <strong>Contraseña:</strong> {usuario.password}<br />
         </div>
     )
 }

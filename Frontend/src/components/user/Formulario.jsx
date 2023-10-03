@@ -6,6 +6,7 @@ const Formulario = () => {
   const [nombre, setNombre] = useState('');
   const [rut, setRut] = useState('');
   const [email, setEmail] = useState('');
+  const [contraseña, setContraseña] = useState('');
 
   const handleSubmit =  async(e) => {
     e.preventDefault();
@@ -15,7 +16,8 @@ const Formulario = () => {
         const {data} = await clientAxios.post(`/users`, {
                 name : nombre, 
                 rut : rut, 
-                mail: email
+                mail: email,
+                password: contraseña
                 
          })
     } catch (error) {
@@ -64,6 +66,18 @@ const Formulario = () => {
             className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="contraseña" className="block font-medium mb-1">
+            Contraseña
+          </label>
+          <input
+            type="contraseña"
+            id="contraseña"
+            className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
           />
         </div>
         <button
