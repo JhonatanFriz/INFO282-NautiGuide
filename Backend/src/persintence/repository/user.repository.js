@@ -1,6 +1,8 @@
 import { User } from "../models/User.js"
 import { Paper } from "../models/Paper.js";
 
+import bcrypt from 'bcrypt'
+
 
 export async function getUsers_(){
     try {
@@ -23,13 +25,13 @@ export async function createUser_(user){
     const { name, mail, password, rol } = user;
     try{
 
-        //const hashedPassword = await bcrypt.hash(password, 10);
+        const hashContraseña = await bcrypt.hash(password, 10);
 
         let newUser = await User.create(
             {
             name,
             mail,
-            password,
+            password: hashContraseña,
             rol,
             },
             {
@@ -61,10 +63,11 @@ export async function getUser_(id){
 export async function updateUser_(user){
     const {id, name, mail, password} = user 
     try {
+        const hashContraseña = await bcrypt.hash(password, 10);
         const user = await User.findByPk(id);
         user.name = name;
         user.mail = mail;
-        user.password = password;
+        user.password = hashContraseña;
         await user.save();
         return "Usuario Modificado"
     } catch (error) {
