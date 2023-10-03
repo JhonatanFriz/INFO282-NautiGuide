@@ -1,8 +1,9 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Componente } from "./Componente.js";
 
-export const Subcomponente = sequelize.define(
-    "subcomponente",
+export const Seccion = sequelize.define(
+    "secciones",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -15,7 +16,7 @@ export const Subcomponente = sequelize.define(
       description: {
         type: DataTypes.STRING,
       },
-      multimedia: {
+      image: {
         type: DataTypes.STRING,
       },
     },
@@ -23,3 +24,6 @@ export const Subcomponente = sequelize.define(
       timestamps: false,
     }
   );
+
+Seccion.belongsToMany(Componente, {through: "Pertenece"});
+Componente.belongsToMany(Seccion, {through: "Pertenece"});

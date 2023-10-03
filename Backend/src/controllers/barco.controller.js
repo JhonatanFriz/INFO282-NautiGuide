@@ -1,5 +1,5 @@
 import { Barco } from "../persintence/models/Barco.js"
-import { ComponenteBarco } from "../persintence/models/ComponenteBarco.js";
+import { Seccion } from "../persintence/models/Seccion.js";
 
 import { getBarcos_, createBarco_, getBarco_, updateBarco_, deleteBarco_} from "../persintence/repository/barco.repository.js";
 
@@ -12,11 +12,12 @@ export function getBarcos(req, res) {
 }
 
 export  function createBarco(req, res) {
-    const { name, model, image } = req.body;
+    const { name, model, image, personalizado } = req.body;
     const user ={
       name, 
       model,
-      image
+      image,
+      personalizado
     }
     createBarco_(user).then(data => {
       res.status(200).json({status : true, data : data})
@@ -37,12 +38,13 @@ export async function getBarco(req, res) {
 export const updateBarco = async (req, res) => {
 
   const { id } = req.params;
-  const { name, model, image } = req.body;
+  const { name, model, image, personalizado } = req.body;
   const barco ={
     id, 
     name, 
     model,
-    image
+    image,
+    personalizado
   }
   updateBarco_(barco).then(msg => {
     res.status(200).json({status : true, msg : msg })

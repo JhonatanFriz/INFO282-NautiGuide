@@ -1,9 +1,10 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Seccion } from "./Seccion.js";
 
 {/* Aquí se crea el modelo "Barco" que representa a la entidad llamada "barcos"*/}
 export const Barco = sequelize.define(
-    "componentes",
+    "barcos",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -19,8 +20,14 @@ export const Barco = sequelize.define(
       image: {
         type: DataTypes.STRING,
       },
+      personalizado: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     {
       timestamps: false,
     }
   );
+
+Barco.belongsToMany(Seccion, {through: "Tiene"});
+Seccion.belongsToMany(Barco, {through: "Tiene"});

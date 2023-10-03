@@ -11,9 +11,9 @@ const app = express();
 import userRoutes from "./routes/users.routes.js";
 import paperRoutes from "./routes/papers.routes.js";
 import barcoRoutes from "./routes/barco.routes.js";
-import componenteBarcoRoutes from "./routes/componenteBarco.routes.js";
-import subcomponenteRoutes from "./routes/subcomponente.routes.js";
-
+import seccionRoutes from "./routes/seccion.routes.js";
+import componenteRoutes from "./routes/componente.routes.js";
+import multimediaRoutes from "./routes/multimedia.routes.js";
 
 // Middlewares
 app.use(morgan("dev"));
@@ -32,7 +32,8 @@ app.use(
 app.use("/api/users", userRoutes);
 app.use("/api/papers", paperRoutes);
 app.use("/api/barco", barcoRoutes);
-app.use("/api/barco", componenteBarcoRoutes);
-app.use("/api/barco", subcomponenteRoutes);
+app.use("/api/seccion", seccionRoutes);
+app.use("/api/componente", componenteRoutes);
+app.use("/api/multimedia", multimediaRoutes);
 
 export default app;

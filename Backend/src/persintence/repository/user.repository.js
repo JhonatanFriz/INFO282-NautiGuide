@@ -20,7 +20,7 @@ export async function getUsers_(){
 //const bcrypt = require('bcrypt');
 
 export async function createUser_(user){
-    const { name, rut, mail, password } = user;
+    const { name, mail, password, rol } = user;
     try{
 
         //const hashedPassword = await bcrypt.hash(password, 10);
@@ -28,12 +28,12 @@ export async function createUser_(user){
         let newUser = await User.create(
             {
             name,
-            rut,
             mail,
             password,
+            rol,
             },
             {
-            fields: ["name", "rut", "mail", "password"],
+            fields: ["name", "rut", "mail", "password", "rol"],
             }
         );
       return newUser
@@ -59,11 +59,10 @@ export async function getUser_(id){
 }
 
 export async function updateUser_(user){
-    const {id, name, rut, mail, password} = user 
+    const {id, name, mail, password} = user 
     try {
         const user = await User.findByPk(id);
         user.name = name;
-        user.rut = rut;
         user.mail = mail;
         user.password = password;
         await user.save();

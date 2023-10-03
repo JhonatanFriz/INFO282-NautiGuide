@@ -12,12 +12,12 @@ export function getUsers(req, res) {
 }
 
 export  function createUser(req, res) {
-  const { name, rut, mail, password } = req.body;
+  const { name, mail, password, rol } = req.body;
   const user ={
-    name, 
-    rut,
+    name,
     mail,
-    password
+    password,
+    rol
   }
   createUser_(user).then(data => {
     res.status(200).json({status : true, data : data})
@@ -40,11 +40,10 @@ export async function getUser(req, res) {
 export const updateUser = async (req, res) => {
 
   const { id } = req.params;
-  const { name, rut, mail, password } = req.body;
+  const { name, mail, password } = req.body;
   const user ={
     id, 
-    name, 
-    rut,
+    name,
     mail,
     password
   }

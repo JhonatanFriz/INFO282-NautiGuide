@@ -4,7 +4,7 @@ import { Barco } from "../models/Barco.js"
 export async function getBarcos_(){
     try {
         const barcos = await Barco.findAll({
-          atributes: ["id", "name", "model", "image"],
+          atributes: ["id", "name", "model", "image", "personalizado"],
         });
         return barcos
     } catch (error) {
@@ -14,16 +14,17 @@ export async function getBarcos_(){
 
 {/* Crea un nuevo barco */}
 export async function createBarco_(barco){
-    const { id, name, model, image } = barco;
+    const { id, name, model, image, personalizado } = barco;
     try{ 
         let newBarco = await Barco.create(
             {
             name,
             model,
             image,
+            personalizado,
             },
             {
-            fields: ["name", "model", "image"],
+            fields: ["name", "model", "image", "personalizado"],
             }
         );
       return newBarco
@@ -48,12 +49,13 @@ export async function getBarco_(id){
 
 {/* Cambiar la información de un barco */}
 export async function updateBarco_(barco){
-    const {name, model, image } = barco 
+    const {name, model, image, personalizado } = barco 
     try {
         const barco = await Barco.findByPk(id);
         barco.name = name;
         barco.model = model;
         barco.image = image;
+        barco.personalizado = personalizado;
         await barco.save();
         return "Barco Modificado"
     } catch (error) {

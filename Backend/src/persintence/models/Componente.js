@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const ComponenteBarco = sequelize.define(
-    "barcos",
+export const Componente = sequelize.define(
+    "componentes",
     {
       id: {
         type: DataTypes.INTEGER,
