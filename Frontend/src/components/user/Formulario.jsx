@@ -6,7 +6,7 @@ const Formulario = () => {
   const [nombre, setNombre] = useState('');
   const [rut, setRut] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [contraseña, setContraseña] = useState('');
 
   const handleSubmit =  async(e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Formulario = () => {
                 name : nombre, 
                 rut : rut, 
                 mail: email,
-                password: password
+                password: contraseña
                 
          })
     } catch (error) {
@@ -30,7 +30,7 @@ const Formulario = () => {
 
   return (
     <div className="w-1/2 p-4 bg-white  shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Registro</h2>
+      <h2 className="text-xl font-semibold mb-4">Formulario de Registro</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="nombre" className="block font-medium mb-1">
@@ -69,15 +69,15 @@ const Formulario = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block font-medium mb-1">
+          <label htmlFor="contraseña" className="block font-medium mb-1">
             Contraseña
           </label>
           <input
-            type="text"
-            id="password"
+            type="contraseña"
+            id="contraseña"
             className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
           />
         </div>
         <button

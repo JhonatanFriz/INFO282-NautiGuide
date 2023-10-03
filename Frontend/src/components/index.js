@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import User from "./User";
 import Paper from "./Paper";
+import Login from "./Login";
 import Barco from "./Barco";
 
 export {
@@ -9,5 +10,6 @@ export {
     Home,
     User,
     Paper,
-    Barco,
+    Login,
+    Barco
 }
