@@ -1,4 +1,4 @@
-import {facebook, instagram, twitter,Youtube,Astillero } from "../assets";
+import {facebook, instagram,Youtube,Astillero } from "../assets";
 
 export const navLinks = [
     {
@@ -12,13 +12,14 @@ export const navLinks = [
     {
       title: "Papers",
       ref: "/papers"
-    },    
+    },        
+    {
+      title: "Barcos",
+      ref: "/barco"
+    },
     {
       title: "LogIn",
       ref: "/login"
-    },    {
-      title: "Barcos",
-      ref: "/barco"
     },
   ];
 

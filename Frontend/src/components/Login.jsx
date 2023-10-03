@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 //cambiar campos del rut , usuario para adapatarlo a la base de datos modifacas en el back*
 
 const Login = () => {
-    const [nombre, setNombre] = useState('');
-    const [rut, setRut] = useState('');
     const [email, setEmail] = useState('');
+    const [contraseña, setContraseña] = useState('');
   
     const handleSubmit =  async(e) => {
       e.preventDefault();
@@ -13,10 +12,8 @@ const Login = () => {
       try {
         
           const {data} = await clientAxios.post(`/users`, {
-                  name : nombre, 
-                  rut : rut, 
-                  mail: email
-                  
+                  mail: email,
+                  password: contraseña
            })
       } catch (error) {
           console.log(error);
@@ -39,15 +36,15 @@ const Login = () => {
           <h2 className="flex justify-center w-full text-3xl font-semibold mb-4 text-gray-500">Iniciar Sesión</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="Usuario" className="block font-medium mb-1">
+              <label htmlFor="email" className="block font-medium mb-1">
                 Usuario
               </label>
               <input
-                type="text"
-                id="Usuario"
+                type="email"
+                id="email"
                 className="w-full px-4 py-2 rounded-full border focus:outline-none focus:border-blue-500"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -56,10 +53,10 @@ const Login = () => {
               </label>
               <input
                 type="text"
-                id="rut"
+                id="contraseña"
                 className="w-full px-4 py-2 rounded-full border focus:outline-none focus:border-blue-500"
-                value={rut}
-                onChange={(e) => setRut(e.target.value)}
+                value={contraseña}
+                onChange={(e) => setContraseña(e.target.value)}
               />
             </div>
             <div className="flex justify-center">
