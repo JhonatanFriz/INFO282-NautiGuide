@@ -3,7 +3,7 @@ import clientAxios from '../config/clienteAxios';
 import BarcoCard from './BarcoCard';
 import VerBarco from './VerBarco';
 
-function ListaBarcos() {
+function ListaBarcos({setImagenSeleccionada,setShow}) {
     const [barcos, setBarco] = useState([]);
 
     useEffect (() => {
@@ -22,11 +22,12 @@ function ListaBarcos() {
           <ul>
             {barcos.length > 0 ? (
                 barcos.map((barco, index) => (
-                  <BarcoCard
-                    key={index}
-                    barco={barco}
-                    onClick={() => setImagenSeleccionada(barco.image)}
-                  />
+                  <button onClick={event => {setImagenSeleccionada(barco.image); setShow(true)}}>
+                    <BarcoCard
+                      key={index}
+                      barco={barco}
+                    />
+                  </button>
                 ))
             ) : (
               <li>No hay barcos registrados.</li>
