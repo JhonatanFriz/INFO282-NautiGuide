@@ -5,7 +5,7 @@ import { Paper } from "../models/Paper.js";
 export async function getUsers_(){
     try {
         const users = await User.findAll({
-          atributes: ["id", "rut", "name", "mail"],
+          atributes: ["id", "name", "mail", "rol"],
         });
 
         return users
@@ -33,7 +33,7 @@ export async function createUser_(user){
             rol,
             },
             {
-            fields: ["name", "rut", "mail", "password", "rol"],
+            fields: ["name", "mail", "password", "rol"],
             }
         );
       return newUser
