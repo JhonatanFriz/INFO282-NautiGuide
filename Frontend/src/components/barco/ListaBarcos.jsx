@@ -22,7 +22,7 @@ function ListaBarcos({ setImagenSeleccionada, setShow }) {
   return (
     <div className="bg-gray-100">
       <div><h2 className="text-xl font-semibold mb-4">Barcos Registrados</h2></div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-3">
         <ul>
           {barcos.length > 0 ? (
             barcos.map((barco, index) => (
