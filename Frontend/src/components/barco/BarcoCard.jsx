@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
-import VerBarco from './VerBarco';
+import React from 'react';
 
+const BarcoCard = ({ barco, onBarcoClick }) => {
+  const cardStyle = {
+    cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
+  };
 
-const BarcoCard = ({barco}) => {
-    return (
-        <div className="grid grid-cols-3 gap-4">
-            <div className="bg-white p-4 rounded shadow-md mb-4">
-                <img src={barco.image} alt="Imagen de barco"/>
-            </div>
-        </div>
-    )
-}
+  const nombreStyle = {
+    fontWeight: 'bold', // Aplicar el estilo de fuente en negrita
+  };
 
-export  default BarcoCard
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      <div className="bg-white p-4 rounded shadow-md mb-4" style={cardStyle} onClick={() => onBarcoClick(barco.image)}>
+        <img
+          src={barco.image}
+          alt="Imagen de barco"
+        />
+        <h2 style={nombreStyle}>{barco.name}</h2>
+        <h2>{barco.model}</h2>
+      </div>
+    </div>
+  );
+};
+
+export default BarcoCard;
