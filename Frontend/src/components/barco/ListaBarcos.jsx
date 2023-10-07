@@ -20,22 +20,24 @@ function ListaBarcos({ setImagenSeleccionada, setShow }) {
   };
 
   return (
-    <div className="w-1/2 bg-gray-100 p-4">
-      <h2 className="text-xl font-semibold mb-4">Barcos Registrados</h2>
-      <ul>
-        {barcos.length > 0 ? (
-          barcos.map((barco, index) => (
-            <li key={index}>
-              <BarcoCard
-                barco={barco}
-                onBarcoClick={handleBarcoClick}
-              />
-            </li>
-          ))
-        ) : (
-          <li>No hay barcos registrados.</li>
-        )}
-      </ul>
+    <div className="bg-gray-100">
+      <div><h2 className="text-xl font-semibold mb-4">Barcos Registrados</h2></div>
+      <div className="grid grid-cols-2">
+        <ul>
+          {barcos.length > 0 ? (
+            barcos.map((barco, index) => (
+              <li key={index}>
+                <BarcoCard
+                  barco={barco}
+                  onBarcoClick={handleBarcoClick}
+                />
+              </li>
+            ))
+          ) : (
+            <li>No hay barcos registrados.</li>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

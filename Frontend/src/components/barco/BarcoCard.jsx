@@ -10,7 +10,6 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4">
       <div className="bg-white p-4 rounded shadow-md mb-4" style={cardStyle} onClick={() => onBarcoClick(barco.image)}>
         <img
           src={barco.image}
@@ -19,7 +18,6 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
         <h2 style={nombreStyle}>{barco.name}</h2>
         <h2>{barco.model}</h2>
       </div>
-    </div>
   );
 };
 

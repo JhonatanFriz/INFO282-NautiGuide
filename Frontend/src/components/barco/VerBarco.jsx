@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 const VerBarco = ({ imagenSeleccionada, show}) => {
 
   return (
-    <div className="w-1/2 bg-gray-200 p-4">
-      <h2 className="text-xl font-semibold mb-4">Ver Barco</h2>
+    <div className="bg-gray-200 flex flex-col p-4 items-center">
       {show ? (
         <img src={imagenSeleccionada} alt="Imagen en grande" />
       ) : (
