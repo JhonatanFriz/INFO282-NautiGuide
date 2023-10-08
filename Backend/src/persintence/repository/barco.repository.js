@@ -1,4 +1,5 @@
 import { Barco } from "../models/Barco.js"
+import { Seccion } from "../models/Seccion.js"
 
 {/* Devuelve todos los barcos */}
 export async function getBarcos_(){
@@ -76,6 +77,18 @@ export async function deleteBarco_(id){
         },
         });
         return "Se elimino el barco  correctamente.. "
+    } catch (error) {
+        throw new Error("Sucedio un error......")
+    }
+}
+
+export async function getBarcoSecciones_(id){
+    try {
+        const tasks = await Seccion.findAll({
+            attributes: ["id", "name", "description", "image", "barcoId"],
+            where: { barcoId: id },
+          });
+          return tasks;
     } catch (error) {
         throw new Error("Sucedio un error......")
     }

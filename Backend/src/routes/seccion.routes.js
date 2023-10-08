@@ -4,6 +4,7 @@ import {
   getSeccion,
   updateSeccion,
   deleteSeccion,
+  getSeccionComponentes,
 } from "../controllers/seccion.controller.js";
 
 const router = Router();
@@ -16,5 +17,6 @@ router.get("/:id", getSeccion);
 
 // Metodos, se definen los endpoints, cómo voy a pedir la información
 
+router.get("/:id/componentes", getSeccionComponentes);
 
 export default router;

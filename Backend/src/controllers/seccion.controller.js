@@ -1,7 +1,13 @@
 import { Seccion } from "../persintence/models/Seccion.js";
 import { Componente } from "../persintence/models/Componente.js";
 
-import { createSeccion_, getSeccion_, updateSeccion_, deleteSeccion_} from "../persintence/repository/seccion.repository.js";
+import {
+  createSeccion_,
+  getSeccion_,
+  updateSeccion_,
+  deleteSeccion_,
+  getSeccionComponentes_}
+  from "../persintence/repository/seccion.repository.js";
 
 export async function createSeccion(req, res) {
   const { name, description, image, barcoId} = req.body;
@@ -57,6 +63,14 @@ export async function deleteSeccion(req, res) {
   })
 };
 
+export async function getSeccionComponentes(req, res) {
+  const { id } = req.params;
+  getSeccionComponentes_(id).then(data => {
+    res.status(200).json({status : true, data : data})
+  }, error => {
+    res.status(400).json({status : false, error : error.message })
+  })
+}
 
 
 // Llega la información y reenvia a createpaper

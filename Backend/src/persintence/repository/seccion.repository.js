@@ -58,3 +58,15 @@ export async function deleteSeccion_(id){
     }
 
 }
+
+export async function getSeccionComponentes_(id){
+    try {
+        const tasks = await Seccion.findAll({
+            attributes: ["id", "name", "description", "image", "seccionId"],
+            where: { seccionId: id },
+          });
+          return tasks;
+    } catch (error) {
+        throw new Error("Sucedio un error......")
+    }
+}

@@ -1,39 +1,40 @@
-import React from "react";
-import { Navbar, Home, User, Paper, Barco, Login} from "./components"
-import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
+  import React from "react";
+  import { Navbar, Home, User, Paper, Barco, Login, Seccion} from "./components"
+  import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
 
-const App = () => {
-  return (
-    <div className="bg-primary  overflow-hidden">
-      <div className="sm:px-16 px-6 flex justify-center items-center">
-        <div className="xl:max-w-[1280px] w-full">
-          <Navbar />
+  const App = () => {
+    return (
+      <div className="bg-primary  overflow-hidden">
+        <div className="sm:px-16 px-6 flex justify-center items-center">
+          <div className="xl:max-w-[1280px] w-full">
+            <Navbar />
+          </div>
         </div>
-      </div>
-      <div className="" >
-      <Router>
-        <Routes>
-         
-          <Route path="/usuarios" element={<User />} />
-          <Route path="/papers" element={<Paper />} />
-          <Route path="/barco" element={<Barco />} />
-          <Route path="/login" element={<Login />} />
-          
-        </Routes>
-        
-      </Router>
-      </div>
-      <div className="bg-primary flex justify-center items-start xl:max-w-[1280px] w-full">
+        <div className="" >
         <Router>
           <Routes>
+          
+            <Route path="/usuarios" element={<User />} />
+            <Route path="/papers" element={<Paper />} />
+            <Route path="/barco" element={<Barco />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/:barcoId/seccion" element={<Seccion />} />
             
-            <Route path="/" element={<Home />} />
           </Routes>
+          
         </Router>
+        </div>
+        <div className="bg-primary flex justify-center items-start xl:max-w-[1280px] w-full">
+          <Router>
+            <Routes>
+              
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Router>
+        </div>
       </div>
-    </div>
-  );
-  
-}
+    );
+    
+  }
 
-export default App
+  export default App
