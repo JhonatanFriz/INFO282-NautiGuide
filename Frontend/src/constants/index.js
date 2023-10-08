@@ -46,7 +46,7 @@ export const BG1=
   {
   
   alt: "Izq",
-  image:   'https://media.discordapp.net/attachments/1044401213355069461/1156296281262669865/astillero01.png?ex=65147454&is=651322d4&hm=d993b77c2434a1333a4d9601a1a236c62c9dd92a7f9693bf2cfad7347ed49004&=&width=343&height=473', 
+  image:   'https://media.discordapp.net/attachments/1044401213355069461/1160665067700891728/astillero1.png?ex=65357c94&is=65230794&hm=ea9a4a188ec258e3a3e1110a501287a0b32c53b530d360512cede45108570ac6&=', 
 };
 
 export const BG2= 
