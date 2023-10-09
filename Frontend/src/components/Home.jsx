@@ -52,7 +52,7 @@ const Home = () => {
 
 
     <div className="flex h-screen" style={containerStyle}>
-      <img src={BG1.image} alt={BG1.alt} style={imageStyle}  />
+      <img src={BG1.image} alt={BG1.alt} style={imageStyle} className="flex min-h-screen min-w-screen" />
       {/* <img src={BG3.image} alt={BG3.alt} style={imageStyle}  />  */}
       
 {/* 
