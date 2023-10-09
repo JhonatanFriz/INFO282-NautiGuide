@@ -18,7 +18,6 @@
             <Route path="/papers" element={<Paper />} />
             <Route path="/barco" element={<Barco />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/seccion/:barcoId" element={<Seccion />} />
             <Route path="/:barcoId/seccion" element={<Seccion />} />
             <Route path="/:barcoId/agregar_seccion" element={<AgregarSeccion />} />
             <Route path="/agregar_barco" element={<AgregarBarco />} />
