@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import clientAxios from './config/clienteAxios';
+import clientAxios from '../config/clienteAxios';
 
-import AgregarPunto from './seccion/AgregarPunto';
-import AgregarSeccionBoton from "./seccion/AgregarSeccionBoton";
-import Imagen from "./seccion/Imagen"
-import Secciones from "./seccion/Secciones"
+import AgregarPunto from './AgregarPunto';
+import AgregarSeccionBoton from "./AgregarSeccionBoton";
+import Imagen from "./Imagen"
+import Secciones from "./Secciones"
 
 
-function Seccion() {
+function MenuSeccion() {
 
   const [imagenBarco, setimagenBarco] = useState(null);
 
@@ -29,4 +29,4 @@ function Seccion() {
   );
 }
 
-export default Seccion
+export default MenuSeccion

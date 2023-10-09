@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Componentes() {
+function Secciones() {
 
   const [seccion, setSeccion] = useState([]);
 
@@ -29,4 +29,4 @@ function Componentes() {
   );
 }
   
-  export default Componentes
+  export default Secciones

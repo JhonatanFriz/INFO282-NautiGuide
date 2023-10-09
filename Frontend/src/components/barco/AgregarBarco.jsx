@@ -15,7 +15,10 @@ function AgregarBarco() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-
+    if (!(nombre && image && modelo)) { // Verifica si el campo de rol está vacío
+      setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
+      return; // Impide el envío del formulario
+    }
     if (!personalizado) { // Verifica si el campo de rol está vacío
       setError('Seleccione si el barco es personalizado antes de enviar el registro.'); // Establece un mensaje de error
       return; // Impide el envío del formulario

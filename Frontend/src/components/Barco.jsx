@@ -22,11 +22,12 @@ const Barco = () => {
     const navigateTo2 = useNavigate();
 
     const handleNavigateBarco = () => {
-        navigateTo(`/barco:${barcoId}/seccion`);
+        navigateTo(`/barco:${barcoId}/Menuseccion`);
     };
     const handleNavigateAgregar = () => {
         navigateTo2(`/agregar_barco`);
     };
+
         
     return (
         <div className="grid grid-cols-2">

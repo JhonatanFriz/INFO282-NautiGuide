@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import clientAxios from './config/clienteAxios';
+import clientAxios from '../config/clienteAxios';
 
 const AgregarSeccion = () => {
     const [nombre, setNombre] = useState('');
