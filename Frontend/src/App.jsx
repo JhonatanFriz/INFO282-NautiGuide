@@ -21,13 +21,12 @@
             <Route path="/agregar_barco" element={<AgregarBarco />} />
             
           </Routes>
-          
         </Router>
         </div>
-        <div className="bg-primary flex justify-center items-start xl:max-w-[1280px] w-full">
+        <div className="bg-primary flex justify-center items-start w-full">
           <Router>
             <Routes>
-              
+
               <Route path="/" element={<Home />} />
             </Routes>
           </Router>
