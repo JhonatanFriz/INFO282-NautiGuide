@@ -1,0 +1,26 @@
+
+Establecer fondo:
+    bg-{color}              # color de fondo
+    min-h-screen            # toma la altura de la pantalla
+    max-h-screen            # ocupa lo justo y necesario de la pantalla
+
+flex:
+    flex                    # habilita el diseño flexible, convierte al elemento
+                              en un contenedor flexible que organiza a sus hijos
+                              en una fila
+    flex flex-col           # lo mismo pero ahora los organiza por columnas
+
+Poner un margen:
+    p-4                     # Margen de 4
+    pt-10                   # Margen arriba de 10
+    pb-8                    # Margen abajo de 8
+
+Bordes:
+    rounded                 # pone el borde redondeado
+    rounded-lg              # más redondeado
+    shadow                  # Agrega sombra
+    shadow-x                # Sombra más grande en x (creo)
+    ring-{0,1,2,4 o 8}      # Agrega un borde
+    ring-inset              # Hace que el borde esté hacia adentro
+
+

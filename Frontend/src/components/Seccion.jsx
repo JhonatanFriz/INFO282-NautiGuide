@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import clientAxios from './config/clienteAxios';
 
 import AgregarPunto from './seccion/AgregarPunto';
-import AgregarSeccion from "./seccion/AgregarSeccion";
+import AgregarSeccionBoton from "./seccion/AgregarSeccionBoton";
 import Imagen from "./seccion/Imagen"
 import Secciones from "./seccion/Secciones"
 
@@ -17,7 +17,7 @@ function Seccion() {
   return (
     <div className="flex flex-row">
       <div className="basis-1/2 ">
-        <AgregarSeccion />
+        <AgregarSeccionBoton />
         <Secciones />
       </div>
       <div className="basis-1/2">

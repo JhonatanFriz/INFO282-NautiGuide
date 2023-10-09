@@ -34,7 +34,7 @@ function AgregarBarco() {
 
   return (
     <div className="p-4 bg-black shadow-md h-screen flex justify-center items-center ">
-      <div className="p-4 bg-white rounded-md border-8 w-1/2 justify-center items-center">
+      <div className="p-4 bg-white rounded-md border-8 w-1/2 j  ustify-center items-center">
       <h2 className="text-xl font-semibold mb-4 flex justify-center items-center ">Reguistar Barco</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
