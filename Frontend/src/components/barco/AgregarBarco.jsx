@@ -35,7 +35,7 @@ function AgregarBarco() {
   return (
     <div className="p-4 bg-black shadow-md h-screen flex justify-center items-center ">
       <div className="p-4 bg-white rounded-md border-8 w-1/2 j  ustify-center items-center">
-      <h2 className="text-xl font-semibold mb-4 flex justify-center items-center ">Reguistar Barco</h2>
+      <h2 className="text-xl font-semibold mb-4 flex justify-center items-center ">Registrar Barco</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="nombre" className="block font-medium mb-1">
@@ -83,7 +83,7 @@ function AgregarBarco() {
             value={personalizado}
             onChange={(e) => setPersonalizado(e.target.value)}
           >
-            <option value="">Seleccione rol</option>
+            <option value="">Seleccione Si o No</option>
             <option value="Si">SI</option>
             <option value="No">NO</option>
           </select>

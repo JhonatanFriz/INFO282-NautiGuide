@@ -21,7 +21,7 @@
             <Route path="/seccion/:barcoId" element={<Seccion />} />
             <Route path="/:barcoId/seccion" element={<Seccion />} />
             <Route path="/:barcoId/agregar_seccion" element={<AgregarSeccion />} />
-            <Route path="/agregar" element={<AgregarBarco />} />
+            <Route path="/agregar_barco" element={<AgregarBarco />} />
             
           </Routes>
           
