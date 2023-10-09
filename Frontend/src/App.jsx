@@ -18,7 +18,7 @@
             <Route path="/papers" element={<Paper />} />
             <Route path="/barco" element={<Barco />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/:barcoId/seccion" element={<Seccion />} />
+            <Route path="/seccion" element={<Seccion />} />
             
           </Routes>
           

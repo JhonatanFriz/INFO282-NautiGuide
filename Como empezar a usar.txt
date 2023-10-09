@@ -1,0 +1,50 @@
+Tener instalado:
+    Node.js
+    Xampp
+    Visual Studio
+
+    npm install .
+    npm install vite
+
+1° Traer desde github con
+    git clone https://github.com/JhonatanFriz/INFO282-NautiGuide
+
+2° Copiar los archivos env a Frontend y Backend y agregar el punto al principio del nombre
+
+    #### .env del Backend: ####
+
+    DB_NAME = "test" 
+
+    # DB 
+    DB_USER = "Nombre"
+    DB_PASSWORD = "Contraseña" 
+    DB_HOST = "localhost"
+    DB_DRIVER = "mysql"
+
+    # configuración cors 
+    ORIGIN = "http://localhost:3000"
+
+    # configuración server 
+    IP = "localhost"
+    PORT = 4000
+
+
+
+    #### .env del Frontend: ####
+    VITE_APP_HOST=localhost
+    VITE_APP_PORT=3000
+
+    VITE_BACKEND_URL = "http://localhost:4000"
+
+
+3° Crear en phpmyadmin el usuario que está en env
+
+3° Con Xampp encendido entrar a Frontend y Backend y escribir
+    npm run dev
+
+4° Subir cambios a github
+    git pull                        (Para traer los cambios que ya están en github)
+    git status                      (Para ver si has hecho cambios)
+    git add .                       (o git add /carpeta)
+    git commit -m "comentario"      (para preparar el commit)
+    git push                        (para subirlo)

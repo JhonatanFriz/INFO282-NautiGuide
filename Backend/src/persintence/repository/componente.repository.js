@@ -1,10 +1,9 @@
 import { Componente } from "../models/Componente.js";
 
 export async function createComponente_(componente){
-    const { name, description, image, componenteBarcoId} = componente
+    const { name, description, image} = componente
     try {
         const newComponente = await Componente.create({
-            componenteBarcoId,
             name,
             description,
             image,
@@ -20,7 +19,7 @@ export async function getComponente_(id){
     try {
         const componente = await Componente.findOne({
             where: { id },
-            attributes: ["id", "name", "description", "image", "componenteBarcoId"],
+            attributes: ["id", "name", "description", "image"],
         });
         return componente
         

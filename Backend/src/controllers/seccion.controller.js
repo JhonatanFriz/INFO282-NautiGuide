@@ -3,6 +3,7 @@ import { Componente } from "../persintence/models/Componente.js";
 
 import {
   createSeccion_,
+  getSecciones_,
   getSeccion_,
   updateSeccion_,
   deleteSeccion_,
@@ -14,8 +15,7 @@ export async function createSeccion(req, res) {
   const seccion = { 
     name,
     description, 
-    image,
-    barcoId
+    image
   }
   createSeccion_(seccion).then(data => {
     res.status(200).json({status : true, data : data})
@@ -23,6 +23,14 @@ export async function createSeccion(req, res) {
     res.status(400).json({status : false, error : error.message })
   })
   
+}
+
+export async function getSecciones(req, res) {
+  getSecciones_().then(data => {
+    res.status(200).json({status : true, data : data})
+  }, error => {
+    res.status(400).json({status : false, error : error.message })
+  })
 }
 
 export async function getSeccion(req, res) {
@@ -37,13 +45,12 @@ export async function getSeccion(req, res) {
 export async function updateSeccion(req, res) {
  
     const { id } = req.params;
-    const { name, description ,  image, userId } = req.body;
+    const { name, description ,  image} = req.body;
     const seccion = { 
       id,
       name,
       description,
-      image,
-      userId
+      image
     }
     updateSeccion_(seccion).then(msg=> {
       res.status(200).json({status : true, msg : msg})
@@ -71,6 +78,3 @@ export async function getSeccionComponentes(req, res) {
     res.status(400).json({status : false, error : error.message })
   })
 }
-
-
-// Llega la información y reenvia a createpaper

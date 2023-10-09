@@ -6,8 +6,7 @@ export async function createComponente(req, res) {
   const componente = { 
     name,
     description, 
-    image,
-    seccionId
+    image
   }
   createComponente_(componente).then(data => {
     res.status(200).json({status : true, data : data})
@@ -34,8 +33,7 @@ export async function updateComponente(req, res) {
       id,
       name,
       description,
-      image,
-      seccionId
+      image
     }
     updateComponente_(componente).then(msg=> {
       res.status(200).json({status : true, msg : msg})

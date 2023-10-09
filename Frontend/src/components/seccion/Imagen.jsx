@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
-const imagen = ({ imagenSeccion }) => {
+const imagen = ( {imagenSeccion, show} ) => {
 
   return (
-    <div className="bg-gray-200 flex flex-col p-4 items-center">
+
+    <div className="bg-gray-200 flex flex-col p-4 items-center h-screen">
+ 
       {show ? (
-        <img src={imagenSeccion} />
+        
+        <img src={imagenSeccion} alt="Imagen en grande" />
+        
+        
       ) : (
-        <p>No hay imagen disponible.</p>
+        
+        <p>No hay imagen para mostrar.</p>
       )}
     </div>
+    
   );
 };
 
-export default imagen;
+export default imagen

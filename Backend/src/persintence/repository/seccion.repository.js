@@ -4,7 +4,6 @@ export async function createSeccion_(seccion){
     const { name, description, image, barcoId} = seccion
     try {
         const newSeccion = await Seccion.create({
-            barcoId,
             name,
             description,
             image,
@@ -16,11 +15,25 @@ export async function createSeccion_(seccion){
 
 }
 
+export async function getSecciones_(){
+    try {
+        console.log()
+        const seccion = await Seccion.findAll({
+            attributes: ["id", "name", "description", "image"],
+            order: [["id", "DESC"]],
+        });
+        return seccion
+    } catch (error) {
+        throw new Error("Sucedio un error......")
+    }
+
+}
+
 export async function getSeccion_(id){
     try {
         const seccion = await Seccion.findOne({
             where: { id },
-            attributes: ["id", "name", "description", "image", "barcoId"],
+            attributes: ["id", "name", "description", "image"],
         });
         return seccion
         
