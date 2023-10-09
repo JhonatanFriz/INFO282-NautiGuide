@@ -7,19 +7,23 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
 
   return (
       <div
-        className="bg-white p-4 rounded shadow-md mb-4"
+        className="bg-white p-4 rounded shadow-md mb-4 flex flex-col items-center relative aspect-square overflow-auto"
         style={cardStyle}
-        onClick={() => onBarcoClick([barco.image, barco.id])}>
+        onClick={() => onBarcoClick([barco.image, barco.id])}
+      >
+        <div className="flex-2/3">
           <img
-          src={barco.image}
-          alt="Imagen de barco"
-        />
+            src={barco.image}
+            className=""
+            alt="Imagen de barco"
+          />
+        </div>
 
-        <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barco.name}</h2>
-        <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.model}</h2>
+        <div className="flex-1/3 p-2">
+          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barco.name}</h2>
+          <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.model}</h2>
+        </div>
       </div>
-
-
   );
 };
 

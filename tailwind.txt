@@ -1,14 +1,21 @@
 
 Establecer fondo:
     bg-{color}              # color de fondo
+    bg-center               # Para centrar el objeto en el background
     min-h-screen            # toma la altura de la pantalla
     max-h-screen            # ocupa lo justo y necesario de la pantalla
-
+    max-{w o h}-full        # ocupa toda la pantalla
 flex:
     flex                    # habilita el diseño flexible, convierte al elemento
                               en un contenedor flexible que organiza a sus hijos
                               en una fila
     flex flex-col           # lo mismo pero ahora los organiza por columnas
+    flex justify-center     # para dejar en el centro
+
+
+diseño responsivo:
+    sm:                     # Aplica lo siguiente a pantallas mayores a 640 pixeles
+    xl:                     # Aplica lo siguiente a pantallas mayores a 1280 pixeles
 
 Poner un margen:
     p-4                     # Margen de 4

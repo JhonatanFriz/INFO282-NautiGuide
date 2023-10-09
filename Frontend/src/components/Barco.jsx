@@ -30,19 +30,18 @@ const Barco = () => {
 
         
     return (
-        <div className="grid grid-cols-2">
+        <div className="flex">
 
-            <div className="bg-gray-400"> 
+            <div className="bg-gray-100 basis-1/2 p-2"> 
                 <BotonBarco onClickSeleccion={handleNavigateAgregar}/>
                 <ListaBarcos setBarcoId={setBarcoId} setImagenSeleccionada={setImagenSeleccionada} setShow={setShow} />
             </div>
             
-            <div className="bg-gray-200"> 
+            <div className="bg-gray-200 basis-1/2 p-4"> 
                 <VerBarco imagenSeleccionada={imagenSeleccionada} show={show} />
                 <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barcoId}</h2>
                 <Seleccion show={show} onClickSeleccion={handleNavigateBarco}/>
             </div>
-            {console.log(show)}
         </div>
     );
 }
