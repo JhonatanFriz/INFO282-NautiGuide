@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import User from "./User";
 import Paper from "./Paper";
-import Login from "./Login";
+import Auth from "./Auth";
 import Barco from "./Barco";
 import Seccion from "./Seccion";
 import AgregarBarco from "./barco/AgregarBarco"
@@ -13,7 +13,7 @@ export {
     Home,
     User,
     Paper,
-    Login,
+    Auth,
     Barco,
     Seccion,
     AgregarBarco,

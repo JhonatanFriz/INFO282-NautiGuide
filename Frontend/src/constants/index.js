@@ -19,7 +19,7 @@ export const navLinks = [
     },
     {
       title: "LogIn",
-      ref: "/login"
+      ref: "/auth"
     },
   ];
 

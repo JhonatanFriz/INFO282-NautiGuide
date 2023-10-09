@@ -15,6 +15,7 @@ import seccionRoutes from "./routes/seccion.routes.js";
 import componenteRoutes from "./routes/componente.routes.js";
 import multimediaRoutes from "./routes/multimedia.routes.js";
 import puntoRoutes from "./routes/punto.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 // Middlewares
 app.use(morgan("dev"));
@@ -37,5 +38,6 @@ app.use("/api/seccion", seccionRoutes);
 app.use("/api/componente", componenteRoutes);
 app.use("/api/multimedia", multimediaRoutes);
 app.use("/api/punto", puntoRoutes);
+app.use("/api/auth", authRoutes);
 
 export default app;
