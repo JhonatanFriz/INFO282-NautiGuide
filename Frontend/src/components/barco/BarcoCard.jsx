@@ -6,11 +6,15 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
   };
 
   return (
-      <div className="bg-white p-4 rounded shadow-md mb-4   " style={cardStyle} onClick={() => onBarcoClick(barco.image)}>
-        <img
+      <div
+        className="bg-white p-4 rounded shadow-md mb-4"
+        style={cardStyle}
+        onClick={() => onBarcoClick([barco.image, barco.id])}>
+          <img
           src={barco.image}
           alt="Imagen de barco"
         />
+
         <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barco.name}</h2>
         <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.model}</h2>
       </div>

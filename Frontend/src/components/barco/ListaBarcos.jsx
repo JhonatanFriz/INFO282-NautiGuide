@@ -4,7 +4,9 @@ import BarcoCard from './BarcoCard';
 import VerBarco from './VerBarco';
 
 
-function ListaBarcos({ setImagenSeleccionada, setShow }) {
+function ListaBarcos({ setBarcoId, setImagenSeleccionada, setShow }) {
+
+  // Para manejar el barco que se está seleccionando
   const [barcos, setBarco] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,10 @@ function ListaBarcos({ setImagenSeleccionada, setShow }) {
     fetchPosts();
   }, []);
 
-  const handleBarcoClick = (imagen) => {
+  //Para manejar que al hacer click se setea la imagen con la imagen que se recibirá del click 
+
+  const handleBarcoClick = ([imagen,id]) => {
+    setBarcoId(id);
     setImagenSeleccionada(imagen);
     setShow(true);
   };
@@ -29,19 +34,13 @@ function ListaBarcos({ setImagenSeleccionada, setShow }) {
           {barcos.length > 0 ? (
             barcos.map((barco, index) => (
               
-              
               <li key={index} >
-               
-                
                 <BarcoCard
                   barco={barco}
                   onBarcoClick={handleBarcoClick}
-              
-              /> 
+                />
               </li>
-                
-              
-              
+
             ))
           ) : (
             <li>No hay barcos registrados.</li>

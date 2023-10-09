@@ -10,19 +10,19 @@ import Secciones from "./seccion/Secciones"
 
 function Seccion() {
 
-  const [imagenSeccion, setimagenSeccion] = useState(null);
+  const [imagenBarco, setimagenBarco] = useState(null);
 
   const [show, setShow] = useState(false);
 
   return (
-    <div class="flex flex-row">
-      <div class="basis-1/2 ">
+    <div className="flex flex-row">
+      <div className="basis-1/2 ">
         <AgregarSeccion />
         <Secciones />
       </div>
-      <div class="basis-1/2">
+      <div className="basis-1/2">
         <AgregarPunto />
-        <Imagen imagenSeccion={imagenSeccion} show={show}/>
+        <Imagen imagenBarco={imagenBarco} show={show}/>
       </div>
     </div>
 
