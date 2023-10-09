@@ -6,6 +6,7 @@ import Login from "./Login";
 import Barco from "./Barco";
 import Seccion from "./Seccion";
 import AgregarBarco from "./barco/AgregarBarco"
+import AgregarSeccion from "./AgregarSeccion";
 
 export {
     Navbar,
@@ -15,5 +16,6 @@ export {
     Login,
     Barco,
     Seccion,
-    AgregarBarco
+    AgregarBarco,
+    AgregarSeccion
 }
