@@ -22,7 +22,7 @@ const Barco = () => {
     const navigateTo2 = useNavigate();
 
     const handleNavigateBarco = () => {
-        navigateTo(`/barco:${barcoId}/Menuseccion`);
+        navigateTo(`/barco:${barcoId}/menuseccion`);
     };
     const handleNavigateAgregar = () => {
         navigateTo2(`/agregar_barco`);

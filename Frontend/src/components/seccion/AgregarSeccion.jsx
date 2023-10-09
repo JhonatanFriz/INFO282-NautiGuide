@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import clientAxios from '../config/clienteAxios';
+import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 const AgregarSeccion = () => {
     const [nombre, setNombre] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const { barcoId } = useParams();
+
+    const navigateToBack = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         try {
-          const { data } = await clientAxios.post(`/seccion`, {
+          const { data } = await clientAxios.post(`/${barcoId}/menuseccion`, {
             name: nombre,
             description: description,
             image: image,
@@ -18,7 +23,7 @@ const AgregarSeccion = () => {
         } catch (error) {
           console.log(error);
         }
-        window.location.reload();
+        navigateToBack(`/${barcoId}/menuseccion`);
       };
 
       return (
@@ -61,6 +66,14 @@ const AgregarSeccion = () => {
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
                         />
+                    </div>
+                    <div className="flex justify-center items-center">
+                    <button
+                        type="submit"
+                        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 "
+                    >
+                        Añadir Seccion
+                        </button>
                     </div>
                 </form>
             </div>

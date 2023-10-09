@@ -8,11 +8,12 @@ import Imagen from "./Imagen"
 import Secciones from "./Secciones"
 
 
+
 function MenuSeccion() {
 
   const [imagenBarco, setimagenBarco] = useState(null);
-
   const [show, setShow] = useState(false);
+
 
   return (
     <div className="flex flex-row">

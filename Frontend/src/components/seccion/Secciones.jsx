@@ -6,26 +6,47 @@ function Secciones() {
 
   const [seccion, setSeccion] = useState([]);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await clientAxios.get('/menuseccion/');
+      setSeccion(res.data.data);
+    };
+    fetchPosts();
+  }, []);
+
+  const handleSeccionClick = ([imagen,id]) => {
+    setSeccionId(id);
+    setImagenSeleccionada(imagen);
+    setShow(true);
+  };
+
+
+
   return (
-    <div className="bg-gray-100 h-screen flex flex-col">
-      <h2 className="text-xl font-semibold mb-4">Secciones</h2>
-      <ul>
+    <div className="bg-gray-100 ">
+      <div><h2 className="text-xl font-semibold mb-4">Secciones Registrados</h2></div>
+        
+        <ul>
         <div className="grid grid-cols-3 ">
-        {seccion.length > 0 ? (
-          seccion.map((seccion, index) => (            
-            <li key={index} >              
-              <SeccionCard
-                seccion={seccion}
-                onSeccionClick={onSeccionClick}            
-            /> 
-            </li>
-          ))
-        ) : (
-          <li>No hay secciones registrados.</li>
-        )}
-        </div>
-      </ul>
-    </div>
+          {seccion.length > 0 ? (
+            seccion.map((seccion, index) => (
+              
+              <li key={index} >
+                <SeccionCard
+                  seccion={seccion}
+                  onSeccionClick={handleSeccionClick}
+                />
+              </li>
+
+            ))
+          ) : (
+            <li>No hay seccion registrados.</li>
+          )}
+          </div>
+        </ul>
+        
+      </div>
+      
   );
 }
   
