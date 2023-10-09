@@ -4,7 +4,8 @@ import User from "./User";
 import Paper from "./Paper";
 import Login from "./Login";
 import Barco from "./Barco";
-import Seccion from "./Seccion"
+import Seccion from "./Seccion";
+import AgregarBarco from "./barco/AgregarBarco"
 
 export {
     Navbar,
@@ -13,5 +14,6 @@ export {
     Paper,
     Login,
     Barco,
-    Seccion
+    Seccion,
+    AgregarBarco
 }

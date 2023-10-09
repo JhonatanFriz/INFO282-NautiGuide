@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import ListaBarcos from './barco/ListaBarcos';
 import VerBarco from './barco/VerBarco';
-import AgregarBarco from './barco/AgregarBarco';
+import BotonBarco from './barco/BotonBarco';
 import Seleccion from './barco/Seleccion';
 
 const Barco = () => {
@@ -19,15 +19,20 @@ const Barco = () => {
 
     // Para navegar a la id
     const navigateTo = useNavigate();
+    const navigateTo2 = useNavigate();
+
     const handleNavigateBarco = () => {
         navigateTo(`/seccion/${barcoId}`);
+    };
+    const handleNavigateAgregar = () => {
+        navigateTo2(`/agregar`);
     };
         
     return (
         <div className="grid grid-cols-2">
 
             <div className="bg-gray-400"> 
-                <AgregarBarco />
+                <BotonBarco onClickSeleccion={handleNavigateAgregar}/>
                 <ListaBarcos setBarcoId={setBarcoId} setImagenSeleccionada={setImagenSeleccionada} setShow={setShow} />
             </div>
             

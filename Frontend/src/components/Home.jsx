@@ -16,7 +16,7 @@ const Home = () => {
   // };
 
   const containerStyle = {
-    position: "relative",
+    position: "sticky",
     width: "100vw", // Ancho igual al 100% del viewport width
     height: "100vh", // Altura igual al 100% del viewport height
     overflow: "hidden", // Evita que el contenido se desborde
@@ -44,7 +44,7 @@ const Home = () => {
   const imageStyle = {
     width: "100%", // Ancho igual al 100% del contenedor
     height: "100%", // Altura igual al 100% del contenedor
-    objectFit: "cover", // Escalar y recortar la imagen para que llene el contenedor
+    // objectFit: "cover", // Escalar y recortar la imagen para que llene el contenedor
   };
   
  return (
@@ -55,8 +55,8 @@ const Home = () => {
       <img src={BG1.image} alt={BG1.alt} style={imageStyle}  />
       {/* <img src={BG3.image} alt={BG3.alt} style={imageStyle}  />  */}
       
-
-    <div className=" h-screen" style={containerStyle2}>    </div>
+{/* 
+    <div className=" h-screen" style={containerStyle2}>    </div> */}
       {/* <img src={BG2.image} alt={BG2.alt} style={{imageStyle,}}  /> */}
 
     
