@@ -10,7 +10,7 @@ const AgregarSeccion = () => {
         e.preventDefault();
     
         try {
-          const { data } = await clientAxios.post(`/users`, {
+          const { data } = await clientAxios.post(`/seccion`, {
             name: nombre,
             description: description,
             image: image,
@@ -22,8 +22,8 @@ const AgregarSeccion = () => {
       };
 
       return (
-        <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
-            <div className="bg-white p-4 rounded-lg shadow-md mb-4 mx-auto max-w-lg">
+        <div className="bg-blue-950 min-h-screen ">
+            <div className="relative bg-white p-4 rounded-lg shadow-md mb-4 mx-auto max-w-lg">
                 <h2 className="text-xl font-semibold mb-4">Agregar Sección</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">

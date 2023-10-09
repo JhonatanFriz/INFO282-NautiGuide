@@ -5,12 +5,10 @@
   const App = () => {
     return (
       <div className="bg-primary  overflow-hidden">
-        <div className="sm:px-16 px-6 flex justify-center items-center">
-          <div className="xl:max-w-[1280px] w-full">
-            <Navbar />
-          </div>
+        <div className="sm:px-16 px-6 max-w-full w-full">
+          <Navbar />
         </div>
-        <div className="" >
+        <div >
         <Router>
           <Routes>
           
