@@ -9,7 +9,7 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
       <div
         className="bg-white p-4 rounded shadow-md mb-4 flex flex-col items-center relative aspect-square overflow-auto"
         style={cardStyle}
-        onClick={() => onBarcoClick([barco.image, barco.id])}
+        onClick={() => onBarcoClick(barco)}
       >
         <div className="flex-2/3">
           <img

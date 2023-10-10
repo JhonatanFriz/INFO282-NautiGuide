@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import ListaBarcos from './barco/ListaBarcos';
@@ -17,12 +17,23 @@ const Barco = () => {
     // Para manejar la id del barco seleccionado
     const [barcoId, setBarcoId] = useState(null);
 
+    const [barcoSeleccionado, setBarcoSeleccionado] = useState(null);
+
+    useEffect(() => {
+        if (show) {
+          setImagenSeleccionada(barcoSeleccionado.image);
+          setBarcoId(barcoSeleccionado.id);
+        }
+    }, [barcoSeleccionado]);
+    
+    
+
     // Para navegar a la id
     const navigateTo = useNavigate();
     const navigateTo2 = useNavigate();
 
     const handleNavigateBarco = () => {
-        navigateTo(`/barco:${barcoId}/menuseccion`);
+        navigateTo(`/barco:${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
     };
     const handleNavigateAgregar = () => {
         navigateTo2(`/agregar_barco`);
@@ -34,7 +45,10 @@ const Barco = () => {
 
             <div className="bg-gray-100 basis-1/2 p-2"> 
                 <BotonBarco onClickSeleccion={handleNavigateAgregar}/>
-                <ListaBarcos setBarcoId={setBarcoId} setImagenSeleccionada={setImagenSeleccionada} setShow={setShow} />
+                <ListaBarcos
+                    setBarcoSeleccionado={setBarcoSeleccionado}
+                    setShow={setShow}
+                />
             </div>
             
             <div className="bg-gray-200 basis-1/2 p-4"> 

@@ -2,25 +2,9 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones() {
-
+function Secciones({onClickSeccion}) {
+  
   const [seccion, setSeccion] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await clientAxios.get('/menuseccion/');
-      setSeccion(res.data.data);
-    };
-    fetchPosts();
-  }, []);
-
-  const handleSeccionClick = ([imagen,id]) => {
-    setSeccionId(id);
-    setImagenSeleccionada(imagen);
-    setShow(true);
-  };
-
-
 
   return (
     <div className="bg-gray-100 ">
@@ -34,7 +18,7 @@ function Secciones() {
               <li key={index} >
                 <SeccionCard
                   seccion={seccion}
-                  onSeccionClick={handleSeccionClick}
+                  onSeccionClick={onClickSeccion}
                 />
               </li>
 

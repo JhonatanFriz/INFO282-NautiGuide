@@ -3,7 +3,7 @@ import clientAxios from '../config/clienteAxios';
 import BarcoCard from './BarcoCard';
 
 
-function ListaBarcos({ setBarcoId, setImagenSeleccionada, setShow }) {
+function ListaBarcos({ setBarcoSeleccionado, setShow }) {
 
   // Para manejar el barco que se está seleccionando
   const [barcos, setBarco] = useState([]);
@@ -17,10 +17,16 @@ function ListaBarcos({ setBarcoId, setImagenSeleccionada, setShow }) {
   }, []);
 
   //Para manejar que al hacer click se setea la imagen con la imagen que se recibirá del click 
-
+/*
   const handleBarcoClick = ([imagen,id]) => {
     setBarcoId(id);
     setImagenSeleccionada(imagen);
+    setShow(true);
+  };
+*/
+
+  const handleBarcoClick = (barco) => {
+    setBarcoSeleccionado(barco);
     setShow(true);
   };
 
