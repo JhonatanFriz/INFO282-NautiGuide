@@ -27,7 +27,7 @@ function Secciones() {
       <div><h2 className="text-xl font-semibold mb-4">Secciones Registrados</h2></div>
         
         <ul>
-        <div className="grid grid-cols-3 ">
+
           {seccion.length > 0 ? (
             seccion.map((seccion, index) => (
               
@@ -40,9 +40,9 @@ function Secciones() {
 
             ))
           ) : (
-            <li>No hay seccion registrados.</li>
+            <li>No hay secciones registrados.</li>
           )}
-          </div>
+        
         </ul>
         
       </div>

@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <a href="/">
-        <img src={icon} alt="hoobank" className="w-[50px] h-[50px]"/>
+        <img src="https://media.discordapp.net/attachments/1091020307134939136/1161098424351981689/Barquito.png?ex=6537102c&is=65249b2c&hm=691be42d202cc00204641cd2c3c7f6daabc579c289e5633d5ce75f0ef153befe&=" alt="hoobank" className="w-[50px] h-[50px]"/>
       </a>
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (

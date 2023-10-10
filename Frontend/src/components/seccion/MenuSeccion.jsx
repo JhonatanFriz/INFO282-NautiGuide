@@ -16,12 +16,12 @@ function MenuSeccion() {
 
 
   return (
-    <div className="flex flex-row">
-      <div className="basis-1/2 ">
+    <div className="flex flex-row  bg-gray-400">
+      <div className="basis-1/4 ">
         <AgregarSeccionBoton />
         <Secciones />
       </div>
-      <div className="basis-1/2">
+      <div className="basis-3/4">
         <AgregarPunto />
         <Imagen imagenBarco={imagenBarco} show={show}/>
       </div>

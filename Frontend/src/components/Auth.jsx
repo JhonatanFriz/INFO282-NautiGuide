@@ -12,7 +12,6 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Iniciar Sesión</h2>
       <Formulario />
     </div>
   );

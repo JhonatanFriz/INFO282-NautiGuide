@@ -4,16 +4,6 @@ import { BG1 } from '../constants';
 import { BG2 } from '../constants';
 import { BG3 } from '../constants';
 const Home = () => {
-  
-  /*const BG = "url('C:\Users\Yoan\Desktop\Taller IS\plantilla_INFO282\Frontend\src\assets\astillero01.png')";*/
-
-  // const containerStyle = {
-  //   backgroundImage: BG.image,
-  //   backgroundPosition: 'left', // Alinea la imagen al lado izquierdo
-  //   backgroundSize: '50%', // Controla el tamaño de la imagen de fondo
-  //   // Otros estilos para el contenedor, si es necesario
-  
-  // };
 
   const containerStyle = {
     position: "sticky",
@@ -21,15 +11,6 @@ const Home = () => {
     height: "100vh", // Altura igual al 100% del viewport height
     overflow: "hidden", // Evita que el contenido se desborde
   };
-
-  const containerStyle2 = {
-      position: "relative",
-      width: "100vw", // Ancho igual al 100% del viewport width
-      height: "100vh", // Altura igual al 100% del viewport height
-      overflow: "hidden", // Evita que el contenido se desborde
-      background: `url(${BG2.image}) right center no-repeat`, // Fija la imagen a la derecha
-      backgroundSize: "cover", // Escala la imagen para cubrir todo el contenedor
-    };
 
   const textOverlayStyle = {
     position: "absolute",
@@ -46,6 +27,11 @@ const Home = () => {
     height: "100%", // Altura igual al 100% del contenedor
     // objectFit: "cover", // Escalar y recortar la imagen para que llene el contenedor
   };
+  const estiloTexto = {
+    color: 'white',
+    textShadow: '2px 2px 0px black',
+    padding: '10px',
+  };
   
  return (
 
@@ -53,14 +39,8 @@ const Home = () => {
 
     <div className="flex h-screen" style={containerStyle}>
       <img src={BG1.image} alt={BG1.alt} style={imageStyle} className="flex min-h-screen min-w-screen" />
-      {/* <img src={BG3.image} alt={BG3.alt} style={imageStyle}  />  */}
-      
-{/* 
-    <div className=" h-screen" style={containerStyle2}>    </div> */}
-      {/* <img src={BG2.image} alt={BG2.alt} style={{imageStyle,}}  /> */}
 
-    
-  {/* //////////////////////////////////////////////////////////////////////////////////////////// */}
+
        <div style={textOverlayStyle}>
         
          <section className="sm:py-16 py-6 flex justify-center items-center flex-col relative flex-grow">
@@ -70,12 +50,12 @@ const Home = () => {
          {/* Eliminamos el fondo azul */}
         
          <div className="w-full flex justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1] text-center">
-          <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-red-500 xs:leading-[76.8px] leading-[66.8px] w-full">
-                Página Princial
+          <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] xs:leading-[76.8px] leading-[66.8px] w-full" style={estiloTexto}>
+                Manuales Interactivos de Embarcaciones
            </h2>
         </div>
         
-        <div className="flex flex-wrap sm:justify-start justify-center w-full feedback-container relative z-[1] ">
+        <div className="flex flex-wrap sm:justify-center justify-center w-full feedback-container relative z-[1] ">
          {socialMedia.map((media) =>
             <div key={media.name} className="px-10">
               <a href={media.link}>

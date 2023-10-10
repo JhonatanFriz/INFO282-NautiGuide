@@ -15,7 +15,7 @@ const AgregarSeccion = () => {
         e.preventDefault();
     
         try {
-          const { data } = await clientAxios.post(`/${barcoId}/menuseccion`, {
+          const { data } = await clientAxios.post(`/seccion`, {
             name: nombre,
             description: description,
             image: image,

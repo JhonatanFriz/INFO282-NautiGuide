@@ -1,45 +1,43 @@
 import {facebook, instagram,Youtube} from "../assets";
 
 export const navLinks = [
+  {
+    title: "Iniciar Sesión",
+    ref: "/auth"
+  },
     {
-      title: "Home",
-      ref: "/"
-    },
-    {
-      title: "Usuario",
+      title: "Registro de Usuario",
       ref: "/usuarios"
-    },
+    },    
     {
-      title: "Papers",
-      ref: "/papers"
-    },        
-    {
-      title: "Barcos",
+      title: "Manuales de Barcos",
       ref: "/barco"
     },
-    {
-      title: "LogIn",
-      ref: "/auth"
-    },
+
   ];
 
 export const socialMedia = [
-    {
-        name: "Facebook",
-        link: "https://www.facebook.com/",
-        icon: facebook,
-    },
-    {
-        name: "Insta",
-        link: "https://www.instagram.com/",
-        icon: instagram,
-    },
-    {
-      name: "Youtube",
-      link: "https://www.youtube.com/",
-      icon: Youtube,
-  },
 
+  //   {
+  //       name: "Facebook",
+  //       link: "https://www.facebook.com/",
+  //       icon: facebook,
+  //   },
+  //   {
+  //       name: "Insta",
+  //       link: "https://www.instagram.com/",
+  //       icon: instagram,
+  //   },
+  //   {
+  //     name: "Youtube",
+  //     link: "https://www.youtube.com/",
+  //     icon: Youtube,
+  // },
+  {
+    name: "",
+    link: "https://uach.cl/",
+    icon: "http://vinculacionpm.uach.cl/wp-content/uploads/2021/10/Logo-UACHx800-300x300.png",
+},
 ]
 
 export const BG1= 
