@@ -1,8 +1,7 @@
 import React from 'react';
 import { socialMedia } from "../constants";
 import { BG1 } from '../constants';
-import { BG2 } from '../constants';
-import { BG3 } from '../constants';
+
 const Home = () => {
 
   const containerStyle = {

@@ -10,7 +10,10 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!(nombre && email && contraseña)) { // Verifica si el campo de rol está vacío
+      setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
+      return; // Impide el envío del formulario
+    }
     if (!rol) { // Verifica si el campo de rol está vacío
       setError('Seleccione un rol antes de enviar el formulario.'); // Establece un mensaje de error
       return; // Impide el envío del formulario
