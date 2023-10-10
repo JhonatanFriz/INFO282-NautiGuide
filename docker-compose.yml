@@ -12,7 +12,7 @@ services:
       - ./Base de datos/test.sql:/docker-entrypoint-initdb.d/init.sql
       - data:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 3312:3312
     networks:
       - red
 
@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: ./Backend/dockerfile
     ports:
-      - 4000:4000
+      - 5004:5004
     depends_on:
       - db_test
     
@@ -33,7 +33,7 @@ services:
       context: ./Frontend
       dockerfile: dockerfile
     ports:
-      - 3000:3000
+      - 4003:4003
     
     networks:
       - red

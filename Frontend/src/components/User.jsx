@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Formulario from './User/Formulario';
-import ListaUsuarios from './User/ListaUsuario';
+import Formulario from './user/Formulario';
+import ListaUsuarios from './user/ListaUsuario';
 
 const User = () => {
   const handleRegistro = (nuevoUsuario) => {

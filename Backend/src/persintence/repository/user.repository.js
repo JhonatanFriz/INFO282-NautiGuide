@@ -1,7 +1,7 @@
 import { User } from "../models/User.js"
 import { Paper } from "../models/Paper.js";
 
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 
 export async function getUsers_(){
