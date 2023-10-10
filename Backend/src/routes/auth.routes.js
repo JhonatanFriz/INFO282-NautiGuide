@@ -6,8 +6,6 @@ const router = Router();
 
 // Routes
 router.post("/login", login);
-
-// Ruoutes protected
-router.get("/logout", logout); //falta agregar token
+router.post("/logout", logout);
 
 export default router;

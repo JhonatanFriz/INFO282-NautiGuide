@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import clientAxios from '../config/clienteAxios';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Formulario = () => {
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
-  const navigate = useNavigate(); // Obtiene la función de navegación
+  const [error, setError] = useState(''); // Variable de estado para el mensaje de error
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,11 +18,12 @@ const Formulario = () => {
       });
 
       // Autenticación exitosa, redirige al usuario a la página de inicio
-      navigate('/barco'); // Cambia '/home' al URL deseado para la página de inicio
+      navigate('/barco');
     } catch (error) {
+      // Si la solicitud falla, actualiza el mensaje de error
+      setError('Por favor, verifica tu correo y contraseña.');
       console.log(error);
     }
-    
   };
 
   return (
@@ -60,6 +62,7 @@ const Formulario = () => {
               onChange={(e) => setContraseña(e.target.value)}
             />
           </div>
+          {error && <p className="text-red-500 mb-4">{error}</p>} {/* Muestra el mensaje de error si existe */}
           <div className="flex justify-center">
             <button
               type="submit"
@@ -68,10 +71,8 @@ const Formulario = () => {
               Ingresar
             </button>
           </div>
-          <div
-            className="w-full text-xs font-semibold mb-4 text-sky-600">¿Olvidó su contraseña?
-            <h2 className="w-full text-xs font-semibold mb-4 text-sky-600">Contactar con administración</h2>
-          </div>
+          <div className="w-full text-xs font-semibold mb-4 text-sky-600">¿Olvidó su contraseña?</div>
+          <h2 className="w-full text-xs font-semibold mb-4 text-sky-600">Contactar con administración</h2>
         </form>
       </div>
     </div>

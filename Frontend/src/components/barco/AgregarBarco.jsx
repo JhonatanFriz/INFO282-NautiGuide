@@ -24,12 +24,14 @@ function AgregarBarco() {
       return; // Impide el envío del formulario
     }
 
+    // Convertir la cadena "personalizado" en un valor booleano
+    const isPersonalizado = personalizado === 'Si' ? true : false;
     try {
       const { data } = await clientAxios.post(`/barco`, {
         name: nombre,
-        image: image,
         model: modelo,
-        personalizado: personalizado,
+        image: image,
+        personalizado: isPersonalizado, // Aquí se envía como booleano,
       });
     } catch (error) {
       console.log(error);
@@ -55,27 +57,27 @@ function AgregarBarco() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="imagen" className="block font-medium mb-1">
-            Imagen
-          </label>
-          <input
-            type="iamge"
-            id="image"
-            className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
           <label htmlFor="modelo" className="block font-medium mb-1">
             Modelo
           </label>
           <input
-            type="model"
+            type="text"
             id="modelo"
             className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
             value={modelo}
             onChange={(e) => setModelo(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="image" className="block font-medium mb-1">
+            Imagen
+          </label>
+          <input
+            type="text"
+            id="image"
+            className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
           />
         </div>
         <div className="mb-4">
