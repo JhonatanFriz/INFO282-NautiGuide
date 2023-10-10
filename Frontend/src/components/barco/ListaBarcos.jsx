@@ -31,7 +31,7 @@ function ListaBarcos({ setBarcoSeleccionado, setShow }) {
   };
 
   return (
-    <div className="bg-gray-400 p-1">
+    <div className="bg-gray-100 p-1">
       <div>
         <h2 className="text-xl font-semibold mb-4">Barcos Registrados</h2>
       </div>
