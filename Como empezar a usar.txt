@@ -32,9 +32,11 @@ Tener instalado:
 
     #### .env del Frontend: ####
     VITE_APP_HOST=localhost
-    VITE_APP_PORT=3000
+    VITE_APP_PORT=4003
 
-    VITE_BACKEND_URL = "http://localhost:4000"
+
+
+    VITE_BACKEND_URL = "http://localhost:5004"
 
 
 3° Crear en phpmyadmin el usuario que está en env
@@ -48,3 +50,5 @@ Tener instalado:
     git add .                       (o git add /carpeta)
     git commit -m "comentario"      (para preparar el commit)
     git push                        (para subirlo)
+
+

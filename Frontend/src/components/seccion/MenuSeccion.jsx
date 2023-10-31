@@ -28,14 +28,43 @@ function MenuSeccion() {
   const handleSeccionClick = () => {
   };
 
+  const handleBarcoClick = (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+    setPoint({ x, y });
+    setShow(true);
+  };
+
+  const [show, setShow] = useState(false);
+
+  const [point, setPoint] = useState({ x: 0, y: 0 });
+  
   return (
     <div className="flex flex-row">
       <div className="basis-1/2 ">
         <AgregarSeccionBoton onClickAgregar={handleNavigateSeccion}/>
-        <Secciones onClickSeccion={handleSeccionClick}/>
+        <Secciones onClickSeccion={handleSeccionClick} barcoId={barcoId}/>
       </div>
       <div className="basis-1/2">
-        <AgregarPunto />
+        <AgregarPunto setShow={setShow}/>
+        {show ? (
+        <div>
+          <p className="bg-gray-200 p-4">Presiona un punto.</p>
+          <div
+              style={{
+                position: 'absolute',
+                left: point.x,
+                top: point.y,
+                width: '10px',
+                height: '10px',
+                background: 'red',
+                borderRadius: '50%',
+              }}
+            ></div>
+          </div>
+        ) : (
+          <p></p>
+        )}
         <Imagen imagenBarco={imagen}/>
       </div>
     </div>

@@ -2,18 +2,26 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onClickSeccion}) {
+function Secciones({onClickSeccion, barcoId}) {
   
-  const [seccion, setSeccion] = useState([]);
+  const [secciones, setSecciones] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await clientAxios.get(`/seccion/${barcoId}/seccion`);
+      setSecciones(res.data.data);
+    };
+    fetchPosts();
+  }, []);
 
   return (
-    <div className="bg-gray-100 ">
-      <div><h2 className="text-xl font-semibold mb-4">Secciones Registrados</h2></div>
+    <div className="bg-gray-100 h-screen">
+      <div><h2 className="text-xl font-semibold mb-2">Secciones Registradas</h2></div>
         
         <ul>
 
-          {seccion.length > 0 ? (
-            seccion.map((seccion, index) => (
+          {secciones.length > 0 ? (
+            secciones.map((seccion, index) => (
               
               <li key={index} >
                 <SeccionCard
@@ -24,7 +32,7 @@ function Secciones({onClickSeccion}) {
 
             ))
           ) : (
-            <li>No hay secciones registrados.</li>
+            <li>No hay secciones registradas.</li>
           )}
         
         </ul>
@@ -33,5 +41,5 @@ function Secciones({onClickSeccion}) {
       
   );
 }
-  
-  export default Secciones
+
+export default Secciones

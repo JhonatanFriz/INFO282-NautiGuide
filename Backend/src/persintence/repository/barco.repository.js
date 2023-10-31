@@ -93,3 +93,4 @@ export async function getBarcoSecciones_(id){
         throw new Error("Sucedio un error......")
     }
 }
+

@@ -22,15 +22,23 @@ const AgregarSeccion = () => {
         e.preventDefault();
     
         try {
-          const { data } = await clientAxios.post(`/seccion`, {
-            name: nombre,
-            description: description,
-            image: image,
-          });
+            if (esParaBarco === 'UNICO') {
+                await clientAxios.post(`/seccion/${barcoId}/seccion`, {
+                    name: nombre,
+                    description: description,
+                    image: image,
+                });
+            } else {
+                await clientAxios.post(`/seccion`, {
+                    name: nombre,
+                    description: description,
+                    image: image,
+                });
+            }
+            navigateToBack(`/${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
         } catch (error) {
           console.log(error);
         }
-        navigateToBack(`/${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
       };
 
       /*

@@ -36,7 +36,7 @@ function ListaBarcos({ setBarcoSeleccionado, setShow }) {
         <h2 className="text-xl font-semibold mb-4">Barcos Registrados</h2>
       </div>
       <ul>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-auto">
           {barcos.length > 0 ? (
             barcos.map((barco, index) => (
               

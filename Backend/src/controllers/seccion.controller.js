@@ -7,7 +7,9 @@ import {
   getSeccion_,
   updateSeccion_,
   deleteSeccion_,
-  getSeccionComponentes_}
+  getSeccionComponentes_,
+  unir_barco_seccion_,
+  llamar_barco_seccion_}
   from "../persintence/repository/seccion.repository.js";
 
 export async function createSeccion(req, res) {
@@ -73,6 +75,24 @@ export async function deleteSeccion(req, res) {
 export async function getSeccionComponentes(req, res) {
   const { id } = req.params;
   getSeccionComponentes_(id).then(data => {
+    res.status(200).json({status : true, data : data})
+  }, error => {
+    res.status(400).json({status : false, error : error.message })
+  })
+}
+
+export async function unir_barco_seccion(req, res){
+  const { barcoId } = req.params;
+  unir_barco_seccion_(barcoId,req.body).then(data => {
+    res.status(200).json({status : true, data : data})
+  }, error => {
+    res.status(400).json({status : false, error : error.message })
+  })
+}
+
+export async function llamar_barco_seccion(req, res){
+  const { barcoId } = req.params;
+  llamar_barco_seccion_(barcoId).then(data => {
     res.status(200).json({status : true, data : data})
   }, error => {
     res.status(400).json({status : false, error : error.message })

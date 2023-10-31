@@ -14,8 +14,8 @@ router.post("/", createBarco);
 router.get("/", getBarcos);
 router.get("/:id", getBarco);
 router.delete("/:id", deleteBarco);
-
-
 router.get("/:id/secciones", getBarcoSecciones);
+
+
 
 export default router;

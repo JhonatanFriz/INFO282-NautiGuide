@@ -16,6 +16,7 @@ flex:
 diseño responsivo:
     sm:                     # Aplica lo siguiente a pantallas mayores a 640 pixeles
     xl:                     # Aplica lo siguiente a pantallas mayores a 1280 pixeles
+    hover:                  # Cambia cuando pasa el mouse por encima
 
 Poner un margen:
     p-4                     # Margen de 4

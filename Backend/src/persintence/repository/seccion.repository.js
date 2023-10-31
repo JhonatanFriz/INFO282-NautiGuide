@@ -1,7 +1,9 @@
 import { Seccion } from "../models/Seccion.js";
+import { Barco } from "../models/Barco.js";
+//import { Tiene } from "../models/Tiene.js"
 
 export async function createSeccion_(seccion){
-    const { name, description, image, barcoId} = seccion
+    const { name, description, image} = seccion
     try {
         const newSeccion = await Seccion.create({
             name,
@@ -82,4 +84,35 @@ export async function getSeccionComponentes_(id){
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
+}
+
+export async function unir_barco_seccion_(id,contenido){
+    const { name, description, image} = contenido
+    try {
+        const newSeccion = await Seccion.create({
+            name,
+            description,
+            image,
+        });
+        newSeccion.addBarco(id)
+        return newSeccion
+    } catch (error) {
+        throw new Error("Sucedio un error......")
+    }
+
+}
+
+export async function llamar_barco_seccion_(id){
+    try {
+
+        const seccion = await Barco.findAll({
+            where: { id: id},
+            include: Seccion
+        });
+
+        return seccion
+    } catch (error) {
+        throw new Error("Sucedio un error......")
+    }
+
 }

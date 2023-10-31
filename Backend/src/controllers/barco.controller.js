@@ -79,3 +79,4 @@ export async function getBarcoSecciones(req, res) {
     res.status(400).json({status : false, error : error.message })
   })
 }
+

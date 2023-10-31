@@ -40,4 +40,5 @@ app.use("/api/multimedia", multimediaRoutes);
 app.use("/api/punto", puntoRoutes);
 app.use("/api/auth", authRoutes);
 
+
 export default app;
