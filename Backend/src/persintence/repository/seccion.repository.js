@@ -105,12 +105,25 @@ export async function unir_barco_seccion_(id,contenido){
 export async function llamar_barco_seccion_(id){
     try {
 
-        const seccion = await Barco.findAll({
+        const barco = await Barco.findAll({
             where: { id: id},
             include: Seccion
         });
 
-        return seccion
+        const secciones = barco.length > 0 ? barco[0].secciones : [];
+
+        // Buscar todas las secciones
+        const todas_secciones = await Seccion.findAll()
+
+        // Buscar las secciones que no están en la tabla tiene
+        const secciones_globales
+
+
+
+        // Buscar todas las secciones que no están en tiene
+        // juntar secciones con secciones_blobal
+
+        return secciones
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
