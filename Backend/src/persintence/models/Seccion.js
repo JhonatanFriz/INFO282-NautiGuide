@@ -23,7 +23,7 @@ export const Seccion = sequelize.define(
     {
       timestamps: false,
     }
-  );
+);
 
 Seccion.belongsToMany(Componente, {through: "Pertenece"});
 Componente.belongsToMany(Seccion, {through: "Pertenece"});

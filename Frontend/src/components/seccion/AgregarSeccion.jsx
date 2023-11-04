@@ -29,7 +29,7 @@ const AgregarSeccion = () => {
                     image: image,
                 });
             } else {
-                await clientAxios.post(`/seccion/0/seccion`, {
+                await clientAxios.post(`/seccion`, {
                     name: nombre,
                     description: description,
                     image: image,

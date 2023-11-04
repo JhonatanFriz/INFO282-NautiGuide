@@ -1,6 +1,6 @@
 import { Seccion } from "../models/Seccion.js";
 import { Barco } from "../models/Barco.js";
-//import { Tiene } from "../models/Tiene.js"
+import { sequelize } from "../database/database.js";
 
 export async function createSeccion_(seccion){
     const { name, description, image} = seccion
@@ -19,7 +19,6 @@ export async function createSeccion_(seccion){
 
 export async function getSecciones_(){
     try {
-        console.log()
         const seccion = await Seccion.findAll({
             attributes: ["id", "name", "description", "image"],
             order: [["id", "DESC"]],
@@ -105,25 +104,22 @@ export async function unir_barco_seccion_(id,contenido){
 export async function llamar_barco_seccion_(id){
     try {
 
+        // Busca el barco con la id
         const barco = await Barco.findAll({
             where: { id: id},
             include: Seccion
         });
 
+        // Se queda con el parametro secciones de ese barco
         const secciones = barco.length > 0 ? barco[0].secciones : [];
 
-        // Buscar todas las secciones
-        const todas_secciones = await Seccion.findAll()
+        // Agregar función para agregar todas las secciones que no están relacionadas a ningún barco
+        const seccionesSinAsociar = await Seccion.findAll({
+            order: [["id", "DESC"]],
+        });
+        // Juntar esas secciones_sin_barco con secciones
 
-        // Buscar las secciones que no están en la tabla tiene
-        const secciones_globales
-
-
-
-        // Buscar todas las secciones que no están en tiene
-        // juntar secciones con secciones_blobal
-
-        return secciones
+        return seccionesSinAsociar 
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
