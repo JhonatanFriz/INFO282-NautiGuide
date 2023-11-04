@@ -1,14 +1,18 @@
 .flip-horizontal-bottom {
-	animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: flip-horizontal-bottom 0.9s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 .flip-horizontal-bottom:hover {
-	animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: flip-horizontal-bottom 0.9s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 .tracking-in-contract-bck-top {
 	animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 .text-focus-in {
 	animation: text-focus-in 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+.kenburns-top {
+	-webkit-animation: kenburns-top 10s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite alternate-reverse both;
+	        animation: kenburns-top 10s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite alternate-reverse both;
 }
 
 @keyframes flip-horizontal-bottom {
@@ -50,5 +54,33 @@
   100% {
     filter: blur(0px);
     opacity: 1;
+  }
+}
+@-webkit-keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateY(-15px);
+            transform: scale(1.25) translateY(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+@keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateY(-15px);
+            transform: scale(1.25) translateY(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
   }
 }

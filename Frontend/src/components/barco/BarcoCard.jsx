@@ -5,6 +5,8 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
     cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
   };
 
+
+
   return (
       <div
         className="bg-white p-4 rounded shadow-md mb-4 flex flex-col items-center relative aspect-square overflow-auto"
@@ -14,7 +16,7 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
         <div className="flex-2/3">
           <img
             src={barco.image}
-            className=""
+            className="w-32 h-24 flip-horizontal-bottom "
             alt="Imagen de barco"
           />
         </div>

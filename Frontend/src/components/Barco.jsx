@@ -44,7 +44,7 @@ const Barco = () => {
         <div className="flex">
 
             <div className="bg-gray-100 basis-1/2 p-2"> 
-                <BotonBarco onClickSeleccion={handleNavigateAgregar}/>
+                <BotonBarco onClickSeleccion={handleNavigateAgregar}  className="items-end"/>
                 <ListaBarcos
                     setBarcoSeleccionado={setBarcoSeleccionado}
                     setShow={setShow}
