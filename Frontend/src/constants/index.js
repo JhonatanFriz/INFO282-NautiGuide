@@ -1,5 +1,3 @@
-import {facebook, instagram,Youtube} from "../assets";
-
 export const navLinks = [
   {
     title: "Iniciar Sesión",
@@ -13,7 +11,10 @@ export const navLinks = [
       title: "Manuales de Barcos",
       ref: "/barco"
     },
-
+   {
+    title: "Buscador",
+    ref: "/Buscador"
+  },
   ];
 
 export const socialMedia = [
