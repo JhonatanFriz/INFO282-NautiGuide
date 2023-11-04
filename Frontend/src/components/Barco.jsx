@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import Buscador from './barco/Buscador';
 import ListaBarcos from './barco/ListaBarcos';
 import VerBarco from './barco/VerBarco';
 import BotonBarco from './barco/BotonBarco';
@@ -44,7 +43,6 @@ const Barco = () => {
         <div className="flex">
 
             <div className="bg-gray-100 basis-1/2 p-2"> 
-                <Buscador/>
                 <BotonBarco onClickSeleccion={handleNavigateAgregar}  className="items-end"/>
                 <ListaBarcos
                     setBarcoSeleccionado={setBarcoSeleccionado}
