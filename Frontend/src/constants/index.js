@@ -1,5 +1,9 @@
 export const navLinks = [
   {
+    title: "🔍︎",
+    ref: "/Buscador"
+  },
+  {
     title: "Iniciar Sesión",
     ref: "/auth"
   },
@@ -11,10 +15,6 @@ export const navLinks = [
       title: "Manuales de Barcos",
       ref: "/barco"
     },
-   {
-    title: "Buscador",
-    ref: "/Buscador"
-  },
   ];
 
 export const socialMedia = [
