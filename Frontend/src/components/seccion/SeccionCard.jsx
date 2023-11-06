@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 
-const SeccionCard = ({ seccion, onSeccionClick }) => {
+const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => {
   const cardStyle = {
     cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
   };
 
-  const [expanded, setExpanded] = useState(false);
-
-  const handleCardClick = () => {
-    // Cambiar el estado de expansión cuando se hace clic en la tarjeta
-    setExpanded(!expanded);
-  };
-
   return (
       <div 
-        className="bg-white p-2 rounded shadow-md mb-4"
+        className="bg-white p-2 rounded shadow-md mb-4 "
         style={cardStyle}
-        onClick={handleCardClick}>
-          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{seccion.name}</h2>
-          {expanded && (
-            <div>
-              <h2 style={{ textAlign: 'center', margin: '0'}}>{seccion.description}</h2>
+        onClick={() => onToggleExpand()}>
+          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>
+            {seccion.name}
+          </h2>
+          {isExpanded && (
+            <div className="flex flex-col justify-center items-center">
+              <h2 style={{ textAlign: 'center', margin: '0'}}>
+                {seccion.description}
+              </h2>
               <img src={seccion.image} alt="Imagen de seccion"/>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                onClick={() => onSeccionClick()}
+              >
+                Seleccionar Seccion
+              </button>
             </div>
           )}
       </div>

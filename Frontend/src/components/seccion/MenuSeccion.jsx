@@ -17,8 +17,10 @@ function MenuSeccion() {
   // Se guardan las variables de lo recibido
   const barcoId = barcoSeleccionado.id
   const imagen = barcoSeleccionado.image
+  
+  const [seccionId, setSeccionId] = useState(null);
 
-  // Maneja la redireccion a agregar_seccion, se le enviar barcoId
+  // Maneja la redireccion a agregar_seccion, se le envia barcoId
   const navigateTo = useNavigate();
   const handleNavigateSeccion = () => {
     navigateTo(`/barco:${barcoId}/agregar_seccion`, {state: {barcoSeleccionado} });
@@ -26,6 +28,12 @@ function MenuSeccion() {
 
   // Para manejar las secciones
   const handleSeccionClick = () => {
+    navigateTo(`/barco:${barcoId}/seccion:${seccionId}/componente`, {
+      state: {
+        barcoId: barcoId,
+        seccionId: seccionId
+      },
+    });
   };
 
   const handleBarcoClick = (event) => {
@@ -43,7 +51,7 @@ function MenuSeccion() {
     <div className="flex flex-row">
       <div className="basis-1/2 ">
         <AgregarSeccionBoton onClickAgregar={handleNavigateSeccion}/>
-        <Secciones onClickSeccion={handleSeccionClick} barcoId={barcoId}/>
+        <Secciones onSeccionClick={handleSeccionClick} barcoId={barcoId} setSeccionId={setSeccionId}/>
       </div>
       <div className="basis-1/2">
         <AgregarPunto setShow={setShow}/>

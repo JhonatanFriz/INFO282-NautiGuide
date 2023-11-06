@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function AgregarSeccionBoton({onClickAgregar}) {
+function AgregarComponenteBoton({onClickAgregar}) {
     return (
         
         <div className="bg-gray-100 flex justify-center items-center">
@@ -10,11 +10,11 @@ function AgregarSeccionBoton({onClickAgregar}) {
             className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
             onClick={() => onClickAgregar()}
             >
-                Agregar seccion
+                Agregar componente
             </button>
 
         </div>
       );
 }
 
-export default AgregarSeccionBoton;
+export default AgregarComponenteBoton;
