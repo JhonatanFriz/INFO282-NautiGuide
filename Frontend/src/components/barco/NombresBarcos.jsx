@@ -7,13 +7,15 @@ const NombresBarcos = ({barco}) => {
 
   return (
       <div
-        className="bg-white p-4 rounded shadow-md  "
+        className="bg-sky-500 p-4 rounded shadow-md mb-1 flex flex-col items-center relative overflow-auto "
         style={cardStyle}
         onClick={() => onBarcoClick(barco)}
       >
         <div className="flex-1/3 p-2">
-          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barco.name}</h2>
-        <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.model}</h2>
+        <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>Nombre del Barco: </h2>
+        <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.name}</h2>  
+          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>Modelo del Barco:</h2>
+        <h2 style={{ textAlign: 'center', margin: '0' }}> {barco.model}</h2>
         </div>
       </div>
   );
