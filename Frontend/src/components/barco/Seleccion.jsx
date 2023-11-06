@@ -2,20 +2,20 @@ import React from 'react';
 
 function Seleccion({ show, onClickSeleccion }){
   return(
-  <div className="bg-gray-200 flex justify-center items-center">
-    {show ? (
-      <button
-        type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        onClick={() => onClickSeleccion()}
-      >
-      Seleccionar Barco
-      </button>
-    )
-    :
-    (<p></p>)}
-</div>
-);
+    <div className="bg-gray-200 flex justify-center items-center">
+      {show ? (
+        <button
+          type="submit"
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          onClick={() => onClickSeleccion()}
+        >
+        Seleccionar Barco
+        </button>
+      )
+      :
+      (<p></p>)}
+    </div>
+  );
 } 
 export default Seleccion;
 

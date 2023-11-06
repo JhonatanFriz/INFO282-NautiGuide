@@ -8,6 +8,8 @@ import MenuSeccion from "./seccion/MenuSeccion";
 import AgregarBarco from "./barco/AgregarBarco";
 import AgregarSeccion from "./seccion/AgregarSeccion";
 import Buscador from './Buscador';
+import Componente_Menu from './componente/componente_menu';
+import AgregarComponente from './componente/AgregarComponente';
 
 export {
     Navbar,
@@ -19,5 +21,7 @@ export {
     MenuSeccion,
     AgregarBarco,
     AgregarSeccion,
-    Buscador
+    Buscador,
+    Componente_Menu,
+    AgregarComponente
 }

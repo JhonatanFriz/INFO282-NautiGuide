@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onClickSeccion, barcoId}) {
+function Secciones({onSeccionClick, barcoId, setSeccionId}) {
   
   const [secciones, setSecciones] = useState([]);
+  const [expandedCard, setExpandedCard] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -26,7 +27,15 @@ function Secciones({onClickSeccion, barcoId}) {
               <li key={index} >
                 <SeccionCard
                   seccion={seccion}
-                  onSeccionClick={onClickSeccion}
+                  onSeccionClick={onSeccionClick}
+                  isExpanded={expandedCard === seccion.id}
+                  onToggleExpand={() => {
+                    console.log('Sección ID seleccionada:', seccion.id);
+                    setSeccionId(seccion.id);
+                    setExpandedCard((prevExpanded) =>
+                      prevExpanded === seccion.id ? null : seccion.id
+                    )
+                  }}
                 />
               </li>
 
@@ -37,7 +46,7 @@ function Secciones({onClickSeccion, barcoId}) {
         
         </ul>
         
-      </div>
+    </div>
       
   );
 }

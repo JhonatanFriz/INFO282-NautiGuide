@@ -1,5 +1,5 @@
   import React from "react";
-  import { Navbar, Home, User, Paper, Barco, Auth, MenuSeccion, AgregarBarco, AgregarSeccion,Buscador} from "./components"
+  import { Navbar, Home, User, Paper, Barco, Auth, MenuSeccion, AgregarBarco, AgregarSeccion, Buscador, Componente_Menu, AgregarComponente} from "./components"
   import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
 
   const App = () => {
@@ -20,8 +20,8 @@
             <Route path="/:barcoId/agregar_seccion" element={<AgregarSeccion />} />
             <Route path="/agregar_barco" element={<AgregarBarco />} />
             <Route path="/Buscador" element={<Buscador />} />
-            
-            
+            <Route path="/:barcoId/:seccionId/componente" element={<Componente_Menu />} />
+            <Route path="/:barcoId/:seccionId/agregar_componente" element={<AgregarComponente />} />
           </Routes>
         </Router>
         </div>

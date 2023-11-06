@@ -9,8 +9,15 @@ export async function createSeccion_(seccion){
             name,
             description,
             image,
-          });
-          return newSeccion
+        });
+        
+        // Añade la sección a todos los barcos
+        const barcos = await Barco.findAll();
+        for (const barco of barcos) {
+            await newSeccion.addBarco(barco);
+        }
+
+        return newSeccion
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
@@ -36,6 +43,7 @@ export async function getSeccion_(id){
             where: { id },
             attributes: ["id", "name", "description", "image"],
         });
+
         return seccion
         
     } catch (error) {
@@ -119,7 +127,7 @@ export async function llamar_barco_seccion_(id){
         });
         // Juntar esas secciones_sin_barco con secciones
 
-        return seccionesSinAsociar 
+        return secciones 
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
