@@ -9,7 +9,7 @@ import {
 const router = Router();
 
 // Routes
-router.post("/:seccionId", createComponente);
+router.post("/:id", createComponente);
 router.put("/:id", updateComponente);
 router.delete("/:id", deleteComponente);
 router.get("/:seccionId", getComponente);

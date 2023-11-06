@@ -10,7 +10,8 @@ export async function createComponente_(contenido, seccionId){
             description,
             image,
         });
-        //newComponente.addSeccion(seccionId)
+        
+        newComponente.addSeccion(seccionId)
         return newComponente
     } catch (error) {
         throw new Error("Sucedio un error......")
