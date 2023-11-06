@@ -19,7 +19,7 @@ const AgregarComponente = () => {
         e.preventDefault();
     
         try {
-            await clientAxios.post(`/componente/${barcoId}/${seccionId}/agregar`, {
+            await clientAxios.post(`/componente/${seccionId}`, {
                 name: nombre,
                 description: description,
                 image: image,

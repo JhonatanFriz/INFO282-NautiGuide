@@ -6,14 +6,16 @@ function Componentes({setComponente, setShow, barcoId, seccionId}){
 
     const [comps, setComps] = useState([]);
 
+    /*
+
     useEffect(() => {
         const fetchPosts = async () => {
-            const res = await clientAxios.get(`/componente/${barcoId}/${seccionId}`);
+            const res = await clientAxios.get(`/componente/${seccionId}`);
             setComps(res.data.data);
         };
         fetchPosts();
     }, []);
-
+*/
     const handleComponenteClick = (comp) => {
         setComponente(comp);
         setShow(true);

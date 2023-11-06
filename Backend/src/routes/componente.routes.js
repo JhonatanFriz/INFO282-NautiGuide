@@ -9,10 +9,10 @@ import {
 const router = Router();
 
 // Routes
-router.post("/", createComponente);
+router.post("/:seccionId", createComponente);
 router.put("/:id", updateComponente);
 router.delete("/:id", deleteComponente);
-router.get("/:id", getComponente);
+router.get("/:seccionId", getComponente);
 
 // Metodos, se definen los endpoints, cómo voy a pedir la información
 

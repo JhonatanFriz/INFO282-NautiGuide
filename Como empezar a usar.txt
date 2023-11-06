@@ -51,4 +51,4 @@ Tener instalado:
     git commit -m "comentario"      (para preparar el commit)
     git push                        (para subirlo)
 
-
+5° Si estaba instalado bcrypt desinstalarlo e instalar bcryptjs 

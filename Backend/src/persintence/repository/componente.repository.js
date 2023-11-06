@@ -1,27 +1,37 @@
 import { Componente } from "../models/Componente.js";
+import { Seccion } from "../models/Seccion.js"
+import { sequelize } from "../database/database.js";
 
-export async function createComponente_(componente){
-    const { name, description, image} = componente
+export async function createComponente_(contenido, seccionId){
+    const { name, description, image } = contenido
     try {
         const newComponente = await Componente.create({
             name,
             description,
             image,
-          });
-          return newComponente
+        });
+        //newComponente.addSeccion(seccionId)
+        return newComponente
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
 
 }
 
-export async function getComponente_(id){
+export async function getComponente_(seccionId){
     try {
-        const componente = await Componente.findOne({
-            where: { id },
-            attributes: ["id", "name", "description", "image"],
-        });
-        return componente
+        const seccion = await Seccion.findAll({
+            where: {id: seccionId},
+            include: Componente
+        })
+
+        const componentes = seccion.length > 0 ? seccion[0].secciones: [];
+
+        //const componente = await Componente.findOne({
+        //    where: { id },
+        //    attributes: ["id", "name", "description", "image"],
+        //});
+        return componentes
         
     } catch (error) {
         throw new Error("Sucedio un error......")

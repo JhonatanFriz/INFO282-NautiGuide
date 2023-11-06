@@ -122,9 +122,9 @@ export async function llamar_barco_seccion_(id){
         const secciones = barco.length > 0 ? barco[0].secciones : [];
 
         // Agregar función para agregar todas las secciones que no están relacionadas a ningún barco
-        const seccionesSinAsociar = await Seccion.findAll({
-            order: [["id", "DESC"]],
-        });
+        //const seccionesSinAsociar = await Seccion.findAll({
+        //    order: [["id", "DESC"]],
+        //});
         // Juntar esas secciones_sin_barco con secciones
 
         return secciones 

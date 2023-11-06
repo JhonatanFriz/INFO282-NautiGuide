@@ -13,7 +13,7 @@ import {
   from "../persintence/repository/seccion.repository.js";
 
 export async function createSeccion(req, res) {
-  const { name, description, image, barcoId} = req.body;
+  const { name, description, image} = req.body;
   const seccion = { 
     name,
     description, 

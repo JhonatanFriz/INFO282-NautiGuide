@@ -1,3 +1,4 @@
+/*
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { Seccion } from "./Seccion.js";
@@ -29,3 +30,4 @@ export const tiene = sequelize.define("tiene",{
 
 tiene.belongsTo(Seccion, { foreignKey: "seccion_id"})
 tiene.belongsTo(Barco, { foreignKey: "barco_id"})
+*/
