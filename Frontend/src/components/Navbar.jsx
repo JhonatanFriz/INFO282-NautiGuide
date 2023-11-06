@@ -7,7 +7,6 @@ import { close, icon, menu} from "../assets";
 function Navbar() {
   const [active, setActive] = useState(window.location.pathname);
   const [toggle, setToggle] = useState(false);
-  console.log(typeof active);
   
 
   // animacion

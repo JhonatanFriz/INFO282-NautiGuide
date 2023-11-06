@@ -5,11 +5,6 @@ import BarcoCard from './BarcoCard';
 
 function ListaBarcos({ setBarcoSeleccionado, setShow }) {
 
-  //activacion al seleccionarse
-  const [active, setActive] = useState(window.location.pathname);
-  const [toggle, setToggle] = useState(false);
-  console.log(typeof active);
-  
 
   // Para manejar el barco que se está seleccionando
   const [barcos, setBarco] = useState([]);
