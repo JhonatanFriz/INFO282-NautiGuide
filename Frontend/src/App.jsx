@@ -11,7 +11,6 @@
         <div >
         <Router>
           <Routes>
-          
             <Route path="/usuarios" element={<User />} />
             <Route path="/papers" element={<Paper />} />
             <Route path="/barco" element={<Barco />} />
