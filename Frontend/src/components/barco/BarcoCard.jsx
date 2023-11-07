@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BarcoCard = ({ barco, onBarcoClick }) => {
+const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
   const cardStyle = {
     cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
   };
@@ -13,6 +13,15 @@ const BarcoCard = ({ barco, onBarcoClick }) => {
         style={cardStyle}
         onClick={() => onBarcoClick(barco)}
       >
+        <div className="static">
+          {eliminar ? (
+            <button type="submit"
+            className="absolute top-2 right-2 bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
+            onClick={() => handleEliminacion(barco.id)}>
+              x
+            </button>)
+          :(<></>)}
+        </div>
         <div className="flex-2/3">
           <img
             src={barco.image}

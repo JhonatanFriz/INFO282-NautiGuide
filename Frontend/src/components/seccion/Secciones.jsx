@@ -16,6 +16,13 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
     fetchPosts();
   }, []);
 
+  const handleEliminacion = (seccionId) => {
+    const url = `/seccion/${seccionId}`;
+    clientAxios.delete(url);
+    window.location.reload();    
+  };
+
+
   return (
     <div className="bg-gray-100 h-screen">        
         <ul>
@@ -37,10 +44,11 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
                 />
                 {eliminar ? (
                   <button type="submit"
-                  className="bg-red-500 text-white  py-1 px-2 shadow-md rounded">
+                  className="bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
+                  onClick={() => handleEliminacion(seccion.id)}>
                     x
-                  </button>)
-                :(<></>)}
+                  </button>
+                ) : (<></>)}
               </li>
 
             ))

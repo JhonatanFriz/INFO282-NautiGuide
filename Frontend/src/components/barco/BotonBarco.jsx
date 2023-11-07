@@ -1,15 +1,22 @@
 import React from 'react';
 
-function BotonBarco({onClickSeleccion}) {
+function BotonBarco({onClickSeleccion,onClickEliminar}) {
     return(
-        <div className="bg-gray-100 flex justify-end  p-1">
+        <div className="flex justify-end  ">
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            onClick={() => onClickSeleccion()}
-          >
-            Agregar Barco
-          </button>
+            className="bg-blue-500 text-white px-2 mr-2 rounded"
+            onClick={onClickSeleccion}
+            >
+                +
+            </button>
+            <button
+            type="submit"
+            className="bg-red-500 text-white px-2 rounded"
+            onClick={onClickEliminar}
+            >
+                x
+            </button>
       </div>
       );
       } 

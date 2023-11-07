@@ -3,7 +3,7 @@ import clientAxios from '../config/clienteAxios';
 import BarcoCard from './BarcoCard';
 
 
-function ListaBarcos({ setBarcoSeleccionado, setShow }) {
+function ListaBarcos({ setBarcoSeleccionado, setShow, eliminar }) {
 
 
   // Para manejar el barco que se está seleccionando
@@ -17,14 +17,11 @@ function ListaBarcos({ setBarcoSeleccionado, setShow }) {
     fetchPosts();
   }, []);
 
-  //Para manejar que al hacer click se setea la imagen con la imagen que se recibirá del click 
-/*
-  const handleBarcoClick = ([imagen,id]) => {
-    setBarcoId(id);
-    setImagenSeleccionada(imagen);
-    setShow(true);
+  const handleEliminacion = (barcoId) => {
+    const url = `/barco/${barcoId}`;
+    clientAxios.delete(url);
+    window.location.reload();
   };
-*/
 
   const handleBarcoClick = (barco) => {
     setBarcoSeleccionado(barco);
@@ -33,9 +30,6 @@ function ListaBarcos({ setBarcoSeleccionado, setShow }) {
 
   return (
     <div className="bg-gray-100 p-1">
-      <div>
-        <h2 className="text-xl font-semibold mb-4">Barcos Registrados</h2>
-      </div>
       <ul>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-auto">
           {barcos.length > 0 ? (
@@ -45,6 +39,8 @@ function ListaBarcos({ setBarcoSeleccionado, setShow }) {
                 <BarcoCard
                   barco={barco}
                   onBarcoClick={handleBarcoClick}
+                  handleEliminacion={handleEliminacion}
+                  eliminar={eliminar}
                 />
               </li>
 

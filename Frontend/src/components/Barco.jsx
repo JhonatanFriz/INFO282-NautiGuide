@@ -39,19 +39,34 @@ const Barco = () => {
         navigateTo2(`/agregar_barco`);
     };
 
+    const[eliminar,setEliminar] = useState(false);
+
+    const handleEliminar = () => {
+        setEliminar(!eliminar)
+    };
+
         
     return (
         <div className="flex">
-
-            <div className="bg-gray-100 basis-1/2 p-2"> 
-                <BotonBarco onClickSeleccion={handleNavigateAgregar}  className="items-end"/>
-                <ListaBarcos
-                    setBarcoSeleccionado={setBarcoSeleccionado}
-                    setShow={setShow}
-                />
+            <div className="bg-gray-100 basis-1/2 h-screen"> 
+                <div className="flex justify-between px-2 py-2">
+                    <h2 className="text-xl font-semibold mb-2">Barcos Registrados</h2>
+                    <BotonBarco
+                        onClickSeleccion={handleNavigateAgregar}
+                        onClickEliminar={handleEliminar}
+                        className="items-end"
+                    />
+                </div>
+                <div >
+                    <ListaBarcos
+                        setBarcoSeleccionado={setBarcoSeleccionado}
+                        setShow={setShow}
+                        eliminar={eliminar}
+                    />
+                </div>
             </div>
             
-            <div className="bg-gray-200 basis-1/2 p-4"> 
+            <div className="bg-gray-200 basis-1/2 p-4 h-screen"> 
                 <VerBarco imagenSeleccionada={imagenSeleccionada} show={show} />
                 <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barcoId}</h2>
                 <Seleccion show={show} onClickSeleccion={handleNavigateBarco}/>

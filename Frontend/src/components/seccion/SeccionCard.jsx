@@ -7,7 +7,7 @@ const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => 
 
   return (
       <div 
-        className="bg-white p-2 rounded shadow-md mb-4 grow mr-2"
+        className="bg-white p-2 rounded shadow-md mb-2 grow mr-2"
         style={cardStyle}
         onClick={() => onToggleExpand()}>
           <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>
@@ -22,7 +22,7 @@ const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => 
               <button
                 type="submit"
                 className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                onClick={() => onSeccionClick()}
+                onClick={onSeccionClick}
               >
                 Seleccionar Seccion
               </button>
