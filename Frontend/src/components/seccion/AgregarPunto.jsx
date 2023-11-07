@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 
-function AgregarPunto({setShow}) {
+function AgregarPunto({setShow, show}) {
 
     const handleClick = () => {
-        setShow(true);
+        setShow(!show);
     };
     
 

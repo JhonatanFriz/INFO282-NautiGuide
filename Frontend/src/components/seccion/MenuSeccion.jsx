@@ -36,14 +36,19 @@ function MenuSeccion() {
     });
   };
 
-  const handleImagenClick = (x,y) => {
+  const [show, setShow] = useState(false);
+  const handleImagenClick = (e) => {
+    // Obtenemos la posición del clic dentro de la imagen
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Actualizamos el punto seleccionado
     setPoint({ x, y });
-    setShow(true);
   };
 
-  const [show, setShow] = useState(false);
 
-  const [point, setPoint] = useState({ x: 0, y: 0 });
+  const [point, setPoint] = useState({ x: null, y: null });
   
   return (
     <div className="flex flex-row">
@@ -52,19 +57,21 @@ function MenuSeccion() {
         <Secciones onSeccionClick={handleSeccionClick} barcoId={barcoId} setSeccionId={setSeccionId}/>
       </div>
       <div className="basis-1/2">
-        <AgregarPunto setShow={setShow}/>
+        <AgregarPunto setShow={setShow} show={show}/>
         {show ? (
-        <div>
-          {point.x === 0 && point.y === 0 ? (
-            <p className="bg-gray-200 p-4">El punto es (0, 0).</p>
-          ) : (
-            <p className="bg-gray-200 p-4">El punto es ({point.x}, {point.y}).</p>
-          )}
-        </div>
-        ) : (
-          <p></p>
-        )}
-        <Imagen imagenBarco={imagen} onImagenClick={handleImagenClick}/>
+          <div>
+            {point.x === null && point.y === null ? (
+              <p className="bg-gray-200 p-4">Seleccione un punto</p>
+            ) : (
+              <p className="bg-gray-200 p-4">El punto es ({point.x}, {point.y}).</p>
+            )}
+          </div>
+        ):(<p></p>)}
+        <Imagen
+          imagenBarco={imagen}
+          handleImageClick={handleImagenClick}
+          show={show}
+        />
       </div>
     </div>
 
