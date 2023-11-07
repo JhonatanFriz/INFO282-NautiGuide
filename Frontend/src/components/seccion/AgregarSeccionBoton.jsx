@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
-function AgregarSeccionBoton({onClickAgregar}) {
+function AgregarSeccionBoton({onClickAgregar,onClickEliminar}) {
     return (
         
-        <div className="bg-gray-100 flex justify-center items-center">
-            
+        <div className="flex justify-end">
             <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            onClick={() => onClickAgregar()}
+            className="bg-blue-500 text-white p-2 mr-2 rounded"
+            onClick={onClickAgregar}
             >
-                Agregar seccion
+                +
             </button>
-
+            <button
+            type="submit"
+            className="bg-red-500 text-white p-2 rounded"
+            onClick={onClickEliminar}
+            >
+                x
+            </button>
         </div>
-      );
+    );
 }
 
 export default AgregarSeccionBoton;

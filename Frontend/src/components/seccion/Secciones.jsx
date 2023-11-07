@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal}) {
+function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, eliminar}) {
   
   const [secciones, setSecciones] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -17,15 +17,12 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal}) {
   }, []);
 
   return (
-    <div className="bg-gray-100 h-screen">
-      <div><h2 className="text-xl font-semibold mb-2">Secciones Registradas</h2></div>
-        
+    <div className="bg-gray-100 h-screen">        
         <ul>
-
           {secciones.length > 0 ? (
             secciones.map((seccion, index) => (
               
-              <li key={index} >
+              <li key={index} className="flex items-center">
                 <SeccionCard
                   seccion={seccion}
                   onSeccionClick={onSeccionClick}
@@ -38,6 +35,12 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal}) {
                     )
                   }}
                 />
+                {eliminar ? (
+                  <button type="submit"
+                  className="bg-red-500 text-white  py-1 px-2 shadow-md rounded">
+                    x
+                  </button>)
+                :(<></>)}
               </li>
 
             ))

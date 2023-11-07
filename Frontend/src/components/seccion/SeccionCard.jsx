@@ -7,7 +7,7 @@ const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => 
 
   return (
       <div 
-        className="bg-white p-2 rounded shadow-md mb-4 "
+        className="bg-white p-2 rounded shadow-md mb-4 grow mr-2"
         style={cardStyle}
         onClick={() => onToggleExpand()}>
           <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>

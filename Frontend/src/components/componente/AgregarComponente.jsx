@@ -19,7 +19,7 @@ const AgregarComponente = () => {
         e.preventDefault();
     
         try {
-            await clientAxios.post(`/componente/${seccionId}/componente`, {
+            await clientAxios.post(`/componente/${seccionId}`, {
                 name: nombre,
                 description: description,
                 image: image,
@@ -38,7 +38,7 @@ const AgregarComponente = () => {
       return (
         <div className="bg-blue-950 min-h-screen ">
             <div className="bg-white p-4 rounded-lg mx-auto max-w-lg">
-                <h2 className="text-xl font-semibold mb-4">Agregar Sección</h2>
+                <h2 className="text-xl font-semibold mb-4">Agregar Componente</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label htmlFor="nombre" className="block font-medium mb-1">
