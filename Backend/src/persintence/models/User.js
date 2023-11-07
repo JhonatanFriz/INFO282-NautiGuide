@@ -29,11 +29,11 @@ export  const User = sequelize.define(
   }
 );
 
-User.hasMany(Paper, {
-  foreinkey: "userId",
-  sourceKey: "id",
-});
-Paper.belongsTo(User, { foreinkey: "userId", targetId: "id" });
+//User.hasMany(Paper, {
+//  foreinkey: "userId",
+//  sourceKey: "id",
+//});
+//Paper.belongsTo(User, { foreinkey: "userId", targetId: "id" });
 
 User.belongsToMany(Barco, {through: "Favorito"});
 Barco.belongsToMany(User, {through: "Favorito"});
