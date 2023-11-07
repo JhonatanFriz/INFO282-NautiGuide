@@ -22,3 +22,4 @@ const VerBarco = ({ imagenSeleccionada, show}) => {
 };
 
 export default VerBarco;
+

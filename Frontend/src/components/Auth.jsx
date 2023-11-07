@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Formulario from './auth/Formulario';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Auth = () => {
   const navigate = useNavigate(); // Obtiene la función de navegación
   const handleSuccessfulAuth = () => {
     // Realiza cualquier acción que necesites después de la autenticación exitosa
@@ -17,4 +17,5 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default Auth;
+

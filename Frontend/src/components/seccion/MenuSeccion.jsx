@@ -7,7 +7,7 @@ import AgregarSeccionBoton from "./AgregarSeccionBoton";
 import Imagen from "./Imagen"
 import Secciones from "./Secciones"
 
-
+import ModalPunto from './ModalPunto';
 
 function MenuSeccion() {
   // Usar useLocation para acceder a la información de la ubicación
@@ -17,7 +17,8 @@ function MenuSeccion() {
   // Se guardan las variables de lo recibido
   const barcoId = barcoSeleccionado.id
   const imagen = barcoSeleccionado.image
-  
+  const [modalVisible, setModalVisible] = useState(false);
+
   const [seccionId, setSeccionId] = useState(null);
 
   // Maneja la redireccion a agregar_seccion, se le envia barcoId
@@ -36,15 +37,19 @@ function MenuSeccion() {
     });
   };
 
+  const [seccionesModal, setSeccionesModal] = useState([]);
+
   const [show, setShow] = useState(false);
   const handleImagenClick = (e) => {
     // Obtenemos la posición del clic dentro de la imagen
     const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = Math.round(e.clientX - rect.left);
+    const y = Math.round(e.clientY - rect.top);
 
     // Actualizamos el punto seleccionado
     setPoint({ x, y });
+
+    setModalVisible(true);
   };
 
 
@@ -54,7 +59,7 @@ function MenuSeccion() {
     <div className="flex flex-row">
       <div className="basis-1/2 ">
         <AgregarSeccionBoton onClickAgregar={handleNavigateSeccion}/>
-        <Secciones onSeccionClick={handleSeccionClick} barcoId={barcoId} setSeccionId={setSeccionId}/>
+        <Secciones onSeccionClick={handleSeccionClick} barcoId={barcoId} setSeccionId={setSeccionId} setSeccionesModal = {setSeccionesModal}/>
       </div>
       <div className="basis-1/2">
         <AgregarPunto setShow={setShow} show={show}/>
@@ -72,6 +77,8 @@ function MenuSeccion() {
           handleImageClick={handleImagenClick}
           show={show}
         />
+        <ModalPunto isOpen={modalVisible} punto={point} onClose={() => setModalVisible(false)} secciones ={seccionesModal}/>
+
       </div>
     </div>
 

@@ -15,6 +15,44 @@
 	        animation: kenburns-top 10s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite alternate-reverse both;
 }
 
+/* Estilo del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* Fondo oscuro transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Z-index alto para que esté por encima de otros elementos */
+}
+
+.modal-dialog {
+  background: #fff; /* Fondo blanco */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0, 0, 0,3); /* Sombra */
+  max-width: 80%; /* Tamaño máximo del modal */
+  width: 600px; /* Ancho del modal */
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+/* Estilo del botón de cierre */
+.modal-content button {
+  background: #3b82f6; /* Fondo azul para el botón de cierre */
+  color: #fff; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
 @keyframes flip-horizontal-bottom {
   0% {
     transform: rotateX(0);
@@ -84,3 +122,5 @@
             transform-origin: top;
   }
 }
+
+

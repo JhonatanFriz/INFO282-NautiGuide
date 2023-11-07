@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onSeccionClick, barcoId, setSeccionId}) {
+function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal}) {
   
   const [secciones, setSecciones] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -11,6 +11,7 @@ function Secciones({onSeccionClick, barcoId, setSeccionId}) {
     const fetchPosts = async () => {
       const res = await clientAxios.get(`/seccion/${barcoId}/seccion`);
       setSecciones(res.data.data);
+      setSeccionesModal(res.data.data);
     };
     fetchPosts();
   }, []);
