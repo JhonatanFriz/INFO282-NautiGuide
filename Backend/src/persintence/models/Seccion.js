@@ -24,16 +24,6 @@ export const Seccion = sequelize.define(
       timestamps: false,
     }
 );
-/*
-Seccion.hasMany(Componente, {
-  foreinkey: "seccionId",
-  sourceKey: "id",
-});
 
-Componente.belongsTo(Seccion, {
-  foreinkey: "seccionId",
-  targetId: "id"
-});
-*/
 Seccion.belongsToMany(Componente, {through: "Pertenece"});
 Componente.belongsToMany(Seccion, {through: "Pertenece"});

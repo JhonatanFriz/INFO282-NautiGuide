@@ -2,7 +2,6 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { Seccion } from "./Seccion.js";
 
-{/* Aquí se crea el modelo "Barco" que representa a la entidad llamada "barcos"*/}
 export const Barco = sequelize.define(
     "barcos",
     {

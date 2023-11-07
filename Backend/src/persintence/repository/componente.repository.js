@@ -10,8 +10,15 @@ export async function createComponente_(contenido, seccionId){
             description,
             image,
         });
+        console.log(Object.keys(Componente.__proto__));
         
-        newComponente.addSeccion(seccionId)
+        const seccion = await Seccion.findOne({
+            where: {id: seccionId},
+            include: Componente
+        })
+
+        seccion.addComponente(newComponente)
+
         return newComponente
     } catch (error) {
         throw new Error("Sucedio un error......")
@@ -21,18 +28,14 @@ export async function createComponente_(contenido, seccionId){
 
 export async function getComponente_(seccionId){
     try {
-        const seccion = await Seccion.findAll({
+        const seccion = await Seccion.findOne({
             where: {id: seccionId},
             include: Componente
         })
+        
+        const comps = seccion.componentes.length > 0 ? seccion.componentes: [];
 
-        const componentes = seccion.length > 0 ? seccion[0].secciones: [];
-
-        //const componente = await Componente.findOne({
-        //    where: { id },
-        //    attributes: ["id", "name", "description", "image"],
-        //});
-        return componentes
+        return comps
         
     } catch (error) {
         throw new Error("Sucedio un error......")

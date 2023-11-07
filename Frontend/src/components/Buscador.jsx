@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import clientAxios from './config/clienteAxios';
 import NombresBarcos from './barco/NombresBarcos';
 
@@ -6,6 +7,15 @@ function Buscador() {
   const [busqueda, setBusqueda] = useState('');
   const [barcos, setBarco] = useState([]);
 
+
+  const [barcoSelec, setBarcoSelec] = useState(null)
+  const [barcoId, setBarcoId] = useState(null)
+  
+
+  const navigateTo = useNavigate();
+  const handleBarcoClick = (barcoSeleccionado) => {
+    navigateTo(`/barco:${barcoSeleccionado.id}/menuseccion`, {state: {barcoSeleccionado}});
+  };
   
   useEffect(() => {
     const fetchPosts = async () => {
@@ -37,7 +47,7 @@ function Buscador() {
             <li key={index} >
             <NombresBarcos
               barco={barco}
-
+              onBarcoClick={handleBarcoClick}
             />
           </li>
           ))}

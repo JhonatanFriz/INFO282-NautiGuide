@@ -36,9 +36,7 @@ function MenuSeccion() {
     });
   };
 
-  const handleBarcoClick = (event) => {
-    const x = event.clientX;
-    const y = event.clientY;
+  const handleImagenClick = (x,y) => {
     setPoint({ x, y });
     setShow(true);
   };
@@ -57,23 +55,16 @@ function MenuSeccion() {
         <AgregarPunto setShow={setShow}/>
         {show ? (
         <div>
-          <p className="bg-gray-200 p-4">Presiona un punto.</p>
-          <div
-              style={{
-                position: 'absolute',
-                left: point.x,
-                top: point.y,
-                width: '10px',
-                height: '10px',
-                background: 'red',
-                borderRadius: '50%',
-              }}
-            ></div>
-          </div>
+          {point.x === 0 && point.y === 0 ? (
+            <p className="bg-gray-200 p-4">El punto es (0, 0).</p>
+          ) : (
+            <p className="bg-gray-200 p-4">El punto es ({point.x}, {point.y}).</p>
+          )}
+        </div>
         ) : (
           <p></p>
         )}
-        <Imagen imagenBarco={imagen}/>
+        <Imagen imagenBarco={imagen} onImagenClick={handleImagenClick}/>
       </div>
     </div>
 

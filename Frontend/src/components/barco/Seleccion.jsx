@@ -2,7 +2,7 @@ import React from 'react';
 
 function Seleccion({ show, onClickSeleccion }){
   return(
-    <div className="bg-gray-200 flex justify-center items-center">
+    <div className="bg-gray-200 flex justify-center items-center ">
       {show ? (
         <button
           type="submit"

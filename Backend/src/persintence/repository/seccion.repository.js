@@ -101,6 +101,7 @@ export async function unir_barco_seccion_(id,contenido){
             description,
             image,
         });
+        console.log(Object.keys(newSeccion.__proto__));
         newSeccion.addBarco(id)
         return newSeccion
     } catch (error) {
@@ -117,6 +118,7 @@ export async function llamar_barco_seccion_(id){
             where: { id: id},
             include: Seccion
         });
+
 
         // Se queda con el parametro secciones de ese barco
         const secciones = barco.length > 0 ? barco[0].secciones : [];

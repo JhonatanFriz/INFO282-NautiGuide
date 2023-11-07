@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NombresBarcos = ({barco}) => {
+const NombresBarcos = ({barco, onBarcoClick}) => {
   const cardStyle = {
     cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
   };
