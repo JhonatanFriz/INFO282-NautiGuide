@@ -1,29 +1,14 @@
 import React, { useState } from 'react';
-import clientAxios from '../config/clienteAxios';
-import { useNavigate } from 'react-router-dom';
 
-const Formulario = () => {
+const Formulario = ({ handleLogin, error }) => {
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
-  const [error, setError] = useState(''); // Variable de estado para el mensaje de error
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const { data } = await clientAxios.post(`/auth/login`, {
-        mail: email,
-        password: contraseña,
-      });
-
-      // Autenticación exitosa, redirige al usuario a la página de inicio
-      navigate('/barco');
-    } catch (error) {
-      // Si la solicitud falla, actualiza el mensaje de error
-      setError('Por favor, verifica tu correo y contraseña.');
-      console.log(error);
-    }
+    // Llamar a la función de inicio de sesión pasada como prop
+    handleLogin(email, contraseña);
   };
 
   return (
