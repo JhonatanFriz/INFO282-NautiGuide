@@ -48,7 +48,7 @@ const ModalPunto = ({ isOpen, punto, onClose, handleConfirm, secciones }) => {
 
 export default ModalPunto;
 
-
+// Holaa
 // import React, { useState } from 'react';
 
 // const ModalPunto = ({ isOpen, punto, onClose, handleConfirm, secciones }) => {
