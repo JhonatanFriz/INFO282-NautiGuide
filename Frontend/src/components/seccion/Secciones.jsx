@@ -24,7 +24,7 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
 
 
   return (
-    <div className="bg-gray-100 h-screen">        
+    <div>        
         <ul>
           {secciones.length > 0 ? (
             secciones.map((seccion, index) => (

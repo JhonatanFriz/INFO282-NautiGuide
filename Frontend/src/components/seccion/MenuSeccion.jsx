@@ -63,7 +63,7 @@ function MenuSeccion() {
   
   return (
     <div className="flex">
-      <div className="bg-gray-100 basis-1/2 ">
+      <div className="bg-gray-100 basis-1/2 h-screen">
         <div className="flex justify-between px-2 py-2 ">
           <h2 className="text-xl font-semibold mb-2">Secciones Registradas</h2>
           <AgregarSeccionBoton
@@ -71,13 +71,6 @@ function MenuSeccion() {
             onClickEliminar={handleEliminar}
           />
         </div>
-        {eliminar ? (
-          <div className="px-2 py-2">
-            <h2>Seleccione el elemento a eliminar.</h2>
-          </div>
-        ) : (
-          <h2></h2>
-        )}
         <div className="px-2">
           <Secciones
             onSeccionClick={handleSeccionClick}
@@ -87,7 +80,7 @@ function MenuSeccion() {
           />
         </div>
       </div>
-      <div className="bg-gray-200 basis-1/2">
+      <div className="bg-gray-200 basis-1/2 h-screen">
         <AgregarPunto setShow={setShow} show={show}/>
         {show ? (
           <div>

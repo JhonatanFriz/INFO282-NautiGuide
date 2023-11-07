@@ -67,7 +67,10 @@ const Barco = () => {
             </div>
             
             <div className="bg-gray-200 basis-1/2 p-4 h-screen"> 
-                <VerBarco imagenSeleccionada={imagenSeleccionada} show={show} />
+                <VerBarco
+                    imagenSeleccionada={imagenSeleccionada}
+                    show={show}
+                />
                 <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barcoId}</h2>
                 <Seleccion show={show} onClickSeleccion={handleNavigateBarco}/>
             </div>

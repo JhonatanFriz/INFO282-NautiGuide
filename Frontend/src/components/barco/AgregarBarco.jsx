@@ -40,8 +40,8 @@ function AgregarBarco() {
   };
 
   return (
-    <div className="p-4 bg-blue-800 shadow-md h-screen flex justify-center items-center ">
-      <div className="p-4 bg-white rounded-md border-8 w-1/2 j  ustify-center items-center">
+    <div className="bg-blue-950 p-4 h-screen flex justify-center items-center ">
+      <div className="bg-white p-4 rounded-md border-8 w-1/2 justify-center items-center">
       <h2 className="text-xl font-semibold mb-4 flex justify-center items-center ">Registrar Barco</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

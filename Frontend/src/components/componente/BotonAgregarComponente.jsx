@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
-function AgregarComponenteBoton({onClickAgregar}) {
+function AgregarComponenteBoton({onClickAgregar,onClickEliminar}) {
     return (
-        
-        <div className="bg-gray-100 flex justify-center items-center">
-            
+        <div className="flex justify-end">
             <button
-            type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            onClick={() => onClickAgregar()}
+                type="submit"
+                className="bg-blue-500 text-white px-2 mr-2 rounded"
+                onClick={onClickAgregar}
             >
-                Agregar componente
+                +
             </button>
-
+            <button
+                type="submit"
+                className="bg-red-500 text-white px-2 rounded"
+                onClick={onClickEliminar}
+            >
+                x
+            </button>
         </div>
       );
 }

@@ -36,8 +36,8 @@ const AgregarComponente = () => {
       };
 
       return (
-        <div className="bg-blue-950 min-h-screen ">
-            <div className="bg-white p-4 rounded-lg mx-auto max-w-lg">
+        <div className="bg-blue-950 flex h-screen justify-center items-center ">
+            <div className="bg-white p-4 rounded-md border-8 w-1/2 justify-center items-center">
                 <h2 className="text-xl font-semibold mb-4">Agregar Componente</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">

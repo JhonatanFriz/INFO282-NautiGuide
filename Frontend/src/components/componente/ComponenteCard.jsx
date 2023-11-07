@@ -7,7 +7,7 @@ const ComponenteCard = ({ comp, onComponenteClick }) => {
 
     return(
         <div 
-            className="bg-white p-2 rounded shadow-md mb-4"
+            className="bg-white p-2 rounded shadow-md mb-2 grow mr-2"
             style={cardStyle}
             onClick={() => onComponenteClick(comp)}
         >
