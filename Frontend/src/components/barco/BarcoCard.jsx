@@ -14,13 +14,15 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
         onClick={() => onBarcoClick(barco)}
       >
         <div className="static">
-          {eliminar ? (
-            <button type="submit"
-            className="absolute top-2 right-2 bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
-            onClick={() => handleEliminacion(barco.id)}>
-              x
-            </button>)
-          :(<></>)}
+          {eliminar && (
+            <>
+              <button type="submit"
+              className="absolute top-2 right-2 bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
+              onClick={() => handleEliminacion(barco.id)}>
+                x
+              </button>
+            </>
+          )}
         </div>
         <div className="flex-2/3">
           <img
