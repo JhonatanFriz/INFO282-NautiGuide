@@ -12,7 +12,6 @@ const Formulario = ({ handleLogin, error }) => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center bg-sky-800">
       <div className="p-4 bg-white rounded-md border-8 w-1/3">
         <div className="flex justify-center mb-6">
           <img
@@ -60,7 +59,6 @@ const Formulario = ({ handleLogin, error }) => {
           <h2 className="w-full text-xs font-semibold mb-4 text-sky-600">Contactar con administración</h2>
         </form>
       </div>
-    </div>
   );
 };
 

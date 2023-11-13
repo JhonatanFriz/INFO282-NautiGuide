@@ -38,7 +38,7 @@ function ListaUsuarios() {
 
 
     return (
-        <div className="w-1/4 h-3/4 bg-gray-100 p-4">
+        <div className="w-1/4 h-3/4 bg-gray-100 p-4 overflow-auto">
           <div className="flex justify-between">
             <h2 className="text-xl font-semibold mb-4">Usuarios Registrados</h2>
             <h2
@@ -47,7 +47,7 @@ function ListaUsuarios() {
               onClick={handleClickEditar}
             >Editar</h2>
           </div>
-          <div className="overflow-auto" >
+          <div>
             <ul>
               {usuarios.length > 0 ? (
                 usuarios.map((usuario, index) => (
@@ -57,7 +57,7 @@ function ListaUsuarios() {
                       <div className="flex items-center">
                         <button
                           type="submit"
-                          className="bg-blue-500 text-white mb-2 p-2 shadow-md rounded mr-2"
+                          className="bg-blue-950 text-white mb-2 p-2 shadow-md rounded mr-2"
                           onClick={() => handleEdicion(usuario.id)}
                         >
                             ✎

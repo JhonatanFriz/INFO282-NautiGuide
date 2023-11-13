@@ -26,8 +26,8 @@ function Buscador() {
       fetchPosts();
     }, []);
   return (
-    <div className='h-screen bg-sky-300'>
-      <div className='flex justify-center'>
+    <div className='h-screen bg-sky-300 p-1'>
+      <div className='flex justify-center m-2'>
         <l1>Buscador:</l1>
         <input
           className='bg-white w-2/3 h-6'
@@ -37,26 +37,26 @@ function Buscador() {
           placeholder="🔍︎ Escriba aqui ..."
         /> 
       </div>
-      <div className='flex justify-center'>
-      <div className='w-2/3 '>
-      {busqueda.length > 0 ? (
-        <ul>
-        {barcos
-          .filter((barco) => barco.name.toLowerCase().includes(busqueda.toLowerCase() ) || barco.model.toLowerCase().includes(busqueda.toLowerCase()))
-          .map((barco, index) => (
-            <li key={index} >
-            <NombresBarcos
-              barco={barco}
-              onBarcoClick={handleBarcoClick}
-            />
-          </li>
-          ))}
-      </ul>
-      ) : (
-        <p></p>
-      )}
+      <div className='flex justify-center overflow-auto'>
+        <div className='w-2/3 overflow-auto'>
+        {busqueda.length > 0 ? (
+          <ul>
+          {barcos
+            .filter((barco) => barco.name.toLowerCase().includes(busqueda.toLowerCase() ) || barco.model.toLowerCase().includes(busqueda.toLowerCase()))
+            .map((barco, index) => (
+              <li key={index} >
+              <NombresBarcos
+                barco={barco}
+                onBarcoClick={handleBarcoClick}
+              />
+            </li>
+            ))}
+        </ul>
+        ) : (
+          <p></p>
+        )}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

@@ -63,7 +63,7 @@ function MenuSeccion() {
   
   return (
     <div className="flex">
-      <div className="bg-gray-100 basis-1/2 h-screen">
+      <div className="bg-gray-100 basis-1/2 h-screen overflow-auto">
         <div className="flex justify-between px-2 py-2 ">
           <h2 className="text-xl font-semibold mb-2">Secciones Registradas</h2>
           <AgregarSeccionBoton

@@ -31,7 +31,7 @@ function ListaBarcos({ setBarcoSeleccionado, setShow, eliminar }) {
   return (
     <div className="bg-gray-100 p-1">
       <ul>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 overflow-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           {barcos.length > 0 ? (
             barcos.map((barco, index) => (
               

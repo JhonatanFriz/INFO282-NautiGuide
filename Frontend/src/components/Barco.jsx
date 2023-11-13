@@ -47,8 +47,8 @@ const Barco = () => {
 
         
     return (
-        <div className="flex">
-            <div className="bg-gray-100 basis-1/2 h-screen"> 
+        <div className="flex" >
+            <div className="bg-gray-100 basis-1/2 h-screen overflow-auto"> 
                 <div className="flex justify-between px-2 py-2">
                     <h2 className="text-xl font-semibold mb-2">Barcos Registrados</h2>
                     <BotonBarco
@@ -57,7 +57,7 @@ const Barco = () => {
                         className="items-end"
                     />
                 </div>
-                <div >
+                <div>
                     <ListaBarcos
                         setBarcoSeleccionado={setBarcoSeleccionado}
                         setShow={setShow}
