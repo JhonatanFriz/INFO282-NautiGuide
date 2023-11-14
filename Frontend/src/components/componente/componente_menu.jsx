@@ -9,7 +9,13 @@ import AgregarComponenteBoton from './BotonAgregarComponente';
 function MenuSeccion() {
     // Se agregan los location del url
     const location = useLocation();
-    const { barcoId, seccionId} = location.state;
+    const { barcoSeleccionado, seccion} = location.state;
+
+    const barcoId = barcoSeleccionado.id;
+    const barcoNombre = barcoSeleccionado.name;
+    const seccionId = seccion.id
+    const seccionNombre = seccion.name
+    
 
     // Se manejan las variables
     const [componente, setComponente] = useState(null);
@@ -36,6 +42,9 @@ function MenuSeccion() {
     return(
         <div className="flex">
             <div className="bg-gray-100 basis-1/2 h-screen flex flex-col">
+                <div className="p-2">
+                    <h2 className="text-l mb-2">{barcoNombre}/{seccionNombre}/<strong className="font-bold">Componentes</strong></h2>
+                </div>
                 <div className="flex justify-between px-2 py-2">
                     <h2 className="text-xl font-semibold mb-2">Componentes</h2>
                     <AgregarComponenteBoton

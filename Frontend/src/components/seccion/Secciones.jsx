@@ -32,7 +32,7 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
               <li key={index} className="flex items-center">
                 <SeccionCard
                   seccion={seccion}
-                  onSeccionClick={onSeccionClick}
+                  onSeccionClick={() => onSeccionClick(seccion)}
                   isExpanded={expandedCard === seccion.id}
                   onToggleExpand={() => {
                     console.log('Sección ID seleccionada:', seccion.id);

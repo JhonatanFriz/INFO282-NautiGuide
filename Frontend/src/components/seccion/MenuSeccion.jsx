@@ -16,6 +16,7 @@ function MenuSeccion() {
 
   // Se guardan las variables de lo recibido
   const barcoId = barcoSeleccionado.id
+  const barcoNombre = barcoSeleccionado.name
   const imagen = barcoSeleccionado.image
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -28,11 +29,12 @@ function MenuSeccion() {
   };
 
   // Para manejar las secciones
-  const handleSeccionClick = () => {
+  const handleSeccionClick = (seccion) => {
+    console.log(seccion)
     navigateTo(`/barco:${barcoId}/seccion:${seccionId}/componente`, {
       state: {
-        barcoId: barcoId,
-        seccionId: seccionId
+        barcoSeleccionado: barcoSeleccionado,
+        seccion: seccion
       },
     });
   };
@@ -64,8 +66,11 @@ function MenuSeccion() {
   return (
     <div className="flex">
       <div className="bg-gray-100 basis-1/2 h-screen overflow-auto flex flex-col">
+        <div className="p-2">
+          <h2 className="text-l mb-2">{barcoNombre}/<strong className="font-bold">Sistemas del barco</strong></h2>
+        </div>
         <div className="flex justify-between px-2 py-2 ">
-          <h2 className="text-xl font-semibold mb-2">Secciones Registradas</h2>
+          <h2 className="text-xl font-semibold mb-2">Sistemas del barco</h2>
           <AgregarSeccionBoton
             onClickAgregar={handleNavigateSeccion}
             onClickEliminar={handleEliminar}
@@ -80,8 +85,8 @@ function MenuSeccion() {
           />
         </div>
       </div>
-      <div className="bg-gray-200 basis-1/2 h-screen">
-        <AgregarPunto setShow={setShow} show={show}/>
+      <div className="bg-gray-200 basis-1/2 h-screen p-2 flex flex-col">
+        {/*<AgregarPunto setShow={setShow} show={show}/>
         {show ? (
           <div>
             {point.x === null && point.y === null ? (
@@ -90,7 +95,15 @@ function MenuSeccion() {
               <p className="bg-gray-200 p-4">El punto es ({point.x}, {point.y}).</p>
             )}
           </div>
-        ):(<p></p>)}
+        ):(<p></p>)}*/}
+        <div className="flex justify-center">
+          <div className="p-2">
+            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ver en 3d</button>
+          </div>
+          <div className="p-2">
+            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Añadir barco a favoritos</button>
+          </div>
+        </div>
         <Imagen
           imagenBarco={imagen}
           handleImageClick={handleImagenClick}
