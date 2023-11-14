@@ -35,7 +35,7 @@ function MenuSeccion() {
 
     return(
         <div className="flex">
-            <div className="bg-gray-100 basis-1/2 h-screen overflow-auto">
+            <div className="bg-gray-100 basis-1/2 h-screen flex flex-col">
                 <div className="flex justify-between px-2 py-2">
                     <h2 className="text-xl font-semibold mb-2">Componentes</h2>
                     <AgregarComponenteBoton
@@ -43,7 +43,7 @@ function MenuSeccion() {
                         onClickEliminar={handleEliminar}
                     />
                 </div>
-                <div className="px-2">
+                <div className="px-2 overflow-auto flex-1">
                     <Componentes
                         setComponente={setComponente}
                         setShow={setShow}

@@ -38,16 +38,16 @@ function ListaUsuarios() {
 
 
     return (
-        <div className="w-1/4 h-3/4 bg-gray-100 p-4 overflow-auto">
-          <div className="flex justify-between">
+        <div className="relative w-1/4 h-3/4 bg-gray-100 p-4 flex flex-col">
+          <header className="flex justify-between">
             <h2 className="text-xl font-semibold mb-4">Usuarios Registrados</h2>
             <h2
               className=" text-blue-500 mb-4 font-semibold"
               style={{cursor: 'pointer'}}
               onClick={handleClickEditar}
             >Editar</h2>
-          </div>
-          <div>
+          </header>
+          <div className="overflow-auto h-full">
             <ul>
               {usuarios.length > 0 ? (
                 usuarios.map((usuario, index) => (

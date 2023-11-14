@@ -63,7 +63,7 @@ function MenuSeccion() {
   
   return (
     <div className="flex">
-      <div className="bg-gray-100 basis-1/2 h-screen overflow-auto">
+      <div className="bg-gray-100 basis-1/2 h-screen overflow-auto flex flex-col">
         <div className="flex justify-between px-2 py-2 ">
           <h2 className="text-xl font-semibold mb-2">Secciones Registradas</h2>
           <AgregarSeccionBoton
@@ -71,7 +71,7 @@ function MenuSeccion() {
             onClickEliminar={handleEliminar}
           />
         </div>
-        <div className="px-2">
+        <div className="p-2 overflow-auto flex-1">
           <Secciones
             onSeccionClick={handleSeccionClick}
             barcoId={barcoId} setSeccionId={setSeccionId}
