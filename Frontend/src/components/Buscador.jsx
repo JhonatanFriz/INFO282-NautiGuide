@@ -37,10 +37,10 @@ function Buscador() {
           placeholder="🔍︎ Escriba aqui ..."
         /> 
       </div>
-      <div className='flex justify-center overflow-auto'>
+      <div className='flex h-3/4 justify-center overflow-auto'>
         <div className='w-2/3 overflow-auto'>
         {busqueda.length > 0 ? (
-          <ul>
+          <ul>  
           {barcos
             .filter((barco) => barco.name.toLowerCase().includes(busqueda.toLowerCase() ) || barco.model.toLowerCase().includes(busqueda.toLowerCase()))
             .map((barco, index) => (
@@ -58,6 +58,7 @@ function Buscador() {
         </div>
       </div>
     </div>
+
   );
 }
 

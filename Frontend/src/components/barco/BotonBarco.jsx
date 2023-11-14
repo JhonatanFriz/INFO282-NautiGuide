@@ -15,7 +15,7 @@ function BotonBarco({onClickSeleccion,onClickEliminar}) {
             className="bg-red-500 text-white px-2 rounded"
             onClick={onClickEliminar}
           >
-              x
+              Eliminar
           </button>
       </div>
       );

@@ -26,7 +26,7 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
         </div>
         <div className="flex-2/3">
           <img
-            src={barco.image}
+            src={barco.image} 
             className="w-32 h-24 flip-horizontal-bottom "
             alt="Imagen de barco"
           />

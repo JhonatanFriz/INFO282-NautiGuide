@@ -11,7 +11,7 @@ const NombresBarcos = ({barco, onBarcoClick}) => {
         style={cardStyle}
         onClick={() => onBarcoClick(barco)}
       >
-        <div className="flex-1/3 p-2">
+        <div className="flex-1/3 p-2 text-slate-100">
         <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>Nombre del Barco: </h2>
         <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.name}</h2>  
           <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>Modelo del Barco:</h2>
