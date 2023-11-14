@@ -9,7 +9,7 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
 
   return (
       <div
-        className="bg-white p-4 rounded shadow-md mb-4 flex flex-col items-center relative aspect-square overflow-auto"
+        className="bg-gradient-to-tl from-slate-400 to-slate-100 p-4 rounded shadow-md mb-4 flex flex-col items-center relative aspect-square overflow-auto"
         style={cardStyle}
         onClick={() => onBarcoClick(barco)}
       >

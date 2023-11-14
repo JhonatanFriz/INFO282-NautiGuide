@@ -31,7 +31,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center bg-blue-950">
+    <div className="bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen flex justify-center items-center">
       <Formulario handleLogin={handleLogin} error={error} />
     </div>
   );

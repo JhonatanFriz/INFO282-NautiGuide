@@ -4,7 +4,7 @@
 
   const App = () => {
     return (
-      <div className="bg-sky-800  overflow-hidden ">
+      <div className="bg-sky-800   overflow-hidden ">
         <div className="sm:px-16 px-6 max-w-full w-full">
           <Navbar />
         </div>

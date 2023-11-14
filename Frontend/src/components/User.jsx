@@ -9,7 +9,7 @@ const User = () => {
   };
 
   return (
-    <div className="bg-blue-950 flex h-screen justify-center items-center">
+    <div className="bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% flex h-screen justify-center items-center">
       <Formulario  onRegistro={handleRegistro} />
       <ListaUsuarios  />
     </div>
