@@ -2,10 +2,10 @@ import React from 'react';
 
 function BotonBarco({onClickSeleccion,onClickEliminar}) {
     return(
-        <div className="flex justify-end  ">
+        <div className="flex justify-end py-1 ">
           <button
             type="submit"
-            className="bg-blue-500 text-white px-2 mr-2 rounded"
+            className="bg-blue-500 text-white px-1.5 mr-2 rounded"
             onClick={onClickSeleccion}
           >
               +

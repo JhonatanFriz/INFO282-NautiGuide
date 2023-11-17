@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 function AgregarSeccionBoton({onClickAgregar,onClickEliminar}) {
     return (
         
-        <div className="flex justify-end">
+        <div className="flex justify-end py-1">
             <button
             type="submit"
-            className="bg-blue-500 text-white px-2 mr-2 rounded"
+            className="bg-blue-500 text-white px-1.5 mr-2 rounded"
             onClick={onClickAgregar}
             >
                 +
@@ -16,7 +16,7 @@ function AgregarSeccionBoton({onClickAgregar,onClickEliminar}) {
             className="bg-red-500 text-white px-2 rounded"
             onClick={onClickEliminar}
             >
-                x
+                Eliminar
             </button>
         </div>
     );

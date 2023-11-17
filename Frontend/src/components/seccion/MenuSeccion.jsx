@@ -30,7 +30,6 @@ function MenuSeccion() {
 
   // Para manejar las secciones
   const handleSeccionClick = (seccion) => {
-    console.log(seccion)
     navigateTo(`/barco:${barcoId}/seccion:${seccionId}/componente`, {
       state: {
         barcoSeleccionado: barcoSeleccionado,
@@ -60,16 +59,34 @@ function MenuSeccion() {
     setEliminar(!eliminar)
   };
 
+  const handleClick3d = () => {
+    navigateTo(`/barco:${barcoId}/imagen3d`, {
+      state: {
+        barcoSeleccionado: barcoSeleccionado
+      },
+    });
+  }
+
+  const handleBarcosClick  = () => {
+    navigateTo(`/barco`);
+  }
+
 
   const [point, setPoint] = useState({ x: null, y: null });
   
   return (
     <div className="flex">
       <div className="bg-gray-100 basis-1/2 h-screen overflow-auto flex flex-col">
-        <div className="p-2">
-          <h2 className="text-l mb-2">{barcoNombre}/<strong className="font-bold">Sistemas del barco</strong></h2>
-        </div>
-        <div className="flex justify-between px-2 py-2 ">
+        <h2 className="text-l px-2">
+          <a
+            style={{cursor: 'pointer'}}
+            onClick={handleBarcosClick}
+            className="hover:underline focus:outline-none focus:ring focus:border-blue-300"
+          >
+            Barcos
+          </a>
+          /<strong className="font-bold">{barcoNombre}</strong></h2>
+        <div className="flex justify-between px-2">
           <h2 className="text-xl font-semibold mb-2">Sistemas del barco</h2>
           <AgregarSeccionBoton
             onClickAgregar={handleNavigateSeccion}
@@ -98,7 +115,12 @@ function MenuSeccion() {
         ):(<p></p>)}*/}
         <div className="flex justify-center">
           <div className="p-2">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ver en 3d</button>
+            <button
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              onClick={handleClick3d}
+            >
+              Ver en 3d
+            </button>
           </div>
           <div className="p-2">
             <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Añadir barco a favoritos</button>

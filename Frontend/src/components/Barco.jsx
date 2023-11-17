@@ -29,14 +29,13 @@ const Barco = () => {
 
     // Para navegar a la id
     const navigateTo = useNavigate();
-    const navigateTo2 = useNavigate();
 
     const handleNavigateBarco = () => {
         console.log(barcoSeleccionado)
         navigateTo(`/barco:${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
     };
     const handleNavigateAgregar = () => {
-        navigateTo2(`/agregar_barco`);
+        navigateTo(`/agregar_barco`);
     };
 
     const[eliminar,setEliminar] = useState(false);
@@ -49,7 +48,8 @@ const Barco = () => {
     return (
         <div className="flex" >
             <div className="bg-gray-100 basis-1/2 h-screen overflow-auto flex flex-col"> 
-                <div className="flex justify-between px-2 py-2">
+                <h2 className="text-l px-2">/<strong className="font-bold">Barcos</strong></h2>
+                <div className="flex justify-between px-2">
                     <h2 className="text-xl font-semibold mb-2">Barcos Registrados</h2>
                     <BotonBarco
                         onClickSeleccion={handleNavigateAgregar}

@@ -33,26 +33,48 @@ function MenuSeccion() {
     };
 
     const[eliminar,setEliminar] = useState(false);
+
     const handleEliminar = () => {
         setEliminar(!eliminar)
     };
 
-    
+    const handleBarcosClick  = () => {
+        navigateTo(`/barco`);
+    }
+
+    const handleBarcoClick  = () => {
+        navigateTo(`/barco:${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
+    }
 
     return(
         <div className="flex">
             <div className="bg-gray-100 basis-1/2 h-screen flex flex-col">
-                <div className="p-2">
-                    <h2 className="text-l mb-2">{barcoNombre}/{seccionNombre}/<strong className="font-bold">Componentes</strong></h2>
-                </div>
-                <div className="flex justify-between px-2 py-2">
+                <h2 className="text-l px-2">
+                    <a
+                        style={{cursor: 'pointer'}}
+                        onClick={handleBarcosClick}
+                        className="hover:underline focus:outline-none focus:ring focus:border-blue-300"
+                    >
+                        Barcos
+                    </a>
+                    /
+                    <a
+                        style={{cursor: 'pointer'}}
+                        onClick={handleBarcoClick}
+                        className="hover:underline focus:outline-none focus:ring focus:border-blue-300"
+                    >
+                        {barcoNombre}
+                    </a>
+                    /<strong className="font-bold">{seccionNombre}</strong>
+                </h2>
+                <div className="flex justify-between px-2">
                     <h2 className="text-xl font-semibold mb-2">Componentes</h2>
                     <AgregarComponenteBoton
                         onClickAgregar={handleBoton}
                         onClickEliminar={handleEliminar}
                     />
                 </div>
-                <div className="px-2 overflow-auto flex-1">
+                <div className="p-2 overflow-auto flex-1">
                     <Componentes
                         setComponente={setComponente}
                         setShow={setShow}
