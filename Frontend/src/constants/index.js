@@ -15,6 +15,10 @@ export const navLinks = [
       title: "Manuales de Barcos",
       ref: "/barco"
     },
+    {
+      title: "Solicitudes",
+      ref: "/solicitudes"
+    },
   ];
 
 export const socialMedia = [
