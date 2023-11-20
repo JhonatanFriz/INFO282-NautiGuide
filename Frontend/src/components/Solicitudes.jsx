@@ -1,21 +1,23 @@
 import React from 'react';
-
+import { useNavigate } from "react-router-dom";
+import BotonesSolicitudes from './solicitudes/BotonesSolicitudes';
+//la seccion a ver sera vista dependiendo si es un usuario o un administrador
+//lo que hara de este apartado solo una transicion para crear solicitud o revisar solicitud
 
 const Solicitudes = () => {
+      
+      const navigateTo = useNavigate();
+      const handleNavigateCrear = () => {
+            navigateTo(`/crear_solicitud`);
+        };
 
 
 return(
- <div className='flex h-screen bg-black ' >
-   <div className='flex justify-start w-20 h-10 py-0 '>
-    <button type="submit" className="bg-sky-400 text-white px-12 rounded mr-96"
-          >Crear.Solicitud  
-    </button>
+ <div className='bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen  ' >
+      <BotonesSolicitudes
+      onClickSeleccion={handleNavigateCrear}
+      />
 
-    <button type="submit" className="bg-red-400 text-white px-12 rounded"
-          >Revisar.Solicitudes  
-    </button>
-    
- </div>
  </div>
    );
     }

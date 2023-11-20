@@ -12,6 +12,7 @@ import Componente_Menu from './componente/componente_menu';
 import AgregarComponente from './componente/AgregarComponente';
 import Imagen3d from './barco/Imagen3d';
 import Solicitudes from "./Solicitudes";
+import CrearSolicitud from "./solicitudes/CrearSolicitud";
 
 export {
     Navbar,
@@ -27,5 +28,6 @@ export {
     Componente_Menu,
     AgregarComponente,
     Imagen3d,
-    Solicitudes
+    Solicitudes,
+    CrearSolicitud
 }

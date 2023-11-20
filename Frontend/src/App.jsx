@@ -13,7 +13,9 @@
     Componente_Menu,
     AgregarComponente,
     Imagen3d,
-    Solicitudes
+    Solicitudes,
+    CrearSolicitud
+
   } from "./components"
   import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
 
@@ -38,6 +40,7 @@
             <Route path="/:barcoId/:seccionId/agregar_componente" element={<AgregarComponente />} />
             <Route path="/:barcoId/imagen3d" element={<Imagen3d />} />
             <Route path="/solicitudes" element={<Solicitudes />} /> 
+            <Route path="/crear_solicitud" element={<CrearSolicitud />} /> 
           </Routes>
         </Router>
         </div>
