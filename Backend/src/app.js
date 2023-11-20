@@ -16,6 +16,7 @@ import componenteRoutes from "./routes/componente.routes.js";
 import multimediaRoutes from "./routes/multimedia.routes.js";
 import puntoRoutes from "./routes/punto.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import solicitud from "./routes/solicitud.routes.js"
 
 // Middlewares
 app.use(morgan("dev"));
@@ -39,6 +40,7 @@ app.use("/api/componente", componenteRoutes);
 app.use("/api/multimedia", multimediaRoutes);
 app.use("/api/punto", puntoRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/solicitud", solicitud);
 
 
 export default app;

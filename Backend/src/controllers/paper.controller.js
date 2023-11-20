@@ -1,5 +1,10 @@
 import { Paper } from "../persintence/models/Paper.js";
-import { createPaper_, getPapers_, updatePaper_, deletePaper_,getPaper_} from "../persintence/repository/paper.repository.js";
+import {
+  createPaper_,
+  getPapers_,
+  updatePaper_,
+  deletePaper_,
+  getPaper_} from "../persintence/repository/paper.repository.js";
 
 export async function createPaper(req, res) {
   const { name, date, description, userId } = req.body;
