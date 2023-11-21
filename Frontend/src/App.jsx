@@ -12,7 +12,6 @@ import {
   Buscador,
   Componente_Menu,
   AgregarComponente,
-  Imagen3d,
   Solicitudes,
   CrearSolicitud
 } from "./components";
@@ -39,7 +38,6 @@ const App = () => {
               <Route path="/Buscador" element={<Buscador />} />
               <Route path="/:barcoId/:seccionId/componente" element={<Componente_Menu />} />
               <Route path="/:barcoId/:seccionId/agregar_componente" element={<AgregarComponente />} />
-              <Route path="/:barcoId/imagen3d" element={<Imagen3d />} />
               <Route path="/solicitudes" element={<Solicitudes />} />
               <Route path="/crear_solicitud" element={<CrearSolicitud />} />
             </Routes>
