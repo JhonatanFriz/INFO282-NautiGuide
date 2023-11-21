@@ -18,6 +18,7 @@ import {
 } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./components/AuthContext"; // Reemplaza "path-to" con la ubicación real de tu AuthContext
+import RutaProtegida from './components/auth/RutaProtegida';
 
 const App = () => {
   return (
@@ -29,7 +30,7 @@ const App = () => {
         <div>
           <Router>
             <Routes>
-              <Route path="/usuarios" element={<User />} />
+            <Route path="/usuarios" element={<RutaProtegida element = {<User />} />} />
               <Route path="/papers" element={<Paper />} />
               <Route path="/barco" element={<Barco />} />
               <Route path="/auth" element={<Auth />} />
