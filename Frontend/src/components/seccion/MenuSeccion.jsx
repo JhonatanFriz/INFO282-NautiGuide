@@ -5,6 +5,8 @@ import clientAxios from '../config/clienteAxios';
 import AgregarPunto from './AgregarPunto';
 import AgregarSeccionBoton from "./AgregarSeccionBoton";
 import Imagen from "./Imagen"
+import Imagen3d from "./Imagen3d";
+
 import Secciones from "./Secciones"
 
 import ModalPunto from './ModalPunto';
@@ -21,6 +23,8 @@ function MenuSeccion() {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [seccionId, setSeccionId] = useState(null);
+
+  const [expandedCard, setExpandedCard] = useState(null);
 
   // Maneja la redireccion a agregar_seccion, se le envia barcoId
   const navigateTo = useNavigate();
@@ -59,14 +63,6 @@ function MenuSeccion() {
     setEliminar(!eliminar)
   };
 
-  const handleClick3d = () => {
-    navigateTo(`/barco:${barcoId}/imagen3d`, {
-      state: {
-        barcoSeleccionado: barcoSeleccionado
-      },
-    });
-  }
-
   const handleBarcosClick  = () => {
     navigateTo(`/barco`);
   }
@@ -99,6 +95,7 @@ function MenuSeccion() {
             barcoId={barcoId} setSeccionId={setSeccionId}
             setSeccionesModal = {setSeccionesModal}
             eliminar={eliminar}
+            setOutsideExpandedCard={setExpandedCard}
           />
         </div>
       </div>
@@ -113,24 +110,18 @@ function MenuSeccion() {
             )}
           </div>
         ):(<p></p>)}*/}
-        <div className="flex justify-center">
-          <div className="p-2">
-            <button
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-              onClick={handleClick3d}
-            >
-              Ver en 3d
-            </button>
-          </div>
-          <div className="p-2">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Añadir barco a favoritos</button>
-          </div>
+        {expandedCard == null ? (
+          <Imagen
+            imagenBarco={imagen}
+            handleImageClick={handleImagenClick}
+            show={show}
+          />
+        ) : (
+          <div>
+            <Imagen3d/>
         </div>
-        <Imagen
-          imagenBarco={imagen}
-          handleImageClick={handleImagenClick}
-          show={show}
-        />
+        )}
+        
         <ModalPunto isOpen={modalVisible} punto={point} onClose={() => setModalVisible(false)} secciones ={seccionesModal}/>
 
       </div>

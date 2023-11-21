@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { Componente } from "./Componente.js";
+import { Imagen3d } from "./Imagen3d.js";
 
 export const Seccion = sequelize.define(
     "secciones",
@@ -24,6 +25,8 @@ export const Seccion = sequelize.define(
       timestamps: false,
     }
 );
+
+Imagen3d.belongsTo(Seccion, { foreinkey: "seccionId", targetId: "id"})
 
 Seccion.belongsToMany(Componente, {through: "Pertenece"});
 Componente.belongsToMany(Seccion, {through: "Pertenece"});

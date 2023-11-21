@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, eliminar}) {
+function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, eliminar, setOutsideExpandedCard}) {
   
   const [secciones, setSecciones] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -38,6 +38,9 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
                     console.log('Sección ID seleccionada:', seccion.id);
                     setSeccionId(seccion.id);
                     setExpandedCard((prevExpanded) =>
+                      prevExpanded === seccion.id ? null : seccion.id
+                    )
+                    setOutsideExpandedCard((prevExpanded) =>
                       prevExpanded === seccion.id ? null : seccion.id
                     )
                   }}
