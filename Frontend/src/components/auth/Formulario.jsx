@@ -7,7 +7,6 @@ const Formulario = ({ handleLogin, error }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Llamar a la función de inicio de sesión pasada como prop
     handleLogin(email, contraseña);
   };
 

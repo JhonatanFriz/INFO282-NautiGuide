@@ -3,10 +3,6 @@ export const navLinks = [
     title: "🔍︎",
     ref: "/Buscador"
   },
-  {
-    title: "Iniciar Sesión",
-    ref: "/auth"
-  },
     {
       title: "Registro de Usuario",
       ref: "/usuarios"
@@ -18,6 +14,10 @@ export const navLinks = [
     {
       title: "Solicitudes",
       ref: "/solicitudes"
+    },
+    {
+      title: "Iniciar Sesión",
+      ref: "/auth"
     },
   ];
 
