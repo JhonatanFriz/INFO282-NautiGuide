@@ -13,7 +13,8 @@ import {
   Componente_Menu,
   AgregarComponente,
   Solicitudes,
-  CrearSolicitud
+  CrearSolicitud,
+  RevisarSolicitudes
 } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./components/AuthContext"; // Reemplaza "path-to" con la ubicación real de tu AuthContext
@@ -40,6 +41,7 @@ const App = () => {
               <Route path="/:barcoId/:seccionId/agregar_componente" element={<AgregarComponente />} />
               <Route path="/solicitudes" element={<Solicitudes />} />
               <Route path="/crear_solicitud" element={<CrearSolicitud />} />
+              <Route path="/revisar_solicitudes" element={<RevisarSolicitudes />} />
             </Routes>
           </Router>
         </div>
