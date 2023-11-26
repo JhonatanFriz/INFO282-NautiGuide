@@ -26,7 +26,7 @@ export const Seccion = sequelize.define(
     }
 );
 
-Imagen3d.belongsTo(Seccion, { foreinkey: "seccionId", targetId: "id"})
+Imagen3d.belongsTo(Seccion, { foreignkey: "seccionId", targetId: "id"})
 
 Seccion.belongsToMany(Componente, {through: "Pertenece"});
 Componente.belongsToMany(Seccion, {through: "Pertenece"});

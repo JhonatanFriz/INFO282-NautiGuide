@@ -7,10 +7,10 @@ import {
 } from "../persintence/repository/imagen3d.repository.js";
 
 export async function createImagen3d(req, res) {
-    const { url, seccionId } = req.body;
+    const { image, seccioneId } = req.body;
     const imagen3d = { 
-      url,
-      seccionId
+      seccioneId,
+      image,
     }
     createImagen3d_(imagen3d).then(data => {
       res.status(200).json({status : true, data : data})

@@ -2,11 +2,11 @@ import { Imagen3d } from "../models/Imagen3d.js";
 import { Seccion } from "../models/Seccion.js";
 
 export async function createImagen3d_(imagen){
-    const {url,seccionId} = imagen
+    const {image,seccioneId} = imagen
     try{
         const newImagen3d = await Imagen3d.create({
-            url,
-            seccionId
+            seccioneId,
+            image,
         });
         return newImagen3d
     } catch (error) {
@@ -28,9 +28,10 @@ export async function deleteImagen3d_(id){
 export async function getImagen3d_(idSeccion){
     try {
         const imagen3d = await Imagen3d.findOne({
-            where: { seccionId: idSeccion},
-            attributes: ["url","seccionId"],     
+            where: { seccioneId: idSeccion},
+            attributes: ["url","seccioneId"],     
         })
+        console.log(imagen3d)
         return imagen3d
     } catch (error) {
         throw new Error("Sucedio un error......")

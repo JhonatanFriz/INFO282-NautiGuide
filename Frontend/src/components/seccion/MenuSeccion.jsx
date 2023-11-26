@@ -10,6 +10,7 @@ import Imagen3d from "./Imagen3d";
 import Secciones from "./Secciones"
 
 import ModalPunto from './ModalPunto';
+import ModalAgregarImagen from './ModalAgregarImagen';
 
 function MenuSeccion() {
   // Usar useLocation para acceder a la información de la ubicación
@@ -67,6 +68,11 @@ function MenuSeccion() {
     navigateTo(`/barco`);
   }
 
+  const[abierto,setAbierto] = useState(false);
+
+  const handleBotonImagen  = () => {
+    setAbierto(true)
+  }
 
   const [point, setPoint] = useState({ x: null, y: null });
   
@@ -140,13 +146,32 @@ function MenuSeccion() {
           </div>
         ) : (
           <div>
-            <Imagen3d/>
-        </div>
+            {show ? (
+              <Imagen3d/>
+            ):(
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-1.5 mr-2 rounded p-2"
+                  onClick={setAbierto}
+                > Agregar imagen </button>
+              </div>
+            )}
+          </div>
         )}
         
         <ModalPunto isOpen={modalVisible} punto={point} onClose={() => setModalVisible(false)} secciones ={seccionesModal}/>
 
       </div>
+      {abierto && (
+        <>
+          <ModalAgregarImagen
+            setAbierto={setAbierto}
+            seccionId={seccionId}
+            setShow={setShow}
+          />
+        </>
+      )}
     </div>
 
   );

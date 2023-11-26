@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Seccion } from "./Seccion.js";
 
 export const Imagen3d = sequelize.define(
     "imagenes3d",
