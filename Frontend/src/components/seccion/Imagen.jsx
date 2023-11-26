@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 
-const imagen = ( { imagenBarco,handleImageClick,show } ) => {
+const imagen = ( { imagenBarco,handleImageClick } ) => {
 
   return (
-    <div className="bg-gray-200 flex flex-col p-4 h-screen">
-      {show ? (
-        <img
-          src={imagenBarco}
-          alt="Modelo"
-          onClick={handleImageClick}
-          style={{ cursor: 'pointer' }}
-        />
-      ) : (
-        <img
-          src={imagenBarco}
-          alt="Modelo"
-        />
-      )}
+    <div className="bg-gray-500 flex flex-col items-center justify-center p-4 h-3/4">
+      <img
+        src={imagenBarco}
+        alt="Modelo"
+        style={{
+          cursor: 'pointer',
+          resizeMode: 'center',
+          width: 800,
+        }}
+      />
     </div>
   );
 };

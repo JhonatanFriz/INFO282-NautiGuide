@@ -46,8 +46,8 @@ const Barco = () => {
 
         
     return (
-        <div className="flex" >
-            <div className="bg-gray-100 basis-1/2 h-screen overflow-auto flex flex-col"> 
+        <div className="flex h-screen" >
+            <div className="bg-gray-100 basis-1/2 overflow-auto flex flex-col"> 
                 <h2 className="text-l px-2">/<strong className="font-bold">Barcos</strong></h2>
                 <div className="flex justify-between px-2">
                     <h2 className="text-xl font-semibold mb-2">Barcos Registrados</h2>
@@ -66,12 +66,11 @@ const Barco = () => {
                 </div>
             </div>
             
-            <div className="bg-gray-200 basis-1/2 p-4 h-screen"> 
+            <div className="bg-gray-200 basis-1/2 p-4 flex flex-col justify-center"> 
                 <VerBarco
                     imagenSeleccionada={imagenSeleccionada}
                     show={show}
                 />
-                <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barcoId}</h2>
                 <Seleccion show={show} onClickSeleccion={handleNavigateBarco}/>
             </div>
         </div>

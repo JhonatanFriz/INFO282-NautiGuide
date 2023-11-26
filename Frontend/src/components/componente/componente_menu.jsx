@@ -47,8 +47,8 @@ function MenuSeccion() {
     }
 
     return(
-        <div className="flex">
-            <div className="bg-gray-100 basis-1/2 h-screen flex flex-col">
+        <div className="flex h-screen">
+            <div className="bg-gray-100 basis-1/4 flex flex-col">
                 <h2 className="text-l px-2">
                     <a
                         style={{cursor: 'pointer'}}
@@ -84,7 +84,7 @@ function MenuSeccion() {
                     />
                 </div>
             </div>
-            <div className="bg-gray-200 basis-1/2 h-screen overflow-auto">
+            <div className="bg-gray-200 basis-3/4 overflow-auto">
                 <Informacion
                     componente={componente}
                     show={show}

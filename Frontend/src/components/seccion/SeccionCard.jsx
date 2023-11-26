@@ -27,11 +27,16 @@ const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => 
                   Seleccionar Seccion
                 </button>
               </div>
-              <div className="p-2">
+              <div className="p-2 flex items-center">
                 <img
                   src={seccion.image}
-                  alt="Imagen de seccion"
-                  className="max-w-full h-auto max-h-32 object-contain"
+                  alt="Imagen"
+                  style={{
+                    objectFit: 'contain',
+                    width: 150,
+                    backgroundColor: '#000000',
+                    borderRadius: 5
+                  }}
                 />
               </div>
             </div>

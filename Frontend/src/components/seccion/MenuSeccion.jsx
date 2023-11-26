@@ -71,8 +71,8 @@ function MenuSeccion() {
   const [point, setPoint] = useState({ x: null, y: null });
   
   return (
-    <div className="flex">
-      <div className="bg-gray-100 basis-1/3 h-screen overflow-auto flex flex-col">
+    <div className="flex h-screen">
+      <div className="bg-gray-100 basis-1/3 overflow-auto flex flex-col">
         <h2 className="text-l px-2">
           <a
             style={{cursor: 'pointer'}}
@@ -99,7 +99,7 @@ function MenuSeccion() {
           />
         </div>
       </div>
-      <div className="bg-gray-200 basis-2/3 h-screen p-2 flex flex-col">
+      <div className="bg-gray-200 basis-2/3 p-2 flex flex-col justify-center">
         {/*<AgregarPunto setShow={setShow} show={show}/>
         {show ? (
           <div>
@@ -111,11 +111,33 @@ function MenuSeccion() {
           </div>
         ):(<p></p>)}*/}
         {expandedCard == null ? (
-          <Imagen
-            imagenBarco={imagen}
-            handleImageClick={handleImagenClick}
-            show={show}
-          />
+          <div className="flex flex-col p-4 items-center">
+            <h1
+              style={{
+                textAlign: 'center',
+                marginBottom: 15,
+                fontSize: 25,
+                fontWeight: 'bold'
+              }}
+            >{barcoNombre}</h1>
+            <img
+              src={imagen}
+              alt="Modelo"
+              className=""
+              style={{
+                objectFit: 'contain',
+                width: 800,
+                borderRadius: 5
+              }}
+            />
+            <h1
+              style={{
+                textAlign: 'center',
+                marginTop: 15,
+                fontSize: 20,
+              }}
+            >Seleccione un sistema</h1>
+          </div>
         ) : (
           <div>
             <Imagen3d/>

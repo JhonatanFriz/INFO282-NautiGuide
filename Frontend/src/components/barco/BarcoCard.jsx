@@ -1,16 +1,13 @@
 import React from 'react';
 
 const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
-  const cardStyle = {
-    cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
-  };
-
-
-
+  
   return (
       <div
-        className="bg-gradient-to-tl from-slate-300 to-slate-100 p-2 rounded shadow-md mb-4 flex flex-col items-center justify-between relative aspect-square overflow-auto"
-        style={cardStyle}
+        className="bg-gradient-to-tl from-slate-300 to-slate-100 p-2 rounded shadow-md mb-4 flex flex-col items-center justify-between relative aspect-square"
+        style={{
+          cursor: 'pointer',
+        }}
         onClick={() => onBarcoClick(barco)}
       >
         <div className="static">
@@ -26,13 +23,16 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
         </div>
         <div className="">
           <img
-            src={barco.image} 
-            className="max-w-full h-auto max-h-50% object-contain"
+            src={barco.image}
+            style={{
+              objectFit: 'contain',
+              height: 150,
+            }}
             alt="Imagen de barco"
           />
         </div>
 
-        <div className="flex-1/3 p-2">
+        <div className="p-2">
           <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barco.name}</h2>
           <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.model}</h2>
         </div>

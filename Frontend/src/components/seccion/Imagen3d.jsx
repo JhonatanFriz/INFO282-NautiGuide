@@ -51,7 +51,7 @@ function Imagen3d(){
     ]
 
     return (
-        <div className="App flex justify-center">
+        <div className="App flex justify-center p-10">
             <ReactPhotoSphereViewer
                 ref={pSRef}
                 src= {baseUrl + 'sphere.jpg'}

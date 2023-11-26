@@ -23,11 +23,11 @@ import RutaProtegida from './components/auth/RutaProtegida';
 const App = () => {
   return (
     <AuthProvider>
-      <div className="bg-sky-800 overflow-hidden">
+      <div className="bg-sky-800 overflow-hidden h-screen flex flex-col flex-grow">
         <div className="sm:px-16 px-6 max-w-full w-full">
           <Navbar />
         </div>
-        <div>
+        <div className="flex flex-col min-h-0">
           <Router>
             <Routes>
             <Route path="/usuarios" element={<RutaProtegida element = {<User />} />} />
@@ -46,7 +46,7 @@ const App = () => {
             </Routes>
           </Router>
         </div>
-        <div className="bg-primary flex justify-center items-start w-full">
+        <div className="flex flex-col min-h-0">
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
