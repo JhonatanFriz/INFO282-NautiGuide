@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import clientAxios from '../config/clienteAxios';
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 //falta conectarlo con la base de datos
 //falta desarrollar que la caja de texto de la descripcion no se sature
@@ -13,6 +13,15 @@ const CrearSolicitud = () => {
   const navigateToBack = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await clientAxios.post(`/solicitud`, {
+          title: titulo,
+          description: descripcion,
+          date: remitente,
+      });
+  } catch (error) {
+    console.log(error);
+  }
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
