@@ -4,18 +4,6 @@ import Imagen3d from "./Imagen3d";
 
 function VerImagen({ expandedCard, setAbierto, show, imagenSeccion, barcoNombre,seccionId }){
 
-    const [imagen,setImagen] = useState(null);
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            if (show){
-                const res = clientAxios.get(`/imagen3d/${seccionId}`);
-                setImagen(res.data.data);
-                console.log(res.data.data);
-            }
-        };
-        fetchPosts();
-    }, [seccionId]);
 
     return(
         <div>

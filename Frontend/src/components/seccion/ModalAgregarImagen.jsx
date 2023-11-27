@@ -21,7 +21,7 @@ const ModalAgregarImagen = ({setAbierto, seccionId}) => {
         } catch (error) {
             console.log(error);
         }
-        window.location.reload();
+        window.reload();
     }
 
     const handleNoSubmit = () => {

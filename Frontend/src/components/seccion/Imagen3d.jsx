@@ -16,16 +16,22 @@ function Imagen3d({ seccionId }){
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await clientAxios.get(`/imagen3d/${seccionId}`);
-      setImagen(res.data.data);
-      setUrlImagen(imagen.image);
+      try{
+        const res = await clientAxios.get(`/imagen3d/${seccionId}`);
+        const imageUrl = res.data.data.image.replace(/"/g, '');
+        setUrlImagen(imageUrl);
+      } catch (error){
+        console.error("Error al obtener la imagen:", error);
+      }
     };
     fetchPosts();
-  }, []);
+  }, [seccionId]);
 
 
   const pSRef = React.createRef();
   const baseUrl = 'https://photo-sphere-viewer-data.netlify.app/assets/';
+  const baseUrl2 = 'https://www.proandroid.com/wp-content/uploads/2018/02/foto_360_1-min.jpg';
+
 
   const plugins = [
       [CompassPlugin, {
@@ -65,6 +71,8 @@ function Imagen3d({ seccionId }){
 
     return (
         <div className="App flex justify-center p-10">
+          { urlImagen != null && (
+            <>
             <ReactPhotoSphereViewer
                 ref={pSRef}
                 src= {urlImagen + 'sphere.jpg'}
@@ -73,6 +81,7 @@ function Imagen3d({ seccionId }){
                 width={"100%"}
                 littlePlanet={false}
             ></ReactPhotoSphereViewer>
+            </>)}
         </div>
     );
 }
