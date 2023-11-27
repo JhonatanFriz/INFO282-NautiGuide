@@ -13,15 +13,20 @@ const ModalAgregarImagen = ({setAbierto, seccionId, setShow}) => {
         }
         try {
             const {data} = await clientAxios.post(`/imagen3d`, {
-                url: URL,
-                seccionId: seccionId,
+                image: URL,
+                seccioneId: seccionId,
             })
             setAbierto(false)
-            setShow(true)            
+            setShow(true)
+            return;          
         } catch (error) {
             console.log(error);
         }
         window.location.reload();
+    }
+
+    const handleNoSubmit = () => {
+        setAbierto(false)
     }
 
     return (
@@ -29,7 +34,7 @@ const ModalAgregarImagen = ({setAbierto, seccionId, setShow}) => {
         <div className="modal-dialog flex flex-col">
             <div className="modal-content">
                 <h2 className="text-xl font-semibold mb-4 text-center">Agregar Imagen</h2>
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="mb-4">
                         <label htmlFor="nombre" className="block font-medium mb-1">
                             URL
@@ -43,11 +48,22 @@ const ModalAgregarImagen = ({setAbierto, seccionId, setShow}) => {
                         />
                     </div>
                     <div className="flex justify-center">
-                        <button
-                            type="submit"
-                            className="bg-blue-500 text-white px-1.5 mr-2 rounded"
-                        > Agregar </button>
+                        <div>
+                            <button
+                                type="submit"
+                                className="bg-blue-500 text-white px-1.5 mr-2 rounded"
+                                onClick = {handleSubmit}
+                            > Agregar </button>
+                        </div>
+                        <div>
+                            <button
+                                type="submit"
+                                className="bg-red-500 text-white px-1.5 mr-2 rounded"
+                                onClick = {handleNoSubmit}
+                            > Cancelar </button>
+                        </div>
                     </div>
+                    
                 </form>
             </div>
         </div>

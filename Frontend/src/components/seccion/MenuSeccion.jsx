@@ -4,7 +4,6 @@ import clientAxios from '../config/clienteAxios';
 
 import AgregarPunto from './AgregarPunto';
 import AgregarSeccionBoton from "./AgregarSeccionBoton";
-import Imagen from "./Imagen"
 import Imagen3d from "./Imagen3d";
 
 import Secciones from "./Secciones"

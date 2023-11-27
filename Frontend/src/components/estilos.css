@@ -48,8 +48,6 @@
 
 /* Estilo del botón de cierre */
 .modal-content button {
-  background: #3b82f6; /* Fondo azul para el botón de cierre */
-  color: #fff; /* Texto blanco */
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
