@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 
-const ModalAgregarImagen = ({setAbierto, seccionId, setShow}) => {
+const ModalAgregarImagen = ({setAbierto, seccionId}) => {
 
     const [URL,setURL] = useState('');
 
@@ -17,7 +17,6 @@ const ModalAgregarImagen = ({setAbierto, seccionId, setShow}) => {
                 seccioneId: seccionId,
             })
             setAbierto(false)
-            setShow(true)
             return;          
         } catch (error) {
             console.log(error);

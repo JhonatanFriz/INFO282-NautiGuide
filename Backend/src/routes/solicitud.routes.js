@@ -14,7 +14,7 @@ router.post("/", createSolicitud);
 router.delete("/:id", deleteSolicitud);
 router.get("/", getSolicitudes);
 router.get("/:id", getSolicitud);
-router.get("/usuarios/:uderId", getSolicitudUsuario);
+router.get("/usuarios/:userId", getSolicitudUsuario);
 
 export default router;
 

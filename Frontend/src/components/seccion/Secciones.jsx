@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, eliminar, setOutsideExpandedCard}) {
+function Secciones({onSeccionClick, barcoId, setShow, setSeccionId, setSeccionesModal, eliminar, setOutsideExpandedCard}) {
   
   const [secciones, setSecciones] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -19,8 +19,30 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
   const handleEliminacion = (seccionId) => {
     const url = `/seccion/${seccionId}`;
     clientAxios.delete(url);
-    window.location.reload();    
+    window.location.reload();
   };
+
+  const handleExpanded = (seccion) => {
+    console.log('Sección ID seleccionada:', seccion.id);
+    setSeccionId(seccion.id);
+    setExpandedCard((prevExpanded) =>
+      prevExpanded === seccion.id ? null : seccion.id
+    );
+    setOutsideExpandedCard((prevExpanded) =>
+      prevExpanded === seccion.id ? null : seccion.id
+    );
+    const fetchPosts = async () => {
+      const res = await clientAxios.get(`/imagen3d/${seccion.id}`);
+      if (res.data.data) {
+        setShow(true);
+      }
+      else {
+        setShow(false);
+      }
+    }
+    fetchPosts();
+
+  }
 
 
   return (
@@ -34,16 +56,7 @@ function Secciones({onSeccionClick, barcoId, setSeccionId, setSeccionesModal, el
                   seccion={seccion}
                   onSeccionClick={() => onSeccionClick(seccion)}
                   isExpanded={expandedCard === seccion.id}
-                  onToggleExpand={() => {
-                    console.log('Sección ID seleccionada:', seccion.id);
-                    setSeccionId(seccion.id);
-                    setExpandedCard((prevExpanded) =>
-                      prevExpanded === seccion.id ? null : seccion.id
-                    )
-                    setOutsideExpandedCard((prevExpanded) =>
-                      prevExpanded === seccion.id ? null : seccion.id
-                    )
-                  }}
+                  onToggleExpand={() => handleExpanded(seccion)}
                 />
                 {eliminar ? (
                   <button type="submit"

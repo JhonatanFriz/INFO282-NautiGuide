@@ -27,12 +27,10 @@ export async function deleteImagen3d_(id){
 
 export async function getImagen3d_(idSeccion){
     try {
-        const imagen3d = await Imagen3d.findOne({
+        const img = await Imagen3d.findOne({
             where: { seccioneId: idSeccion},
-            attributes: ["url","seccioneId"],     
         })
-        console.log(imagen3d)
-        return imagen3d
+        return img
     } catch (error) {
         throw new Error("Sucedio un error......")
     }

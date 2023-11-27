@@ -4,7 +4,7 @@ import clientAxios from '../config/clienteAxios';
 
 import AgregarPunto from './AgregarPunto';
 import AgregarSeccionBoton from "./AgregarSeccionBoton";
-import Imagen3d from "./Imagen3d";
+import VerImagen from "./VerImagen";
 
 import Secciones from "./Secciones"
 
@@ -44,7 +44,6 @@ function MenuSeccion() {
 
   const [seccionesModal, setSeccionesModal] = useState([]);
 
-  const [show, setShow] = useState(false);
   const handleImagenClick = (e) => {
     // Obtenemos la posición del clic dentro de la imagen
     const rect = e.target.getBoundingClientRect();
@@ -68,15 +67,12 @@ function MenuSeccion() {
   }
 
   const[abierto,setAbierto] = useState(false);
-
-  const handleBotonImagen  = () => {
-    setAbierto(true)
-  }
+  const [show, setShow] = useState(false);
 
   const [point, setPoint] = useState({ x: null, y: null });
   
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen w-screen">
       <div className="bg-gray-100 basis-1/3 overflow-auto flex flex-col">
         <h2 className="text-l px-2">
           <a
@@ -97,7 +93,9 @@ function MenuSeccion() {
         <div className="p-2 overflow-auto flex-1">
           <Secciones
             onSeccionClick={handleSeccionClick}
-            barcoId={barcoId} setSeccionId={setSeccionId}
+            barcoId={barcoId}
+            setShow={setShow}
+            setSeccionId={setSeccionId}
             setSeccionesModal = {setSeccionesModal}
             eliminar={eliminar}
             setOutsideExpandedCard={setExpandedCard}
@@ -105,60 +103,14 @@ function MenuSeccion() {
         </div>
       </div>
       <div className="bg-gray-200 basis-2/3 p-2 flex flex-col justify-center">
-        {/*<AgregarPunto setShow={setShow} show={show}/>
-        {show ? (
-          <div>
-            {point.x === null && point.y === null ? (
-              <p className="p-4">Seleccione un punto</p>
-            ) : (
-              <p className="bg-gray-200 p-4">El punto es ({point.x}, {point.y}).</p>
-            )}
-          </div>
-        ):(<p></p>)}*/}
-        {expandedCard == null ? (
-          <div className="flex flex-col p-4 items-center">
-            <h1
-              style={{
-                textAlign: 'center',
-                marginBottom: 15,
-                fontSize: 25,
-                fontWeight: 'bold'
-              }}
-            >{barcoNombre}</h1>
-            <img
-              src={imagen}
-              alt="Modelo"
-              className=""
-              style={{
-                objectFit: 'contain',
-                width: 800,
-                borderRadius: 5
-              }}
-            />
-            <h1
-              style={{
-                textAlign: 'center',
-                marginTop: 15,
-                fontSize: 20,
-              }}
-            >Seleccione un sistema</h1>
-          </div>
-        ) : (
-          <div>
-            {show ? (
-              <Imagen3d/>
-            ):(
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-1.5 mr-2 rounded p-2"
-                  onClick={setAbierto}
-                > Agregar imagen </button>
-              </div>
-            )}
-          </div>
-        )}
-        
+        <VerImagen
+          expandedCard={expandedCard}
+          setAbierto={setAbierto}
+          show={show}
+          imagenSeccion={imagen}
+          barcoNombre={barcoNombre}
+          seccionId={seccionId}
+        />       
         <ModalPunto isOpen={modalVisible} punto={point} onClose={() => setModalVisible(false)} secciones ={seccionesModal}/>
 
       </div>
@@ -167,7 +119,6 @@ function MenuSeccion() {
           <ModalAgregarImagen
             setAbierto={setAbierto}
             seccionId={seccionId}
-            setShow={setShow}
           />
         </>
       )}
