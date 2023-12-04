@@ -40,6 +40,7 @@ function VerImagen({ expandedCard, setAbierto, show, imagenSeccion, barcoNombre,
                     {show ? (
                         <Imagen3d
                             seccionId = {seccionId}
+                            expandedCard = {expandedCard}
                         />
                     ) : (
                         <div className="flex justify-center">
