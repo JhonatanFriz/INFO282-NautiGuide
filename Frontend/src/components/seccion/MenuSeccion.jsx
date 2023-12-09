@@ -102,7 +102,7 @@ function MenuSeccion() {
           />
         </div>
       </div>
-      <div className="bg-gray-200 basis-2/3 p-2 flex flex-col justify-center">
+      <div className="bg-gray-200 basis-2/3 p-2 flex-1 flex-col justify-center overflow-auto">
         <VerImagen
           expandedCard={expandedCard}
           setAbierto={setAbierto}

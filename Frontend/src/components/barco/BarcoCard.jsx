@@ -4,7 +4,7 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
   
   return (
       <div
-        className="bg-gradient-to-tl from-slate-300 to-slate-100 p-2 rounded shadow-md mb-4 flex flex-col items-center justify-between relative aspect-square"
+        className="overflow-hidden bg-gradient-to-tl from-slate-300 to-slate-100 p-2 rounded shadow-md mb-4 flex flex-col items-center relative aspect-square"
         style={{
           cursor: 'pointer',
         }}
@@ -21,20 +21,17 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
             </>
           )}
         </div>
-        <div className="">
+        <h2 style={{ fontSize: '20px', textAlign: 'center', margin: '10px', fontWeight: 'bolder' }}>{barco.name}</h2>
+        <div 
+          className='flex justify-center flex-grow h-1/2'
+        >
           <img
             src={barco.image}
             style={{
               objectFit: 'contain',
-              height: 150,
             }}
             alt="Imagen de barco"
           />
-        </div>
-
-        <div className="p-2">
-          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>{barco.name}</h2>
-          <h2 style={{ textAlign: 'center', margin: '0' }}>{barco.model}</h2>
         </div>
       </div>
   );
