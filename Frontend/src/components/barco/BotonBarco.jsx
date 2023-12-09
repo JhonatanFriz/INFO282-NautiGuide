@@ -21,10 +21,10 @@ function BotonBarco({onClickSeleccion,onClickEliminar}) {
           </button>
           <button
             type="submit"
-            className="bg-red-500 text-white px-2 rounded"
+            className="bg-green-500 text-white px-1 rounded"
             onClick={onClickEliminar}
           >
-              Eliminar
+              ✎
           </button>
       </div>
       );

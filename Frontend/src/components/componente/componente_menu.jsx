@@ -26,8 +26,8 @@ function MenuSeccion() {
     const handleBoton = () => {
         navigateTo(`/barco:${barcoId}/seccion:${seccionId}/agregar_componente`, {
             state: {
-            barcoId: barcoId,
-            seccionId: seccionId
+            barcoSeleccionado: barcoSeleccionado,
+            seccion: seccion
             },
         });
     };

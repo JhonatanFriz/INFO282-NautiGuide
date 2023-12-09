@@ -2,6 +2,7 @@
   "dependencies": {
     "@photo-sphere-viewer/core": "^5.4.4",
     "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "react-spinners": "^0.13.8"
   }
 }

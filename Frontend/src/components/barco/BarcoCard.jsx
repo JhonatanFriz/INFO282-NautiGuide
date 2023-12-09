@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
+const BarcoCard = ({ barco, onBarcoClick,handleEdicion, eliminar }) => {
   
   return (
       <div
@@ -14,9 +14,9 @@ const BarcoCard = ({ barco, onBarcoClick,handleEliminacion, eliminar }) => {
           {eliminar && (
             <>
               <button type="submit"
-              className="absolute top-2 right-2 bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
-              onClick={() => handleEliminacion(barco.id)}>
-                x
+              className="absolute top-2 right-2 bg-green-500 text-white mb-2 py-1 px-2 shadow-md rounded"
+              onClick={() => handleEdicion(barco.id)}>
+                ✎
               </button>
             </>
           )}

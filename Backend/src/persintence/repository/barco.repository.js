@@ -50,7 +50,7 @@ export async function getBarco_(id){
 
 {/* Cambiar la información de un barco */}
 export async function updateBarco_(barco){
-    const {name, model, image, personalizado } = barco 
+    const {id, name, model, image, personalizado } = barco 
     try {
         const barco = await Barco.findByPk(id);
         barco.name = name;

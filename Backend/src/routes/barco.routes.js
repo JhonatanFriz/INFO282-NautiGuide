@@ -5,6 +5,7 @@ import {
   getBarco,
   deleteBarco,
   getBarcoSecciones,
+  updateBarco,
 } from "../controllers/barco.controller.js";
 
 const router = Router();
@@ -15,6 +16,7 @@ router.get("/", getBarcos);
 router.get("/:id", getBarco);
 router.delete("/:id", deleteBarco);
 router.get("/:id/secciones", getBarcoSecciones);
+router.put("/:id", updateBarco);
 
 
 

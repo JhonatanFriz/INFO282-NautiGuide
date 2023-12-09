@@ -10,6 +10,7 @@ import Secciones from "./Secciones"
 
 import ModalPunto from './ModalPunto';
 import ModalAgregarImagen from './ModalAgregarImagen';
+import ModalEdicionSeccion from "./ModalEdicionSeccion";
 
 function MenuSeccion() {
   // Usar useLocation para acceder a la información de la ubicación
@@ -56,10 +57,10 @@ function MenuSeccion() {
     setModalVisible(true);
   };
 
-  const[eliminar,setEliminar] = useState(false);
+  const[editar,setEditar] = useState(false);
 
-  const handleEliminar = () => {
-    setEliminar(!eliminar)
+  const handleEditar = () => {
+    setEditar(!editar)
   };
 
   const handleBarcosClick  = () => {
@@ -70,6 +71,14 @@ function MenuSeccion() {
   const [show, setShow] = useState(false);
 
   const [point, setPoint] = useState({ x: null, y: null });
+
+  const [activarEdicion,setActivarEdicion] = useState(false);
+  const [seccionEditar, setSeccionEditar] = useState(null);
+
+  const activarModalEdicion = (seccionId) => {
+    setActivarEdicion(true);
+    setSeccionEditar(seccionId);
+  };
   
   return (
     <div className="flex h-screen w-screen">
@@ -87,7 +96,7 @@ function MenuSeccion() {
           <h2 className="text-xl font-semibold mb-2">Sistemas del barco</h2>
           <AgregarSeccionBoton
             onClickAgregar={handleNavigateSeccion}
-            onClickEliminar={handleEliminar}
+            onClickEditar={handleEditar}
           />
         </div>
         <div className="p-2 overflow-auto flex-1">
@@ -97,8 +106,9 @@ function MenuSeccion() {
             setShow={setShow}
             setSeccionId={setSeccionId}
             setSeccionesModal = {setSeccionesModal}
-            eliminar={eliminar}
+            editar={editar}
             setOutsideExpandedCard={setExpandedCard}
+            activarModalEdicion={activarModalEdicion}
           />
         </div>
       </div>
@@ -122,6 +132,15 @@ function MenuSeccion() {
           />
         </>
       )}
+      {activarEdicion && (
+        <>
+          <ModalEdicionSeccion
+              seccionEditar={seccionEditar}
+              setActivarEdicion={setActivarEdicion}
+          />                
+        </>
+      )}
+
     </div>
 
   );

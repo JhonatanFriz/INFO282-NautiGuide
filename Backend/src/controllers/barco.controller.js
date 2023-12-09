@@ -43,7 +43,6 @@ export async function getBarco(req, res) {
 }
 
 export const updateBarco = async (req, res) => {
-
   const { id } = req.params;
   const { name, model, image, personalizado } = req.body;
   const barco ={

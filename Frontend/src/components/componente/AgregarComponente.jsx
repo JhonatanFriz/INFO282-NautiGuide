@@ -12,7 +12,10 @@ const AgregarComponente = () => {
 
     // Se trae el barcoId
     const location = useLocation();
-    const { barcoId, seccionId} = location.state;
+    const { barcoSeleccionado, seccion} = location.state;
+
+    const barcoId = barcoSeleccionado.id;
+    const seccionId = seccion.id;
 
     const navigateToBack = useNavigate();
     const handleSubmit = async (e) => {
@@ -26,8 +29,8 @@ const AgregarComponente = () => {
             });
             navigateToBack(`/barco:${barcoId}/seccion:${seccionId}/componente`, {
                 state: {
-                    barcoId: barcoId,
-                    seccionId: seccionId
+                    barcoSeleccionado: barcoSeleccionado,
+                    seccion: seccion
                 },
             });
         } catch (error) {

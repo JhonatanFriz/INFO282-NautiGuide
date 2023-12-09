@@ -4,6 +4,7 @@ import ListaBarcos from './barco/ListaBarcos';
 import VerBarco from './barco/VerBarco';
 import BotonBarco from './barco/BotonBarco';
 import Seleccion from './barco/Seleccion';
+import ModalEdicion from './barco/ModalEdicion'
 
 const Barco = () => {
 
@@ -44,6 +45,15 @@ const Barco = () => {
         setEliminar(!eliminar)
     };
 
+    
+    const [activarEdicion,setActivarEdicion] = useState(false);
+    const [barcoEditar, setBarcoEditar] = useState(null);
+
+    const handleEdicion = (barcoId) => {
+        setActivarEdicion(true);
+        setBarcoEditar(barcoId);
+    };
+
         
     return (
         <div className="flex h-screen" >
@@ -62,6 +72,7 @@ const Barco = () => {
                         setBarcoSeleccionado={setBarcoSeleccionado}
                         setShow={setShow}
                         eliminar={eliminar}
+                        handleEdicion={handleEdicion}
                     />
                 </div>
             </div>
@@ -73,6 +84,16 @@ const Barco = () => {
                 />
                 <Seleccion show={show} onClickSeleccion={handleNavigateBarco}/>
             </div>
+            {activarEdicion && (
+                <>
+                    <ModalEdicion
+                        barcoEditar={barcoEditar}
+                        setActivarEdicion={setActivarEdicion}
+                    />                
+                </>
+            )}
+
+
         </div>
     );
 }

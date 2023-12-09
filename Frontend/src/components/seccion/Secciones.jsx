@@ -2,7 +2,16 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({onSeccionClick, barcoId, setShow, setSeccionId, setSeccionesModal, eliminar, setOutsideExpandedCard}) {
+function Secciones({
+  onSeccionClick,
+  barcoId,
+  setShow,
+  setSeccionId,
+  setSeccionesModal,
+  editar,
+  setOutsideExpandedCard,
+  activarModalEdicion
+}) {
   
   const [secciones, setSecciones] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -15,12 +24,6 @@ function Secciones({onSeccionClick, barcoId, setShow, setSeccionId, setSecciones
     };
     fetchPosts();
   }, []);
-
-  const handleEliminacion = (seccionId) => {
-    const url = `/seccion/${seccionId}`;
-    clientAxios.delete(url);
-    window.location.reload();
-  };
 
   const handleExpanded = (seccion) => {
     console.log('Sección ID seleccionada:', seccion.id);
@@ -58,13 +61,15 @@ function Secciones({onSeccionClick, barcoId, setShow, setSeccionId, setSecciones
                   isExpanded={expandedCard === seccion.id}
                   onToggleExpand={() => handleExpanded(seccion)}
                 />
-                {eliminar ? (
-                  <button type="submit"
-                  className="bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
-                  onClick={() => handleEliminacion(seccion.id)}>
-                    x
-                  </button>
-                ) : (<></>)}
+                {editar && (
+                  <>
+                    <button type="submit"
+                    className="bg-green-500 text-white mb-2 py-1 px-1 shadow-md rounded"
+                    onClick={() => activarModalEdicion(seccion.id)}>
+                      ✎
+                    </button>
+                  </>
+                )}
               </li>
 
             ))

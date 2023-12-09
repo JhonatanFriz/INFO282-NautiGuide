@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function AgregarSeccionBoton({onClickAgregar,onClickEliminar}) {
+function AgregarSeccionBoton({onClickAgregar,onClickEditar}) {
     return (
         
         <div className="flex justify-end py-1">
@@ -13,10 +13,10 @@ function AgregarSeccionBoton({onClickAgregar,onClickEliminar}) {
             </button>
             <button
             type="submit"
-            className="bg-red-500 text-white px-2 rounded"
-            onClick={onClickEliminar}
+            className="bg-green-500 text-white px-1 rounded"
+            onClick={onClickEditar}
             >
-                Eliminar
+                ✎
             </button>
         </div>
     );
