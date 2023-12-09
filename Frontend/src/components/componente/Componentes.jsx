@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import ComponenteCard from './ComponenteCard';
 
-function Componentes({setComponente, setShow, barcoId, seccionId,eliminar}){
+function Componentes({setComponente, setShow, barcoId, seccionId,editar,activarModalComponente}){
 
     const [comps, setComps] = useState([]);
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const res = await clientAxios.get(`/componente/${seccionId}`);
+            const res = await clientAxios.get(`/componente/seccion/${seccionId}`);
             setComps(res.data.data);
         };
         fetchPosts();
@@ -18,13 +18,6 @@ function Componentes({setComponente, setShow, barcoId, seccionId,eliminar}){
         setComponente(comp);
         setShow(true);
     }
-
-    const handleEliminacion = (componenteId) => {
-        const url = `/componente/${componenteId}`;
-        clientAxios.delete(url);
-        window.location.reload();    
-    };
-    
 
     return (
         <div>
@@ -37,12 +30,12 @@ function Componentes({setComponente, setShow, barcoId, seccionId,eliminar}){
                                 onComponenteClick={handleComponenteClick}
                             />
                             
-                            {eliminar ? (
+                            {editar ? (
                                 <button type="submit"
-                                    className="bg-red-500 text-white mb-2 py-1 px-2 shadow-md rounded"
-                                    onClick={() => handleEliminacion(comp.id)}
+                                    className="bg-green-500 text-white mb-2 p-1 shadow-md rounded"
+                                    onClick={() => activarModalComponente(comp.id)}
                                 >
-                                    x
+                                    ✎
                                 </button>
                             ) : (<></>)}
                         </li>

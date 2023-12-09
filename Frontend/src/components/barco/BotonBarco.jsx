@@ -21,7 +21,7 @@ function BotonBarco({onClickSeleccion,onClickEliminar}) {
           </button>
           <button
             type="submit"
-            className="bg-green-500 text-white px-1 rounded"
+            className="bg-green-500 text-white p-1 rounded"
             onClick={onClickEliminar}
           >
               ✎

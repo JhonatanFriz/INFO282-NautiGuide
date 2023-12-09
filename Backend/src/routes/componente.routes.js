@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createComponente,
+  getComponentesSeccion,
   getComponente,
   updateComponente,
   deleteComponente,
@@ -12,7 +13,8 @@ const router = Router();
 router.post("/:seccionId", createComponente);
 router.put("/:id", updateComponente);
 router.delete("/:id", deleteComponente);
-router.get("/:seccionId", getComponente);
+router.get("/seccion/:seccionId", getComponentesSeccion);
+router.get("/:id", getComponente);
 
 // Metodos, se definen los endpoints, cómo voy a pedir la información
 

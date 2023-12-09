@@ -5,6 +5,7 @@ import clientAxios from '../config/clienteAxios';
 import Componentes from './Componentes';
 import Informacion from './Informacion';
 import AgregarComponenteBoton from './BotonAgregarComponente';
+import ModalEdicionComponente from "./ModalEdicionComponente";
 
 function MenuSeccion() {
     // Se agregan los location del url
@@ -32,11 +33,11 @@ function MenuSeccion() {
         });
     };
 
-    const[eliminar,setEliminar] = useState(false);
+    const[editar,setEditar] = useState(false);
 
-    const handleEliminar = () => {
-        setEliminar(!eliminar)
-    };
+    const handleEditar = () => {
+        setEditar(!editar)
+      };
 
     const handleBarcosClick  = () => {
         navigateTo(`/barco`);
@@ -44,6 +45,15 @@ function MenuSeccion() {
 
     const handleBarcoClick  = () => {
         navigateTo(`/barco:${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
+    }
+
+    const [activarEdicion,setActivarEdicion] = useState(false);
+    const [componenteEditar, setComponenteEditar] = useState(null);
+ 
+
+    const activarModalComponente = (componenteId) => {
+        setActivarEdicion(true);
+        setComponenteEditar(componenteId);
     }
 
     return(
@@ -71,7 +81,7 @@ function MenuSeccion() {
                     <h2 className="text-xl font-semibold mb-2">Componentes</h2>
                     <AgregarComponenteBoton
                         onClickAgregar={handleBoton}
-                        onClickEliminar={handleEliminar}
+                        onClickEditar={handleEditar}
                     />
                 </div>
                 <div className="p-2 overflow-auto flex-1">
@@ -80,7 +90,8 @@ function MenuSeccion() {
                         setShow={setShow}
                         barcoId={barcoId}
                         seccionId={seccionId}
-                        eliminar={eliminar}
+                        editar={editar}
+                        activarModalComponente={activarModalComponente}
                     />
                 </div>
             </div>
@@ -90,12 +101,17 @@ function MenuSeccion() {
                     show={show}
                 />
             </div>
+            
+            {activarEdicion && (
+            <>
+                <ModalEdicionComponente
+                    componenteEditar={componenteEditar}
+                    setActivarEdicion={setActivarEdicion}
+                />                
+            </>
+            )}
         </div>
-        
-        )
-
-
-
+    )
 }
 
 export default MenuSeccion

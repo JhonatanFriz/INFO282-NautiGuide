@@ -14,7 +14,7 @@ const BarcoCard = ({ barco, onBarcoClick,handleEdicion, eliminar }) => {
           {eliminar && (
             <>
               <button type="submit"
-              className="absolute top-2 right-2 bg-green-500 text-white mb-2 py-1 px-2 shadow-md rounded"
+              className="absolute top-2 right-2 bg-green-500 text-white mb-2 p-1 shadow-md rounded"
               onClick={() => handleEdicion(barco.id)}>
                 ✎
               </button>

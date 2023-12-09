@@ -13,7 +13,7 @@ function AgregarSeccionBoton({onClickAgregar,onClickEditar}) {
             </button>
             <button
             type="submit"
-            className="bg-green-500 text-white px-1 rounded"
+            className="bg-green-500 text-white py-1 px-1 rounded"
             onClick={onClickEditar}
             >
                 ✎

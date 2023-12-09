@@ -26,7 +26,7 @@ export async function createComponente_(contenido, seccionId){
 
 }
 
-export async function getComponente_(seccionId){
+export async function getComponentesSeccion_(seccionId){
     try {
         const seccion = await Seccion.findOne({
             where: {id: seccionId},
@@ -46,11 +46,11 @@ export async function getComponente_(seccionId){
 export async function updateComponente_(componente){
     const { id, name, description, image } = componente
     try {
-        const componente_update = await componente.findByPk(id);
+        const componente_update = await Componente.findByPk(id);
         console.log(componente_update)
         componente_update.name = name;
         componente_update.description = description;
-        componente_update.multimedia = multimedia;
+        componente_update.image = image;
         await componente_update.save();
         return "se modifico correctamente" 
     } catch (error) {
@@ -66,6 +66,20 @@ export async function deleteComponente_(id){
             where: { id },
         }); 
         return "se elimino correctamente"
+    } catch (error) {
+        throw new Error("Sucedio un error......")
+    }
+
+}
+
+export async function getComponente_(id){
+    try {
+        const componente = await Componente.findOne({
+            where: { id },
+            attributes: ["id", "name", "description", "image"],
+        });
+        return componente
+        
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
