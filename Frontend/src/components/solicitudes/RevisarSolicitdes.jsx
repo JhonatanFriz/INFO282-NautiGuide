@@ -1,41 +1,38 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
+import clientAxios from '../config/clienteAxios';
+import SolicitudCard from './SolicitudCard';
 
 const RevisarSolicitudes = () => {
-  const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
+  const [solicitudes, setSolicitudes] = useState([]);
 
-  const handleInputChange = (event) => {
-    setMessage(event.target.value);
-  };
+  useEffect (() => {
 
-  const handleSendMessage = () => {
-    if (message.trim() !== '') {
-      setChatHistory([...chatHistory, message]);
-      setMessage('');
-    }
-  };
+
+
+      const fetchPosts = async () => {
+          const res = await clientAxios.get('/solicitud/');
+          setSolicitudes(res.data.data);
+        };
+        fetchPosts();
+
+  }, [])
+
 
   return (
-    <div className="chat-container">
-      <div className="chat-history">
-        {chatHistory.map((msg, index) => (
-          <div key={index} className="chat-message">
-            {msg}
-          </div>
-        ))}
+      <div className="w-1/3 bg-gray-100 p-4">
+        <h2 className="text-xl font-semibold mb-4">Solicitudes Registrados</h2>
+        <ul>
+          {solicitudes.length > 0 ? (
+            solicitudes.map((solicitud, index) => (
+                  <SolicitudCard  key={index} solicitud={solicitud}/>
+            ))
+          ) : (
+            <li>No hay solicitudes registrados.</li>
+          )}
+        </ul>
       </div>
-      <textarea
-        className="chat-input"
-        placeholder="Escribe aquí..."
-        value={message}
-        onChange={handleInputChange}
-        onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-      />
-      <button className="send-button" onClick={handleSendMessage}>
-        Enviar
-      </button>
-    </div>
-  );
-};
+    );  
+}
 
 export default RevisarSolicitudes;

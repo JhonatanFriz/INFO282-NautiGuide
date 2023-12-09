@@ -13,6 +13,11 @@ const CrearSolicitud = () => {
   const navigateToBack = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!(titulo && descripcion && remitente)) { // Verifica si el campo de rol está vacío
+      setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
+      return; // Impide el envío del formulario
+    }
+    navigateToBack(`/solicitudes`);
     try {
       await clientAxios.post(`/solicitud`, {
           title: titulo,
@@ -37,11 +42,7 @@ const CrearSolicitud = () => {
     return `${rows * lineHeight}px`;
   };
     
-    if (!(titulo && descripcion && remitente)) { // Verifica si el campo de rol está vacío
-      setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
-      return; // Impide el envío del formulario
-    }
-    navigateToBack(`/solicitudes`);
+
   };
 
   return (
