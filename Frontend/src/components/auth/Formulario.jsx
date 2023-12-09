@@ -3,10 +3,19 @@ import React, { useState } from 'react';
 const Formulario = ({ handleLogin, error }) => {
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Validación de campos vacíos
+    if (email.trim() === '' || contraseña.trim() === '') {
+      setFormError('Por favor, complete todos los campos.');
+      return;
+    }
+
+    // Limpiar el mensaje de error si no hay problemas
+    setFormError('');
     handleLogin(email, contraseña);
   };
 
@@ -45,7 +54,8 @@ const Formulario = ({ handleLogin, error }) => {
               onChange={(e) => setContraseña(e.target.value)}
             />
           </div>
-          {error && <p className="text-red-500 mb-4">{error}</p>} {/* Muestra el mensaje de error si existe */}
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+          {formError && <p className="text-red-500 mb-4">{formError}</p>}
           <div className="flex justify-center">
             <button
               type="submit"

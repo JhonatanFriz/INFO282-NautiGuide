@@ -30,7 +30,10 @@ const App = () => {
         <div className="flex flex-col min-h-0">
           <Router>
             <Routes>
-            <Route path="/usuarios" element={<RutaProtegida element = {<User />} />} />
+              {/* <Route path="/usuarios" element={<RutaProtegida element = {<User />} />} /> */}
+              <Route path="/usuarios" element={<RutaProtegida><User /></RutaProtegida>} />
+              {/* <Route path="/usuarios" element={<User />} /> trampa */}
+              {/* <Route path="/usuarios" element={<User />} /> */}
               <Route path="/papers" element={<Paper />} />
               <Route path="/barco" element={<Barco />} />
               <Route path="/auth" element={<Auth />} />
@@ -43,15 +46,16 @@ const App = () => {
               <Route path="/solicitudes" element={<Solicitudes />} />
               <Route path="/crear_solicitud" element={<CrearSolicitud />} />
               <Route path="/revisar_solicitudes" element={<RevisarSolicitudes />} />
+              <Route path="/" element={<Home />} />
             </Routes>
           </Router>
         </div>
         <div className="flex flex-col min-h-0">
-          <Router>
+          {/* <Router>
             <Routes>
               <Route path="/" element={<Home />} />
             </Routes>
-          </Router>
+          </Router> */}
         </div>
       </div>
     </AuthProvider>

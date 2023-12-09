@@ -17,7 +17,8 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-photo-sphere-viewer": "^4.0.2-psv5.4.4",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
