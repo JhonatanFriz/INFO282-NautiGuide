@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SolicitudCard from './SolicitudCard';
+import FullSolicitudCard from './FullSolicitudCard';
 
 function ListaSolicitudes() {
     const [solicitudes , setSolicitudes ] = useState([]);

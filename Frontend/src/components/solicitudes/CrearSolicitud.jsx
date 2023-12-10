@@ -8,6 +8,7 @@ const CrearSolicitud = () => {
   const [titulo, settituloBarco] = useState('');
   const [descripcion, setdescripcion] = useState('');
   const [remitente, setremitente] = useState('');
+  const [fecha, setFecha] = useState('');
   const [error, setError] = useState(''); // Estado para el mensaje de error
 
   const navigateToBack = useNavigate();
@@ -22,7 +23,8 @@ const CrearSolicitud = () => {
       await clientAxios.post(`/solicitud`, {
           title: titulo,
           description: descripcion,
-          date: remitente,
+          userId: remitente,
+          date:fecha,
       });
   } catch (error) {
     console.log(error);
@@ -80,6 +82,24 @@ const CrearSolicitud = () => {
           />
 
         </div>
+        
+
+        <div className="mb-4">
+          <label htmlFor="rut" className="block font-medium mb-1">
+            Fecha
+          </label>
+          <input
+            type="date"
+            id="fecha"
+            className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
+            value={fecha}
+            onChange={(e) => setFecha(e.target.value)}
+          />
+        </div>
+
+
+
+  
 
         <div className="mb-4">
           <label htmlFor="remitente" className="block font-medium mb-1">
