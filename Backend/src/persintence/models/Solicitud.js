@@ -16,7 +16,7 @@ export const Solicitud = sequelize.define(
       type: DataTypes.STRING,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1200),
     },
   },
   {

@@ -44,7 +44,7 @@ const RevisarSolicitudes = () => {
             <ul>
               {solicitudes.length > 0 ? (
                 solicitudes.map((solicitud, index) => (
-                      <SolicitudCard  handleclick={handleclick} key={index} solicitud={solicitud}/>
+                      <SolicitudCard  handleclick={handleclick} key={index} solicitud={solicitud} usuarios={usuarios}/>
                 ))
               ) : (
                 <li>No hay solicitudes registrados.</li>
@@ -54,7 +54,6 @@ const RevisarSolicitudes = () => {
           <div>
             {abierto && (
               <div className="ml-4 relative bg-white p-4 rounded-md border-8  justify-center items-center">
-                <h2>"Remitente"</h2>
                 <ul>
                     {abierto ? (
                       

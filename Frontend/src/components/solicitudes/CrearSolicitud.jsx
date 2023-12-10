@@ -1,6 +1,7 @@
 import React, {useEffect,useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import {useNavigate } from "react-router-dom";
+import { format } from 'date-fns';
 
 //falta conectarlo con la base de datos
 //falta desarrollar que la caja de texto de la descripcion no se sature
@@ -14,18 +15,38 @@ const CrearSolicitud = () => {
   const navigateToBack = useNavigate();
 
   useEffect(() => {
+    const obtenerFechaHoraActual = () => {
+      const ahora = new Date();
+      const formatoFechaHora = format(ahora, 'dd-MM-yyyy HH:mm');
+      return formatoFechaHora;
+    };
+
+    // Establecer la fecha y hora actual como valor inicial
+    setFecha(obtenerFechaHoraActual());
+
 
     const fetchPosts = async () => {
-        const res = await clientAxios.get('/barcos/');
+        const res = await clientAxios.get('/users/');
         setUsuarios(res.data.data);
       };
       fetchPosts();
+      
 
-}, [])
+  }, [])
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    
+    // Limitar la longitud del texto a 1200 caracteres
+    if (inputValue.length <= 1200) {
+      setDescripcion(inputValue);
+    }
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!(titulo && descripcion && remitente)) { // Verifica si el campo de rol está vacío
+    if (!(titulo && descripcion && idUsuario)) { // Verifica si el campo de rol está vacío
       setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
       return; // Impide el envío del formulario
     }
@@ -41,22 +62,9 @@ const CrearSolicitud = () => {
     console.log(error);
   }
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      // Evitar el salto de línea al presionar Enter
-      event.preventDefault();
-      // Puedes manejar el envío del mensaje o realizar alguna otra acción aquí
-    }
-  };
-
-  const calculateTextAreaHeight = () => {
-    const lineHeight = 20; // Ajusta según el tamaño de la línea en píxeles
-    const rows = Math.max(text.split('\n').length, 4); // Mínimo de 4 filas
-    return `${rows * lineHeight}px`;
-  };
-    
 
   };
+
 
   return (
     <div className="bg-blue-950 p-4 h-screen flex justify-center items-center ">
@@ -64,20 +72,24 @@ const CrearSolicitud = () => {
         
       <h2 className="text-xl font-semibold mb-4 flex justify-center items-center ">Crear Solicitud</h2>
       <form onSubmit={handleSubmit}>
-      <div className="mb-4">
-          <label htmlFor="nombre" className="block font-medium mb-1">
-            Remitente
-          </label>
-          {usuarios.length > 0 ? (
-            <select value={idUsuario} onChange={(e) => setIdUsuario(e.target.value)} className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500">
-              <option value="" hidden>Selecciona una opción</option>
-              {usuarios.map((usuario) => (
-                    <option value={usuario.id}> {usuario.name}</option>
-              ))}
-            </select>) : (
-              <li>No hay usuarios registrados.</li>
-            )}
-        </div>
+
+
+        <div className="mb-4">
+            <label htmlFor="nombre" className="block font-medium mb-1">
+              Remitente
+            </label>
+            {usuarios.length > 0 ? (
+              <select value={idUsuario} onChange={(e) => setIdUsuario(e.target.value)} className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500">
+                <option value="" hidden>Selecciona una opción</option>
+                {usuarios.map((usuario) => (
+                      <option value={usuario.id}> {usuario.name}</option>
+                ))}
+              </select>) : (
+                <li>No hay usuarios registrados.</li>
+              )}
+          </div>
+
+
         <div className="mb-4">
           <label htmlFor="titulo" className="block font-medium mb-1">
             Titulo
@@ -95,32 +107,31 @@ const CrearSolicitud = () => {
             Descripción
           </label>
           <textarea
-            type="text"
-            rows= "4"
+            rows="4"
             id="descripcion"
             placeholder="Escribe aquí..."
-            className=" chat-container flex h-40 w-full px-4 py-2 rounded border  focus:border-blue-500 "
+            className="chat-container flex h-40 w-full px-4 py-2 rounded border focus:border-blue-500"
             value={descripcion}
-
-            onChange={(e) => setDescripcion(e.target.value)}
+            onChange={handleInputChange}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
           />
-
-        </div>
+          <p>Caracteres restantes: {1200 - descripcion.length}</p>
+    </div>
         
 
         <div className="mb-4">
-          <label htmlFor="rut" className="block font-medium mb-1">
-            Fecha
-          </label>
-          <input
-            type="date"
-            id="fecha"
-            className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
-            value={fecha}
-            onChange={(e) => setFecha(e.target.value)}
-          />
-        </div>
+      <label htmlFor="fecha" className="block font-medium mb-1">
+        Fecha y Hora de Creación
+      </label>
+      <input
+        type="text" // Utilizamos type "text" para almacenar como cadena
+        id="fecha"
+        className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
+        value={fecha}
+        disabled
+
+      />
+    </div>
 
 
         
