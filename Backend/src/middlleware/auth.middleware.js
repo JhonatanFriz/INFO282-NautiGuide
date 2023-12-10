@@ -12,7 +12,13 @@ export function authenticate(req, res, next) {
   // Verifica el token JWT
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ message: "Token no válido" });
+
+      if (err.name === 'TokenExpiredError') {
+        return res.status(401).json({ message: "Token ha expirado", expiredAt: err.expiredAt });
+      }
+
+      // return res.status(401).json({ message: "Token no válido" });
+      return res.status(401).json({ message: "Error al verificar el token", error: err.message });
     }
 
     // Si el token es válido, puedes almacenar la información del usuario en el objeto de solicitud (req) para su uso posterior

@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Home from "./Home";
 import User from "./User";
+import UserAdmin from "./UserAdmin";
 import Paper from "./Paper";
 import Auth from "./Auth";
 import Barco from "./Barco";
@@ -19,6 +20,7 @@ export {
     Navbar,
     Home,
     User,
+    UserAdmin,
     Paper,
     Auth,
     Barco,
