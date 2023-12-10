@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 
-const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => {
-  const cardStyle = {
-    cursor: 'pointer', // Cambiar el cursor a una mano cuando se puede hacer clic
-  };
+const SeccionCard = ({ seccion,onToggleSelect }) => {
+
+  return(
+    <div
+      className="bg-white p-2 rounded shadow-md mb-2 grow mr-2"
+      style={{cursor: 'pointer'}}
+      onClick={() => onToggleSelect()}
+    >
+      <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>
+        {seccion.name}
+      </h2>
+    </div>
+  );
+  /*
 
   return (
       <div 
-        className="bg-white p-2 rounded shadow-md mb-2 grow mr-2"
-        style={cardStyle}
-        onClick={() => onToggleExpand()}>
-          <h2 style={{ textAlign: 'center', margin: '0', fontWeight: 'bold' }}>
-            {seccion.name}
-          </h2>
+        onClick={() => onToggleSelect()}>
           {isExpanded && (
             <div className="flex justify-between">
               <div className="flex flex-col grow justify-center items-center">
@@ -43,6 +48,7 @@ const SeccionCard = ({ seccion, onSeccionClick, isExpanded, onToggleExpand}) => 
           )}
       </div>
   );
+  */
 };
 
 export default SeccionCard

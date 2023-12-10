@@ -2,87 +2,88 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import clientAxios from '../config/clienteAxios';
 
-import AgregarPunto from './AgregarPunto';
 import AgregarSeccionBoton from "./AgregarSeccionBoton";
-import VerImagen from "./VerImagen";
+import Informacion from "./Informacion";
 
 import Secciones from "./Secciones"
 
-import ModalPunto from './ModalPunto';
 import ModalAgregarImagen from './ModalAgregarImagen';
 import ModalEdicionSeccion from "./ModalEdicionSeccion";
 
 function MenuSeccion() {
+  
   // Usar useLocation para acceder a la información de la ubicación
   const location = useLocation();
   const barcoSeleccionado = location.state.barcoSeleccionado;
 
   // Se guardan las variables de lo recibido
-  const barcoId = barcoSeleccionado.id
-  const barcoNombre = barcoSeleccionado.name
-  const imagen = barcoSeleccionado.image
-  const [modalVisible, setModalVisible] = useState(false);
+  const barcoId = barcoSeleccionado.id;
+  const barcoNombre = barcoSeleccionado.name;
+  const imagen = barcoSeleccionado.image;
 
-  const [seccionId, setSeccionId] = useState(null);
-
-  const [expandedCard, setExpandedCard] = useState(null);
-
-  // Maneja la redireccion a agregar_seccion, se le envia barcoId
+  // Navigates: Barra superior
   const navigateTo = useNavigate();
-  const handleNavigateSeccion = () => {
-    navigateTo(`/barco:${barcoId}/agregar_seccion`, {state: {barcoSeleccionado} });
-  };
-
-  // Para manejar las secciones
-  const handleSeccionClick = (seccion) => {
-    navigateTo(`/barco:${barcoId}/seccion:${seccionId}/componente`, {
-      state: {
-        barcoSeleccionado: barcoSeleccionado,
-        seccion: seccion
-      },
-    });
-  };
-
-  const [seccionesModal, setSeccionesModal] = useState([]);
-
-  const handleImagenClick = (e) => {
-    // Obtenemos la posición del clic dentro de la imagen
-    const rect = e.target.getBoundingClientRect();
-    const x = Math.round(e.clientX - rect.left);
-    const y = Math.round(e.clientY - rect.top);
-
-    // Actualizamos el punto seleccionado
-    setPoint({ x, y });
-
-    setModalVisible(true);
-  };
-
-  const[editar,setEditar] = useState(false);
-
-  const handleEditar = () => {
-    setEditar(!editar)
-  };
-
   const handleBarcosClick  = () => {
     navigateTo(`/barco`);
   }
 
-  const[abierto,setAbierto] = useState(false);
-  const [show, setShow] = useState(false);
+  // Navigates: Barra botones admin
+  const handleAgregarSeccion = () => {
+    navigateTo(`/barco:${barcoId}/agregar_seccion`, {state: {barcoSeleccionado} });
+  };
 
-  const [point, setPoint] = useState({ x: null, y: null });
+  const[editar,setEditar] = useState(false);
+  const handleEditar = () => {
+    setEditar(!editar)
+  };
 
+  // Control del navigate a la seccion
+  
+  const handleNavigateSeccion = () => {
+    navigateTo(`/barco:${barcoId}/seccion:${seccionSelect.id}/componente`, {
+      state: {
+        barcoSeleccionado: barcoSeleccionado,
+        seccion: seccionSelect
+      },
+    });
+  };
+
+  // Control de la carta seleccionada
+  const [expandedCard, setExpandedCard] = useState(null);
+  const [seccionSelect, setSeccionSelect] = useState(null);
+  const onToggleSelect = (seccion) =>{
+    setSeccionSelect(seccion);
+    setVer360(false)
+    setExpandedCard((prevExpanded) =>
+      prevExpanded === seccion.id ? null : seccion.id
+    );
+  }
+
+  // Control del modal de edición
   const [activarEdicion,setActivarEdicion] = useState(false);
   const [seccionEditar, setSeccionEditar] = useState(null);
-
   const activarModalEdicion = (seccionId) => {
     setActivarEdicion(true);
     setSeccionEditar(seccionId);
   };
-  
-  return (
+
+  // Control modal agregar imagen 360
+  const [activarModal360,setActivarModal360] = useState (false); 
+  const handleAbrirModal = () => {
+    setActivarModal360(true);
+  }
+
+
+  // Manejar boton 360
+  const [ver360, setVer360] = useState(false);
+
+  const handle360Boton = () => {
+      setVer360(true);
+  }
+
+  return(
     <div className="flex h-screen w-screen">
-      <div className="bg-gray-100 basis-1/3 overflow-auto flex flex-col">
+      <div className="bg-gray-100 basis-1/4 overflow-auto flex flex-col">
         <h2 className="text-l px-2">
           <a
             style={{cursor: 'pointer'}}
@@ -95,43 +96,33 @@ function MenuSeccion() {
         <div className="flex justify-between px-2">
           <h2 className="text-xl font-semibold mb-2">Sistemas del barco</h2>
           <AgregarSeccionBoton
-            onClickAgregar={handleNavigateSeccion}
+            onClickAgregar={handleAgregarSeccion}
             onClickEditar={handleEditar}
           />
         </div>
         <div className="p-2 overflow-auto flex-1">
           <Secciones
-            onSeccionClick={handleSeccionClick}
             barcoId={barcoId}
-            setShow={setShow}
-            setSeccionId={setSeccionId}
-            setSeccionesModal = {setSeccionesModal}
             editar={editar}
-            setOutsideExpandedCard={setExpandedCard}
             activarModalEdicion={activarModalEdicion}
+            onToggleSelect={onToggleSelect}
           />
         </div>
       </div>
-      <div className="bg-gray-200 basis-2/3 p-2 flex-1 flex-col justify-center overflow-auto">
-        <VerImagen
-          expandedCard={expandedCard}
-          setAbierto={setAbierto}
-          show={show}
-          imagenSeccion={imagen}
-          barcoNombre={barcoNombre}
-          seccionId={seccionId}
-        />       
-        <ModalPunto isOpen={modalVisible} punto={point} onClose={() => setModalVisible(false)} secciones ={seccionesModal}/>
 
+      <div className="bg-gray-200 p-1 flex-1 flex-col justify-center">
+        <Informacion
+          barco={barcoSeleccionado}
+          seccion={seccionSelect}
+          expandedCard={expandedCard}
+          onSeccionClick={handleNavigateSeccion}
+          handle360Boton={handle360Boton}
+          ver360={ver360}
+          handleAbrirModal={handleAbrirModal}
+        />
       </div>
-      {abierto && (
-        <>
-          <ModalAgregarImagen
-            setAbierto={setAbierto}
-            seccionId={seccionId}
-          />
-        </>
-      )}
+      
+      {/* MODALES */}
       {activarEdicion && (
         <>
           <ModalEdicionSeccion
@@ -140,10 +131,17 @@ function MenuSeccion() {
           />                
         </>
       )}
-
+      {activarModal360 && (
+        <>
+          <ModalAgregarImagen
+            setActivar={setActivarModal360}
+            seccionId={seccionSelect.id}
+          />
+        </>
+      )}
     </div>
-
   );
+
 }
 
 export default MenuSeccion

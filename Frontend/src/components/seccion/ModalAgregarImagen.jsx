@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 
-const ModalAgregarImagen = ({setAbierto, seccionId}) => {
+const ModalAgregarImagen = ({setActivar, seccionId}) => {
+
+    const [error, setError] = useState('');
 
     const [URL,setURL] = useState('');
 
@@ -15,17 +17,16 @@ const ModalAgregarImagen = ({setAbierto, seccionId}) => {
             const {data} = await clientAxios.post(`/imagen3d`, {
                 image: URL,
                 seccioneId: seccionId,
-            })
-            setAbierto(false)
-            return;          
+            })       
         } catch (error) {
             console.log(error);
         }
-        window.reload();
+        setActivar(false)
+        window.location.reload();
     }
 
     const handleNoSubmit = () => {
-        setAbierto(false)
+        setActivar(false)
     }
 
     return (
@@ -46,6 +47,7 @@ const ModalAgregarImagen = ({setAbierto, seccionId}) => {
                             onChange={(e) => setURL(e.target.value)}
                         />
                     </div>
+                    {error && <p className="text-red-500">{error}</p>}
                     <div className="flex justify-center">
                         <div>
                             <button
