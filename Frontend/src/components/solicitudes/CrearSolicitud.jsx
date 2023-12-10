@@ -1,17 +1,28 @@
-import React, {useState } from 'react';
+import React, {useEffect,useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import {useNavigate } from "react-router-dom";
 
 //falta conectarlo con la base de datos
 //falta desarrollar que la caja de texto de la descripcion no se sature
 const CrearSolicitud = () => {
-  const [titulo, settituloBarco] = useState('');
-  const [descripcion, setdescripcion] = useState('');
-  const [remitente, setremitente] = useState('');
+  const [titulo, setTitulo] = useState('');
+  const [descripcion, setDescripcion] = useState('');
   const [fecha, setFecha] = useState('');
   const [error, setError] = useState(''); // Estado para el mensaje de error
-
+  const [idUsuario, setIdUsuario] = useState('');
+  const [usuarios, setUsuarios] = useState('');
   const navigateToBack = useNavigate();
+
+  useEffect(() => {
+
+    const fetchPosts = async () => {
+        const res = await clientAxios.get('/barcos/');
+        setUsuarios(res.data.data);
+      };
+      fetchPosts();
+
+}, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!(titulo && descripcion && remitente)) { // Verifica si el campo de rol está vacío
@@ -23,7 +34,7 @@ const CrearSolicitud = () => {
       await clientAxios.post(`/solicitud`, {
           title: titulo,
           description: descripcion,
-          userId: remitente,
+          userId: idUsuario,
           date:fecha,
       });
   } catch (error) {
@@ -53,6 +64,20 @@ const CrearSolicitud = () => {
         
       <h2 className="text-xl font-semibold mb-4 flex justify-center items-center ">Crear Solicitud</h2>
       <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+          <label htmlFor="nombre" className="block font-medium mb-1">
+            Remitente
+          </label>
+          {usuarios.length > 0 ? (
+            <select value={idUsuario} onChange={(e) => setIdUsuario(e.target.value)} className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500">
+              <option value="" hidden>Selecciona una opción</option>
+              {usuarios.map((usuario) => (
+                    <option value={usuario.id}> {usuario.name}</option>
+              ))}
+            </select>) : (
+              <li>No hay usuarios registrados.</li>
+            )}
+        </div>
         <div className="mb-4">
           <label htmlFor="titulo" className="block font-medium mb-1">
             Titulo
@@ -62,7 +87,7 @@ const CrearSolicitud = () => {
             id="titulo"
             className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
             value={titulo}
-            onChange={(e) => settituloBarco(e.target.value)}
+            onChange={(e) => setTitulo(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -77,7 +102,7 @@ const CrearSolicitud = () => {
             className=" chat-container flex h-40 w-full px-4 py-2 rounded border  focus:border-blue-500 "
             value={descripcion}
 
-            onChange={(e) => setdescripcion(e.target.value)}
+            onChange={(e) => setDescripcion(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
           />
 
@@ -98,21 +123,6 @@ const CrearSolicitud = () => {
         </div>
 
 
-
-  
-
-        <div className="mb-4">
-          <label htmlFor="remitente" className="block font-medium mb-1">
-            Remitente(Nombre de usuario puesto de forma automatica)
-          </label>
-          <input
-            type="text"
-            id="remitente"
-            className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
-            value={remitente}
-            onChange={(e) => setremitente(e.target.value)}
-          />
-        </div>
         
 
 

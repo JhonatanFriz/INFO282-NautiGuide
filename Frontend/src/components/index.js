@@ -12,7 +12,7 @@ import Componente_Menu from './componente/componente_menu';
 import AgregarComponente from './componente/AgregarComponente';
 import Solicitudes from "./Solicitudes";
 import CrearSolicitud from "./solicitudes/CrearSolicitud";
-import RevisarSolicitudes from "./solicitudes/RevisarSolicitdes";
+import RevisarSolicitudes from "./solicitudes/RevisarSolicitudes";
 
 
 export {
