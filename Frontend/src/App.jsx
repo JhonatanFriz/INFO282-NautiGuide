@@ -3,6 +3,7 @@ import {
   Navbar,
   Home,
   User,
+  UserAdmin,
   Paper,
   Barco,
   Auth,
@@ -31,9 +32,11 @@ const App = () => {
           <Router>
             <Routes>
               {/* <Route path="/usuarios" element={<RutaProtegida element = {<User />} />} /> */}
-              <Route path="/usuarios" element={<RutaProtegida><User /></RutaProtegida>} />
+              <Route path="/usuarios" element={<RutaProtegida><UserAdmin /></RutaProtegida>} />
+              <Route path="/new-user" element={<User />} />
               {/* <Route path="/usuarios" element={<User />} /> trampa */}
               {/* <Route path="/usuarios" element={<User />} /> */}
+              {/* <Route path="/usuarios/:id" element={<RutaProtegida><UserDetail /></RutaProtegida>} /> */}
               <Route path="/papers" element={<Paper />} />
               <Route path="/barco" element={<Barco />} />
               <Route path="/auth" element={<Auth />} />
@@ -51,11 +54,6 @@ const App = () => {
           </Router>
         </div>
         <div className="flex flex-col min-h-0">
-          {/* <Router>
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Router> */}
         </div>
       </div>
     </AuthProvider>

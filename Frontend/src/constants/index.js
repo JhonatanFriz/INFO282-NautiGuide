@@ -19,6 +19,10 @@ export const navLinks = [
       title: "Iniciar Sesión",
       ref: "/auth"
     },
+    {
+      title: "Crear cuenta",
+      ref: "/new-user"
+    },  
   ];
 
 export const socialMedia = [

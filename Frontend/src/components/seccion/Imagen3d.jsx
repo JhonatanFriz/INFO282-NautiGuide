@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, createRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import clientAxios from '../config/clienteAxios';
@@ -16,6 +17,7 @@ function Imagen3d({ seccionId,expandedCard }){
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log("Changing image to:", urlImagen);
     const fetchPosts = async () => {
       try{
         const res = await clientAxios.get(`/imagen3d/${seccionId}`);
@@ -64,37 +66,50 @@ function Imagen3d({ seccionId,expandedCard }){
   ]
 
   const panoRef = React.createRef();
-  /*  
-  const [isPanoOpen, setisPanoOpen] = useState(false);
-  const panoRef = React.createRef();
 
-  useEffect(() => {
-    if (expandedCard == null){
-      setisPanoOpen(false);
-      return;
-    }
-    if (urlImagen === null){
-      setisPanoOpen(false);
-      return;
-    }
-    console.log("CHANGED LOCATION");
-    console.log(panoRef);
-    if (panoRef.current) {
-      panoRef.current.setPanorama(urlImagen, {
-        transition: "fade-only",
-        speed: "20rpm",
-        position: { yaw: 0, pitch: 0 },
-      });
-      setisPanoOpen(true);
-    } else {
-      console.error("panoRef.current es null");
-    }
-  }, [urlImagen]);
-  */
+
+  // // /*  
+  // const [isPanoOpen, setisPanoOpen] = useState(false);
+  // const panoRef = React.createRef();
+
+  // useEffect(() => {
+  //   if (expandedCard == null){
+  //     setisPanoOpen(false);
+  //     return;
+  //   }
+  //   if (urlImagen === null){
+  //     setisPanoOpen(false);
+  //     return;
+  //   }
+  //   console.log("CHANGED LOCATION");
+  //   console.log(panoRef);
+  //   if (panoRef.current) {
+  //     panoRef.current.setPanorama(urlImagen, {
+  //       transition: "fade-only",
+  //       speed: "20rpm",
+  //       position: { yaw: 0, pitch: 0 },
+  //     });
+  //     setisPanoOpen(true);
+  //   } else {
+  //     console.error("panoRef.current es null");
+  //   }
+  // }, [urlImagen]);
+  // */
 
   return (
       <div className="App flex justify-center p-10">
-        { (urlImagen != null) && (
+        {urlImagen != null && (
+          <ReactPhotoSphereViewer
+            ref={panoRef}
+            src={urlImagen}
+            container={""}
+            littlePlanet={false}
+            plugins={plugins}
+            height={"80vh"}
+            width={"100%"}
+          ></ReactPhotoSphereViewer>
+        )}
+        {/* { (urlImagen != null) && (
           <>
           <ReactPhotoSphereViewer
             ref={panoRef}
@@ -105,7 +120,8 @@ function Imagen3d({ seccionId,expandedCard }){
             height={"80vh"}
             width={"100%"}
           ></ReactPhotoSphereViewer>
-          </>)}
+          </>)} */}
+          
       </div>
   );
 }

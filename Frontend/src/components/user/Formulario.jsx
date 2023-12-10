@@ -11,10 +11,10 @@ const Formulario = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!(nombre && email && contraseña)) { // Verifica si el campo de rol está vacío
-      setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
+      setError('Por Favor ingrese todos los datos');
       return; // Impide el envío del formulario
     }
-    if (!rol) { // Verifica si el campo de rol está vacío
+    if (!rol) {
       setError('Seleccione un rol antes de enviar el formulario.'); // Establece un mensaje de error
       return; // Impide el envío del formulario
     }
@@ -27,9 +27,13 @@ const Formulario = () => {
         rol: rol,
       });
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 400 && error.response.data.error.includes('correo')) {
+        setError('El correo electrónico ya está registrado.');
+      } else {
+        console.log(error); 
+      }
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
