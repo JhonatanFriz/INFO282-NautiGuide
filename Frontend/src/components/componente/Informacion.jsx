@@ -56,7 +56,7 @@ const informacion = ({componente, seccion, expandedCard}) => {
                                 {componente.name}
                             </h2>
                             <div className='flex flex-col h-screen justify-between p-2 overflow-auto'>
-                                <div className='h-full mb-4 border-2 border-gray-500 bg-white rounded px-2'>
+                                <div className='h-full mb-4 border-4 border-gray-500 bg-white rounded px-2 overflow-auto'>
                                     <h1
                                         style={{
                                             textAlign: 'left',
