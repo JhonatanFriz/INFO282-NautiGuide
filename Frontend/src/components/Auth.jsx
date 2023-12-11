@@ -34,12 +34,10 @@ const Auth = () => {
         console.log(userId, role);
         // login(token, role);
         await new Promise(resolve => setTimeout(resolve, 500));
-        // console.log(response.data.user);
         // Simular un estado de carga de 1 segundo antes de recargar la página
         setTimeout(() => {
-          // Recarga la página después de iniciar sesión
-          // window.location.reload();
-          navigate('/barco');
+        // window.location.reload();
+        navigate('/barco');
         }, 1);
         navigate('/barco');
         

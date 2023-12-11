@@ -18,7 +18,7 @@ import {
   RevisarSolicitudes
 } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./components/AuthContext"; // Reemplaza "path-to" con la ubicación real de tu AuthContext
+import { AuthProvider } from "./components/AuthContext";
 import RutaProtegida from './components/auth/RutaProtegida';
 
 const App = () => {

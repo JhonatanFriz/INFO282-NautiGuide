@@ -2,8 +2,9 @@ import React from 'react';
 import { useAuth } from '../AuthContext';
 
 function BotonBarco({onClickSeleccion,onClickEliminar}) {
-  const { userRole } = useAuth();
-
+  // const { userRole } = useAuth();
+  const userRole = localStorage.getItem('userRole');
+  console.log(userRole);
     return(
         <div className="flex justify-end py-1 ">
             <button
@@ -24,14 +25,7 @@ function BotonBarco({onClickSeleccion,onClickEliminar}) {
           +
         </button>
       )}
-          {/* <button
-            type="submit"
-            className="bg-blue-500 text-white px-1.5 mr-2 rounded"
-            onClick={onClickSeleccion}
-          >
-              +
-          </button> */}
-        {userRole === 'ADMIN' && (
+      {userRole === 'ADMIN' && (
           <button
             type="submit"
             className="bg-green-500 text-white p-1 rounded"

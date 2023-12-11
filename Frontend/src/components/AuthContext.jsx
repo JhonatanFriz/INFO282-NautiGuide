@@ -1,43 +1,3 @@
-// import React, { createContext, useContext, useEffect, useState } from 'react';
-
-// const AuthContext = createContext();
-
-// export const AuthProvider = ({ children }) => {
-//   const [token, setToken] = useState(localStorage.getItem('token') || null);
-//   const [role, setRole] = useState(null); // Nuevo estado para almacenar el rol del usuario
-
-//   const login = (token, role) => {
-//     setToken(token);
-//     setRole(role);
-//     localStorage.setItem('token', token);
-//   };
-
-//   const logout = () => {
-//     setToken(null);
-//     setRole(null);
-//     localStorage.removeItem('token');
-//   };
-
-//   useEffect(() => {
-//     const storedToken = localStorage.getItem('token');
-//     if (storedToken) {
-//       setToken(storedToken);
-//     }
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ token, role, login, logout }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const useAuth = () => {
-//   return useContext(AuthContext);
-// };
-
-
-
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
@@ -52,9 +12,13 @@ export const AuthProvider = ({ children }) => {
     setToken(newToken);
     localStorage.setItem('token', newToken);
     setUserId(newUserId);
+    localStorage.setItem('userId', newUserId);
     setUserRole(newUserRole);
-
+    localStorage.setItem('userRole', newUserRole);
     console.log(newToken);
+    console.log(localStorage);
+    const iddd = localStorage.getItem('userId');
+    console.log(iddd);
   };
 
   const logout = () => {
@@ -62,6 +26,9 @@ export const AuthProvider = ({ children }) => {
     setUserId(null);
     setUserRole(null);
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+    console.log(localStorage);
   };
 
   useEffect(() => {
@@ -69,6 +36,16 @@ export const AuthProvider = ({ children }) => {
     if (storedToken) {
       setToken(storedToken);
     }
+
+    const storedUserRole = localStorage.getItem('userRole');
+    if (storedUserRole) {
+      setUserRole(storedUserRole);
+    }
+
+    const storedUserId = localStorage.getItem('userId');
+  if (storedUserId) {
+    setUserRole(storedUserId);
+  }
   }, []);
 
   return (
@@ -126,52 +103,3 @@ export const useAuth = () => {
 
 
 // ---------------------------------------------------
-
-// import React, { createContext, useContext, useEffect, useState } from 'react';
-// import jwt from 'jsonwebtoken';
-
-// const AuthContext = createContext();
-
-// export const AuthProvider = ({ children }) => {
-//   const [token, setToken] = useState(localStorage.getItem('token') || null);
-//   const [userRole, setUserRole] = useState(null);
-
-//   const login = (newToken) => {
-//     setToken(newToken);
-//     localStorage.setItem('token', newToken);
-
-//     // Decodifica el token para obtener la información
-//     const decodedToken = jwt.decode(token);
-
-//     setUserRole(decodedToken.role);
-
-//     console.log(decodedToken);
-//   };
-
-//   const logout = () => {
-//     setToken(null);
-//     setUserRole(null);
-//     localStorage.removeItem('token');
-//   };
-
-//   useEffect(() => {
-//     const storedToken = localStorage.getItem('token');
-//     if (storedToken) {
-//       setToken(storedToken);
-
-//       // Decodifica el token para obtener la información al cargar la página
-//       const decodedToken = jwtDecode(storedToken);
-//       setUserRole(decodedToken.role);
-//     }
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ token, userRole, login, logout }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const useAuth = () => {
-//   return useContext(AuthContext);
-// };
