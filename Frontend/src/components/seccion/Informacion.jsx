@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import Imagen3d from "./Imagen3d";
 
-function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Boton, ver360,handleAbrirModal }) {
+function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Boton, handlecerrar360Boton, ver360,handleAbrirModal }) {
 
     // Control de imagen 360
     const [urlImagen,setUrlImagen] = useState(null);
@@ -18,7 +18,9 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
             setUrlImagen(null);
         }
         };
-        fetchPosts();
+        if (seccion != null){
+            fetchPosts();
+        }
     }, [expandedCard]);
 
     return(
@@ -64,7 +66,8 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                 ) : (
                     <>{/* SISTEMA SELECCIONADO*/}
                     {!ver360 ? (
-                        <><div className='basis-2/3 flex flex-col px-4'>
+                        <>
+                        <div className='basis-2/3 flex flex-col px-4'>
                             <h2 
                                 style={{
                                     textAlign: 'center',
@@ -113,16 +116,25 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                             </div>
                         </div></>
                     ) : (
-                        <div className='bg-green-500 w-full h-screen flex flex-col px-4'>
+                        <div className=' w-full h-screen flex flex-col px-4'>
                             <Imagen3d
                                 urlImagen = {urlImagen}
                             />
+                            <div className=' flex h-1/8 justify-center items-center pt-8 pb-8'>
+                                <button
+                                    type="submit"
+                                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                                    onClick={handlecerrar360Boton}
+                                >
+                                    Cerrar imagen 360
+                                </button>
+                            </div>
                         </div>
                     )}</>
                 )}
             </div>
             {(expandedCard != null && !ver360) && (
-                <div className='flex h-1/8 justify-center items-center pt-8 pb-8'>
+                <div className=' flex h-1/8 justify-center items-center pt-8 pb-8'>
                     { urlImagen != null ? (
                         <button
                             type="submit"

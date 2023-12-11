@@ -80,10 +80,13 @@ function MenuSeccion() {
   const handle360Boton = () => {
       setVer360(true);
   }
-
+  const handlecerrar360Boton = () => {
+    setVer360(false);
+  }
+  
   return(
     <div className="flex h-screen w-screen">
-      <div className="bg-gray-100 basis-1/4 overflow-auto flex flex-col">
+      <div className="bg-gray-100 basis-1/4 flex flex-col">
         <h2 className="text-l px-2">
           <a
             style={{cursor: 'pointer'}}
@@ -93,6 +96,8 @@ function MenuSeccion() {
             Barcos
           </a>
           /<strong className="font-bold">{barcoNombre}</strong></h2>
+
+
         <div className="flex justify-between px-2">
           <h2 className="text-xl font-semibold mb-2">Sistemas del barco</h2>
           <AgregarSeccionBoton
@@ -106,9 +111,12 @@ function MenuSeccion() {
             editar={editar}
             activarModalEdicion={activarModalEdicion}
             onToggleSelect={onToggleSelect}
+            seccionSelect={seccionSelect}
+            expandedCard={expandedCard}
           />
         </div>
       </div>
+
 
       <div className="bg-gray-200 p-1 flex-1 flex-col justify-center">
         <Informacion
@@ -117,6 +125,7 @@ function MenuSeccion() {
           expandedCard={expandedCard}
           onSeccionClick={handleNavigateSeccion}
           handle360Boton={handle360Boton}
+          handlecerrar360Boton={handlecerrar360Boton}
           ver360={ver360}
           handleAbrirModal={handleAbrirModal}
         />

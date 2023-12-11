@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
-const ComponenteCard = ({ comp, onComponenteClick }) => {
+const ComponenteCard = ({ comp, onComponenteClick, isSelected }) => {
     const cardStyle = {
         cursor: 'pointer', 
     };
 
     return(
         <div 
-            className="bg-white p-2 rounded shadow-md mb-2 grow mr-2"
+            className={`p-2 rounded shadow-md mb-2 grow mr-2
+            ${
+              isSelected ? 'bg-blue-300' : 'bg-white'
+            }`}
             style={cardStyle}
             onClick={() => onComponenteClick(comp)}
         >

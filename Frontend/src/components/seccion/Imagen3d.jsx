@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   ReactPhotoSphereViewer,
   MarkersPlugin,
-  CompassPlugin
 } from "react-photo-sphere-viewer";
 
 
@@ -17,7 +16,6 @@ function Imagen3d({ urlImagen }){
 
   console.log(urlImagen);
   const plugins = [
-      [CompassPlugin],
       [MarkersPlugin, {
         markers: [
           {
@@ -46,14 +44,14 @@ function Imagen3d({ urlImagen }){
     ]
 
     return (
-        <div className="App flex justify-center p-2">
+        <div className="App basis-2/3 flex justify-center p-2">
             <ReactPhotoSphereViewer
                 ref={pSRef}
                 src= {urlImagen}
                 container={""}
                 littlePlanet={false}
                 plugins={plugins}
-                height={"70vh"}
+                height={"65vh"}
                 width={"90%"}
             ></ReactPhotoSphereViewer>
         </div>

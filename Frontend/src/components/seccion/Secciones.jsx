@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import SeccionCard from './SeccionCard';
 
-function Secciones({ barcoId,editar,activarModalEdicion,onToggleSelect }) {
+function Secciones({ barcoId,editar,activarModalEdicion,onToggleSelect, seccionSelect, expandedCard }) {
 
   const [secciones, setSecciones] = useState([]);
 
@@ -23,6 +23,7 @@ function Secciones({ barcoId,editar,activarModalEdicion,onToggleSelect }) {
             <SeccionCard
               seccion={seccion}
               onToggleSelect={() => onToggleSelect(seccion)}
+              isSelected={seccion.id === expandedCard}
             />
             {editar && (
               <>
@@ -37,7 +38,7 @@ function Secciones({ barcoId,editar,activarModalEdicion,onToggleSelect }) {
 
         ))
       ) : (
-        <h1>No hay secciones registradas.</h1>
+        <h1>No hay sistemas registrados.</h1>
       )}
     </div>
   );

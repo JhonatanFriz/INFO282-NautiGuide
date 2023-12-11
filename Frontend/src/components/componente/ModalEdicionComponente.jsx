@@ -98,7 +98,7 @@ const ModalEdicionComponente = ({componenteEditar,setActivarEdicion}) => {
                             type="submit"
                             className="bg-red-500 text-white px-1.5 mr-2 rounded"
                             onClick = {handleEliminar}
-                        > Eliminar barco </button>
+                        > Eliminar componente </button>
                     </div>
                     <div className='flex justify-center'>
                         <div>

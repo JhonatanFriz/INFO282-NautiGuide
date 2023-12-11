@@ -14,13 +14,11 @@ function MenuSeccion() {
 
     const barcoId = barcoSeleccionado.id;
     const barcoNombre = barcoSeleccionado.name;
-    const seccionId = seccion.id
-    const seccionNombre = seccion.name
+    const seccionId = seccion.id;
+    const seccionNombre = seccion.name;
     
 
     // Se manejan las variables
-    const [componente, setComponente] = useState(null);
-    const [show, setShow] = useState(false);
 
     // Se maneja el cambio de página
     const navigateTo = useNavigate();
@@ -55,9 +53,18 @@ function MenuSeccion() {
         setActivarEdicion(true);
         setComponenteEditar(componenteId);
     }
+    
+    const [componenteSelect, setComponenteSelect] = useState(null);
+    const [expandedCard, setExpandedCard] = useState(null);
+    const handleComponenteClick = (comp) => {
+        setComponenteSelect(comp);
+        setExpandedCard((prevExpanded) =>
+          prevExpanded === comp.id ? null : comp.id
+        );
+    }
 
     return(
-        <div className="flex h-screen">
+        <div className="flex h-screen w-screen">
             <div className="bg-gray-100 basis-1/4 flex flex-col">
                 <h2 className="text-l px-2">
                     <a
@@ -77,6 +84,8 @@ function MenuSeccion() {
                     </a>
                     /<strong className="font-bold">{seccionNombre}</strong>
                 </h2>
+
+
                 <div className="flex justify-between px-2">
                     <h2 className="text-xl font-semibold mb-2">Componentes</h2>
                     <AgregarComponenteBoton
@@ -86,22 +95,26 @@ function MenuSeccion() {
                 </div>
                 <div className="p-2 overflow-auto flex-1">
                     <Componentes
-                        setComponente={setComponente}
-                        setShow={setShow}
-                        barcoId={barcoId}
+                        handleComponenteClick={handleComponenteClick}
+                        expandedCard={expandedCard}
                         seccionId={seccionId}
                         editar={editar}
                         activarModalComponente={activarModalComponente}
                     />
                 </div>
             </div>
+
+
             <div className="bg-gray-200 basis-3/4 overflow-auto">
                 <Informacion
-                    componente={componente}
-                    show={show}
+                    seccion={seccion}
+                    componente={componenteSelect}
+                    expandedCard={expandedCard}
                 />
             </div>
             
+
+            {/* MODALES */}
             {activarEdicion && (
             <>
                 <ModalEdicionComponente

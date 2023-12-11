@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import ComponenteCard from './ComponenteCard';
 
-function Componentes({setComponente, setShow, barcoId, seccionId,editar,activarModalComponente}){
+function Componentes({handleComponenteClick, expandedCard, seccionId,editar,activarModalComponente}){
 
     const [comps, setComps] = useState([]);
 
@@ -14,36 +14,30 @@ function Componentes({setComponente, setShow, barcoId, seccionId,editar,activarM
         fetchPosts();
     }, []);
 
-    const handleComponenteClick = (comp) => {
-        setComponente(comp);
-        setShow(true);
-    }
-
     return (
         <div>
-            <ul>
-                {comps.length > 0 ? (
-                    comps.map((comp, index) => (
-                        <li key={index} className="flex items-center">
-                            <ComponenteCard
-                                comp={comp}
-                                onComponenteClick={handleComponenteClick}
-                            />
-                            
-                            {editar ? (
-                                <button type="submit"
-                                    className="bg-green-500 text-white mb-2 p-1 shadow-md rounded"
-                                    onClick={() => activarModalComponente(comp.id)}
-                                >
-                                    ✎
-                                </button>
-                            ) : (<></>)}
-                        </li>
-                    ))
-                ) : (
-                    <li>No hay componentes registrados.</li>
-                )}
-            </ul>
+            {comps.length > 0 ? (
+                comps.map((comp, index) => (
+                    <li key={index} className="flex items-center">
+                        <ComponenteCard
+                            comp={comp}
+                            onComponenteClick={() => handleComponenteClick(comp)}
+                            isSelected={comp.id === expandedCard}
+                        />
+                        
+                        {editar && (
+                            <button type="submit"
+                                className="bg-green-500 text-white mb-2 p-1 shadow-md rounded"
+                                onClick={() => activarModalComponente(comp.id)}
+                            >
+                                ✎
+                            </button>
+                        )}
+                    </li>
+                ))
+            ) : (
+                <li>No hay componentes registrados.</li>
+            )}
         </div>
     )
 }
