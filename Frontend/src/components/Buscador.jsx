@@ -27,7 +27,7 @@ function Buscador() {
     }, []);
   return (
     <div className='bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen p-1 '>
-      <div className='flex text-white  justify-center m-2'>
+      <div className='flex text-gray-950  justify-center m-2'>
         <l1>Buscador:</l1>
         <input
           className='bg-white w-2/3 h-6'
