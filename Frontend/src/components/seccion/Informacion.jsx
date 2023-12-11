@@ -78,7 +78,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                                 {seccion.name}
                             </h2>
                             <div className='flex flex-col h-screen justify-between p-2 overflow-auto'>
-                                <div className='h-full mb-4 border-4 border-gray-500 rounded px-2'>
+                                <div className='h-full mb-4 border-4 border-gray-500 bg-white rounded px-2'>
                                     <h1
                                         style={{
                                             textAlign: 'left',
@@ -120,13 +120,20 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                             <Imagen3d
                                 urlImagen = {urlImagen}
                             />
-                            <div className=' flex h-1/8 justify-center items-center pt-8 pb-8'>
+                            <div className=' flex flex-col h-1/8 justify-center items-center pt-5 pb-8'>
                                 <button
                                     type="submit"
-                                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4"
                                     onClick={handlecerrar360Boton}
                                 >
                                     Cerrar imagen 360
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                                    onClick={handleAbrirModal}
+                                >
+                                    Editar imagen 360
                                 </button>
                             </div>
                         </div>
@@ -146,7 +153,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                     ) : (
                         <button
                             type="submit"
-                            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-600"
                             onClick={handleAbrirModal}
                         >
                             Agregar imagen 360

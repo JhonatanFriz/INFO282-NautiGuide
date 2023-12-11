@@ -56,7 +56,6 @@ export async function updateSeccion_(seccion){
     const { id, name, description, image } = seccion
     try {
         const seccion_update = await Seccion.findByPk(id);
-        console.log(seccion_update)
         seccion_update.name = name;
         seccion_update.description = description;
         seccion_update.image = image;

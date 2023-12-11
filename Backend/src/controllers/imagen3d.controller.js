@@ -30,10 +30,10 @@ export async function deleteImagen3d(req, res) {
 
 export async function updateImagen3d(req, res) {
     const { id } = req.params;
-    const { url, seccionId } = req.body;
+    const { image, seccionId } = req.body;
     const imagen3d = { 
         id,
-        url,
+        image,
         seccionId
     }
     updateImagen3d_(imagen3d).then(msg=> {

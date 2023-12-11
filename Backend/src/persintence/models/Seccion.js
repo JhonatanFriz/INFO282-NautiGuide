@@ -15,7 +15,7 @@ export const Seccion = sequelize.define(
         type: DataTypes.STRING,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(5000),
       },
       image: {
         type: DataTypes.STRING,

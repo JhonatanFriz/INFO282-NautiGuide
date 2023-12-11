@@ -37,12 +37,12 @@ export async function getImagen3d_(idSeccion){
 }
 
 export async function updateImagen3d_(imagen){
-    const { id, url } = imagen
+    const { id, image } = imagen
     try {
-         
+        console.log(id);
+        console.log(image);
         const imagen3d_update = await Imagen3d.findByPk(id);
-        console.log(imagen3d_update)
-        imagen3d_update.url = url;
+        imagen3d_update.image = image;
         await imagen3d_update.save();
         return "se modifico correctamente" 
     } catch (error) {
