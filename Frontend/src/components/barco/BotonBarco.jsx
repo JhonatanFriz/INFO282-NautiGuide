@@ -1,6 +1,8 @@
 import React from 'react';
+import { useAuth } from '../AuthContext';
 
 function BotonBarco({onClickSeleccion,onClickEliminar}) {
+  const { userRole } = useAuth();
 
     return(
         <div className="flex justify-end py-1 ">
@@ -12,13 +14,24 @@ function BotonBarco({onClickSeleccion,onClickEliminar}) {
           >
             Favoritos ✪
           </button>
-          <button
+          {/* Mostrar el botón "+" solo si el usuario tiene el rol "ADMIN" */}
+      {userRole === 'ADMIN' && (
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-1.5 mr-2 rounded"
+          onClick={onClickSeleccion}
+        >
+          +
+        </button>
+      )}
+          {/* <button
             type="submit"
             className="bg-blue-500 text-white px-1.5 mr-2 rounded"
             onClick={onClickSeleccion}
           >
               +
-          </button>
+          </button> */}
+        {userRole === 'ADMIN' && (
           <button
             type="submit"
             className="bg-green-500 text-white p-1 rounded"
@@ -26,6 +39,7 @@ function BotonBarco({onClickSeleccion,onClickEliminar}) {
           >
               ✎
           </button>
+        )}
       </div>
       );
       } 

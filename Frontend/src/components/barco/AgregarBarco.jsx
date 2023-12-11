@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function AgregarBarco() {
 
-    
   const [nombre, setNombreBarco] = useState('');
   const [image, setImage] = useState('');
   const [modelo, setModelo] = useState('');

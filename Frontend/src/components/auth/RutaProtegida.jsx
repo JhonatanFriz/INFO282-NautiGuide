@@ -3,7 +3,7 @@ import { Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 
 const RutaProtegida = ({ children }) => {
-  const { token } = useAuth();
+  const { token, userRole } = useAuth();
 
   // Si el usuario está autenticado, renderiza la ruta, de lo contrario, redirige a la página de inicio de sesión
   return token ? children : <Navigate to="/auth" replace={true} />;

@@ -11,7 +11,6 @@ const FormularioUser = ({ onRegistro }) => {
     const [error, setError] = useState(''); // Estado para el mensaje de error
     const [mensajeExito, setMensajeExito] = useState('');
     const [mostrarExito, setMostrarExito] = useState(false);
-    const [esPrimerUsuario, setEsPrimerUsuario] = useState(true);
     const [usuarios, setUsuarios] = useState([]);
     useEffect(() => {
         const fetchPosts = async () => {
@@ -26,16 +25,6 @@ const FormularioUser = ({ onRegistro }) => {
       setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
       return;
     }
-    // if(esPrimerUsuario){
-    //     setRol('ADMIN');
-    //     esPrimerUsuario = false;
-    // } else{
-    //     setRol('USUARIO');
-    // }
-    // if (!rol) { // Verifica si el campo de rol está vacío
-    //   setError('Seleccione un rol antes de enviar el FormularioUser.'); // Establece un mensaje de error
-    //   return; // Impide el envío del FormularioUser
-    // }
 
     try {
         if (usuarios.length > 0){
@@ -60,26 +49,7 @@ const FormularioUser = ({ onRegistro }) => {
             setMostrarExito(true);
             onRegistro(data);
         }
-    //     const { data } = await clientAxios.post(`/users`, {
-    //     name: nombre,
-    //     mail: email,
-    //     password: contraseña,
-    //     // rol: rol,
-    //     rol: esPrimerUsuario ? 'ADMIN' : 'USUARIO',
-    //   });
-    //   setNombre('');
-    //   setEmail('');
-    //   setContraseña('');
-    // //   setRol('');
-    //   setError('');
-    //   setMensajeExito('Cuenta creada exitosamente.');
-    //   setMostrarExito(true);
-    //   onRegistro(data);
-    //   if (esPrimerUsuario) {
-    //     setEsPrimerUsuario(false);
-
-    //     // esPrimerUsuario = false;
-    //   }
+    //    
     } catch (error) {
         if (error.response && error.response.status === 400 && error.response.data.error.includes('correo')) {
             setError('El correo electrónico ya está registrado.');

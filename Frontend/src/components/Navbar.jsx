@@ -5,7 +5,7 @@ import { close, menu } from "../assets";
 import "./estilos.css";
 
 function Navbar() {
-  const { token, logout } = useAuth();
+  const { token, logout, userRole } = useAuth();
   const [active, setActive] = useState(window.location.pathname);
   const [toggle, setToggle] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -52,7 +52,7 @@ function Navbar() {
               </a>
             ) : (
               // Renderiza "Registro de Usuario" solo si el usuario está autenticado
-              nav.title === "Registro de Usuario" && !token ? null : (
+              nav.title === "Registro de Usuario" && !token  ? null : (
                 <a href={nav.ref}>{nav.title}</a>
               )
             )}
