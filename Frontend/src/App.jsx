@@ -42,7 +42,7 @@ const App = () => {
               <Route path="/auth" element={<Auth />} />
               <Route path="/:barcoId/menuseccion" element={<MenuSeccion />} />
               <Route path="/:barcoId/agregar_seccion" element={<AgregarSeccion />} />
-              <Route path="/agregar_barco" element={<AgregarBarco />} />
+              <Route path="/agregar_barco" element={<RutaProtegida><AgregarBarco /></RutaProtegida>}/>
               <Route path="/Buscador" element={<Buscador />} />
               <Route path="/:barcoId/:seccionId/componente" element={<Componente_Menu />} />
               <Route path="/:barcoId/:seccionId/agregar_componente" element={<AgregarComponente />} />
