@@ -39,8 +39,11 @@ const RevisarSolicitudes = () => {
   return (
     <div  className="bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen w-screen ">
       <div className="flex h-4/5 ">
-          <div className=" w-1/4 bg-gray-100 p-4">
+          <div className=" w-1/4 bg-gray-100 p-4 ">
+            <div>
             <h2 className="text-xl font-semibold mb-4">Solicitudes Registrados</h2>
+            </div>
+            <div  className="h-5/6 overflow-auto">
             <ul>
               {solicitudes.length > 0 ? (
                 solicitudes.map((solicitud, index) => (
@@ -50,6 +53,7 @@ const RevisarSolicitudes = () => {
                 <li>No hay solicitudes registrados.</li>
               )}
             </ul>
+            </div>
           </div>
           <div>
             {abierto && (
@@ -65,6 +69,7 @@ const RevisarSolicitudes = () => {
                 </ul>
               </div>
                )}
+               
           </div>
               
       </div>
