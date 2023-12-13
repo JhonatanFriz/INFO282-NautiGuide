@@ -9,7 +9,6 @@ const app = express();
 
 // Import routes
 import userRoutes from "./routes/users.routes.js";
-import paperRoutes from "./routes/papers.routes.js";
 import barcoRoutes from "./routes/barco.routes.js";
 import seccionRoutes from "./routes/seccion.routes.js";
 import componenteRoutes from "./routes/componente.routes.js";
@@ -35,7 +34,6 @@ app.use(
 
 // Routes
 app.use("/api/users", userRoutes);
-app.use("/api/papers", paperRoutes);
 app.use("/api/barco", barcoRoutes);
 app.use("/api/seccion", seccionRoutes);
 app.use("/api/componente", componenteRoutes);

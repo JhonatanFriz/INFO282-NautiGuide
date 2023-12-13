@@ -4,7 +4,6 @@ import {
   Home,
   User,
   UserAdmin,
-  Paper,
   Barco,
   Auth,
   MenuSeccion,
@@ -33,7 +32,6 @@ const App = () => {
           <Routes>
             <Route path="/usuarios" element={<RutaProtegida requiredRole="ADMIN"><UserAdmin /></RutaProtegida>} />
             <Route path="/new-user" element={<User />} />
-            <Route path="/papers" element={<Paper />} />
             <Route path="/barco" element={<Barco />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/:barcoId/menuseccion" element={<MenuSeccion />} />

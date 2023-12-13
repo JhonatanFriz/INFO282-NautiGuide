@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import User from "./User";
 import UserAdmin from "./UserAdmin";
-import Paper from "./Paper";
 import Auth from "./Auth";
 import Barco from "./Barco";
 import MenuSeccion from "./seccion/MenuSeccion";
@@ -21,7 +20,6 @@ export {
     Home,
     User,
     UserAdmin,
-    Paper,
     Auth,
     Barco,
     MenuSeccion,

@@ -1,5 +1,4 @@
 import { User } from "../models/User.js"
-import { Paper } from "../models/Paper.js";
 
 import bcrypt from 'bcryptjs'
 
@@ -77,30 +76,17 @@ export async function updateUser_(user){
 
 export async function deleteUser_(id){
     try {
-        await Paper.destroy({
-        where: {
-            userId: id,
-        },
-        });
+        // // await Paper.destroy({
+        // // where: {
+        // //     userId: id,
+        // // },
+        // });
         await User.destroy({
             where: {
             id,
         },
         });
         return "Se elimino el usuario correctamente.. "
-    } catch (error) {
-        throw new Error("Sucedio un error......")
-    }
-}
-
-
-export async function getUserPapers_(id){
-    try {
-        const tasks = await Paper.findAll({
-            attributes: ["id", "name", "date", "description", "userId"],
-            where: { userId: id },
-          });
-          return tasks;
     } catch (error) {
         throw new Error("Sucedio un error......")
     }
