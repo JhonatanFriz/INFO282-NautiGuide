@@ -41,32 +41,6 @@ const AgregarSeccion = () => {
         }
       };
 
-      /*
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-            if (esParaBarco === 'UNICO') {
-                await clientAxios.post(`/seccion`, {
-                    name: nombre,
-                    description: description,
-                    image: image,
-                    barcoId: barcoId,
-                });
-            } else {
-                await clientAxios.post(`/seccion`, {
-                    name: nombre,
-                    description: description,
-                    image: image,
-                });
-            }
-
-        } catch (error) {
-          console.log(error);
-        }
-        navigateToBack(`/barco:${barcoId}/menuseccion`, {state: {barcoId} });
-      };
-      */
 
       return (
         <div className="bg-blue-950 h-screen flex justify-center items-center ">
@@ -111,7 +85,7 @@ const AgregarSeccion = () => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="rol" className="block font-medium mb-1">
-                            Es para el barco
+                            ¿Es exclusivo del barco?
                         </label>
                         <select
                             id="esParaBarco"
