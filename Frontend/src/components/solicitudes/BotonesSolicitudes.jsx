@@ -2,7 +2,7 @@ import React from 'react';
 // import { useAuth } from '../AuthContext';
 
 const BotonesSolicitudes = ({onClickSeleccion,onClickSeleccion2}) => {
-      // const { userRole } = useAuth();
+      const userRole = localStorage.getItem('userRole');
       return(
             <div className=' flex justify-around mt-10' >
             
@@ -12,6 +12,7 @@ const BotonesSolicitudes = ({onClickSeleccion,onClickSeleccion2}) => {
                   >Crear Solicitud  
             </button>
 
+            
             <button type="submit" className="bg-gradient-to-b from-green-600 from-5% to-green-400 to-95% text-white py-4 px-12 rounded"
                   onClick={onClickSeleccion2}
                   >Revisar Solicitudes  

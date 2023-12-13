@@ -6,7 +6,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
 
     // Control de imagen 360
     const [urlImagen,setUrlImagen] = useState(null);
-
+    const userRole = localStorage.getItem('userRole');
     useEffect(() => {
         const fetchPosts = async () => {
         const res = await clientAxios.get(`/imagen3d/${seccion.id}`);
@@ -78,7 +78,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                                 {seccion.name}
                             </h2>
                             <div className='flex flex-col h-screen justify-between p-2 overflow-auto'>
-                                <div className='h-full mb-4 border-4 border-gray-500 bg-white rounded px-2'>
+                                <div className='h-full mb-4 border-4 border-gray-500 bg-white rounded px-2 overflow-auto'>
                                     <h1
                                         style={{
                                             textAlign: 'left',
@@ -128,6 +128,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                                 >
                                     Cerrar imagen 360
                                 </button>
+                                {userRole === 'ADMIN' && (
                                 <button
                                     type="submit"
                                     className="bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-600"
@@ -135,6 +136,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                                 >
                                     Editar imagen 360
                                 </button>
+                                )}
                             </div>
                         </div>
                     )}</>
@@ -158,6 +160,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                         >
                             Agregar imagen 360
                         </button>
+                        
                     )}
                 </div>
             )}
