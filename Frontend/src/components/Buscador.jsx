@@ -27,19 +27,22 @@ function Buscador() {
     }, []);
   return (
 <div className='bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen p-1 '>
-      <div className='flex text-white  justify-center m-2'>
+      <div className='flex w-full items-center justify-center m-2'>
+        <div className='flex text-white items-center justify-center m-2'>
         <l1>Buscador:</l1>
+        </div>
+        <div className='flex w-2/3 text-black  justify-left m-2'>
         <input
-          className='bg-white w-2/3 h-6'
+          className='bg-white w-full h-6'
           type="text"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
           placeholder="🔍︎ Escriba aqui ..."
         /> 
+        </div>
       </div>
       <div className='flex h-3/4 justify-center overflow-auto'>
-        <div className='w-2/3 overflow-auto'>
-        {busqueda.length > 0 ? (
+        <div className='w-2/3 overflow-auto'>        {busqueda.length > 0 ? (
           <ul>
           {barcos
             .filter((barco) => barco.name.toLowerCase().includes(busqueda.toLowerCase() ) || barco.model.toLowerCase().includes(busqueda.toLowerCase()))
