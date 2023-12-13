@@ -13,8 +13,8 @@ const ModalEdicionSeccion = ({seccionEditar,setActivarEdicion}) => {
             setNombre(res.data.data.name);
             setDescription(res.data.data.description);
             setImage(res.data.data.image);
-          };
-          fetchPosts();
+        };
+        fetchPosts();
     }, [])
 
     const handleEliminar = () => {
@@ -37,9 +37,9 @@ const ModalEdicionSeccion = ({seccionEditar,setActivarEdicion}) => {
         }
         try {
             const { data } = await clientAxios.put(`/seccion/${seccionEditar}`, {
-              name: nombre,
-              description: description,
-              image: image,
+            name: nombre,
+            description: description,
+            image: image,
             });
             console.log(data)
         } catch (error) {

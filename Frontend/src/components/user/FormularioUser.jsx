@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import clientAxios from '../config/clienteAxios';
 import { useNavigate } from 'react-router-dom';
-// ------------------------------------------------------
 const FormularioUser = ({ onRegistro }) => {
     const navigate = useNavigate();
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
-    // const [rol, setRol] = useState('');
     const [error, setError] = useState(''); // Estado para el mensaje de error
     const [mensajeExito, setMensajeExito] = useState('');
     const [mostrarExito, setMostrarExito] = useState(false);
@@ -32,7 +30,6 @@ const FormularioUser = ({ onRegistro }) => {
                 name: nombre,
                 mail: email,
                 password: contraseña,
-                // rol: rol,
                 rol : 'USUARIO',
             });
             setMensajeExito('Cuenta creada exitosamente.');
@@ -58,7 +55,6 @@ const FormularioUser = ({ onRegistro }) => {
           }
     }
     navigate('/auth');
-    // window.location.reload();
   };
 
 

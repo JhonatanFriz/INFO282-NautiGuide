@@ -14,21 +14,15 @@ const RevisarSolicitudes = () => {
     setAbierto (true);
 }
 
-
   useEffect (() => {
-
-
 
       const fetchPosts = async () => {
           const res = await clientAxios.get('/solicitud/');
           setSolicitudes(res.data.data);
           setFullSolicitudes(res.data.data);
         };
-        fetchPosts();
-
-      
+        fetchPosts();   
   }, [])
-
 
   return (
     <div  className="h-screen ">
@@ -59,7 +53,7 @@ const RevisarSolicitudes = () => {
                     )}
                 </ul>
               </div>
-               )}
+              )}
           </div>
               
       </div>

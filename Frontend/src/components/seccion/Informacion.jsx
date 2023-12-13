@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import Imagen3d from "./Imagen3d";
+import { useAuth } from '../AuthContext';
 
 function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Boton, handlecerrar360Boton, ver360,handleAbrirModal }) {
 
     // Control de imagen 360
     const [urlImagen,setUrlImagen] = useState(null);
-    const userRole = localStorage.getItem('userRole');
+    const { userRole } = useAuth();
     useEffect(() => {
         const fetchPosts = async () => {
         const res = await clientAxios.get(`/imagen3d/${seccion.id}`);
@@ -153,6 +154,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                             Ver imagen 360
                         </button>
                     ) : (
+                        userRole === 'ADMIN' && (
                         <button
                             type="submit"
                             className="bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-600"
@@ -160,7 +162,7 @@ function Informacion ({ barco, seccion, expandedCard, onSeccionClick,handle360Bo
                         >
                             Agregar imagen 360
                         </button>
-                        
+                        )
                     )}
                 </div>
             )}

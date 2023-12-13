@@ -3,8 +3,7 @@ import clientAxios from '../config/clienteAxios';
 import {useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
 
-//falta conectarlo con la base de datos
-//falta desarrollar que la caja de texto de la descripcion no se sature
+
 const CrearSolicitud = () => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');

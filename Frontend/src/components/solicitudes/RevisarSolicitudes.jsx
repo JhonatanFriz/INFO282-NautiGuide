@@ -14,11 +14,7 @@ const RevisarSolicitudes = () => {
     setSolicitud (id);
     setAbierto (true);
   }
-
-
   useEffect (() => {
-
-
 
       const fetchPosts = async () => {
           const res = await clientAxios.get('/solicitud/');
@@ -31,10 +27,7 @@ const RevisarSolicitudes = () => {
         setUsuarios(res.data.data);
       };
       fetchPosts2();
-
-      
   }, [])
-
 
   return (
     <div  className="bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen w-screen ">
@@ -68,10 +61,13 @@ const RevisarSolicitudes = () => {
                     )}
                 </ul>
               </div>
+<<<<<<< HEAD
                )}
                
+=======
+              )}
+>>>>>>> d60aa419197ac6db5c1d4cabbae8ef4061c34089
           </div>
-              
       </div>
     </div>
     );  
