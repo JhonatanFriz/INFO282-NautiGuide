@@ -37,9 +37,9 @@ const RevisarSolicitudes = () => {
 
 
   return (
-    <div  className="h-screen ">
+    <div  className="bg-gradient-to-b from-sky-800 from-5% to-sky-200 to-95% h-screen w-screen ">
       <div className="flex h-4/5 ">
-          <div className="w-1/3 bg-gray-100 p-4">
+          <div className=" w-1/4 bg-gray-100 p-4">
             <h2 className="text-xl font-semibold mb-4">Solicitudes Registrados</h2>
             <ul>
               {solicitudes.length > 0 ? (
@@ -53,7 +53,7 @@ const RevisarSolicitudes = () => {
           </div>
           <div>
             {abierto && (
-              <div className="ml-4 relative bg-white p-4 rounded-md border-8  justify-center items-center">
+              <div className="absolute ml-4 bg-white p-4 rounded-md border-8  justify-center items-center">
                 <ul>
                     {abierto ? (
                       
