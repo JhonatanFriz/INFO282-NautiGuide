@@ -2,6 +2,7 @@ import React, {useEffect,useState } from 'react';
 import clientAxios from '../config/clienteAxios';
 import {useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
+import { useAuth } from '../AuthContext';
 
 
 const CrearSolicitud = () => {
@@ -9,10 +10,8 @@ const CrearSolicitud = () => {
   const [descripcion, setDescripcion] = useState('');
   const [fecha, setFecha] = useState('');
   const [error, setError] = useState(''); // Estado para el mensaje de error
-  const [idUsuario, setIdUsuario] = useState('');
-  const [usuarios, setUsuarios] = useState('');
   const navigateToBack = useNavigate();
-
+  const { userId, userName } = useAuth();
   useEffect(() => {
     const obtenerFechaHoraActual = () => {
       const ahora = new Date();
@@ -22,15 +21,6 @@ const CrearSolicitud = () => {
 
     // Establecer la fecha y hora actual como valor inicial
     setFecha(obtenerFechaHoraActual());
-
-
-    const fetchPosts = async () => {
-        const res = await clientAxios.get('/users/');
-        setUsuarios(res.data.data);
-      };
-      fetchPosts();
-      
-
   }, [])
 
   const handleInputChange = (e) => {
@@ -45,7 +35,7 @@ const CrearSolicitud = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!(titulo && descripcion && idUsuario)) { // Verifica si el campo de rol está vacío
+    if (!(titulo && descripcion)) { // Verifica si el campo de rol está vacío
       setError('Por Favor ingrese todos los datos'); // Establece un mensaje de error
       return; // Impide el envío del formulario
     }
@@ -54,7 +44,7 @@ const CrearSolicitud = () => {
       await clientAxios.post(`/solicitud`, {
           title: titulo,
           description: descripcion,
-          userId: idUsuario,
+          userId: localStorage.getItem('userId'),
           date:fecha,
       });
   } catch (error) {
@@ -63,6 +53,7 @@ const CrearSolicitud = () => {
 
 
   };
+
 
 
   return (
@@ -77,15 +68,13 @@ const CrearSolicitud = () => {
             <label htmlFor="nombre" className="block font-medium mb-1">
               Remitente
             </label>
-            {usuarios.length > 0 ? (
-              <select value={idUsuario} onChange={(e) => setIdUsuario(e.target.value)} className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500">
-                <option value="" hidden>Selecciona una opción</option>
-                {usuarios.map((usuario) => (
-                      <option value={usuario.id}> {usuario.name}</option>
-                ))}
-              </select>) : (
-                <li>No hay usuarios registrados.</li>
-              )}
+            <input
+              type="text" // Utilizamos type "text" para almacenar como cadena
+              id="remitente"
+              className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
+              value={userName}
+              disabled
+            />
           </div>
 
 
@@ -150,8 +139,4 @@ const CrearSolicitud = () => {
     </div>
   );
 };
- export default CrearSolicitud ;
-
-
-
-
+export default CrearSolicitud ;

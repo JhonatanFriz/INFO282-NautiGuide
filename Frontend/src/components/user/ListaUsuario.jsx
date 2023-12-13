@@ -12,8 +12,6 @@ function ListaUsuarios() {
             setUsuario(res.data.data);
           };
           fetchPosts();
-
-          console.log(usuarios)
     }, [])
 
     const[editar, setEditar] = useState(false);

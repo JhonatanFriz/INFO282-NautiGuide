@@ -21,15 +21,12 @@ const Auth = () => {
       });
 
       if (response.data && response.data.token) {
-        // const { token, role } = response.data;
-        const { userId, role } = response.data;
+        const { userId, role} = response.data;
         const userInfoResponse = await clientAxios.get(`/users/${userId}`);
-        const userInfo = userInfoResponse.data;
-        // localStorage.setItem('token', response.data.token);
-        login(response.data.token, userId, role);
-        // login(token, role);
+        const userName = userInfoResponse.data.data.name;
+        login(response.data.token, userId, role, userName);
         await new Promise(resolve => setTimeout(resolve, 500));
-        // Simular un estado de carga de 1 segundo antes de recargar la página
+        // Simular un estado de carga de 1/2 segundo antes de recargar la página
         setTimeout(() => {
         // window.location.reload();
         navigate('/barco');

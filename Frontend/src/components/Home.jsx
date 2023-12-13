@@ -48,7 +48,7 @@ const Home = () => {
               {/* Eliminamos el fondo azul */}
               <div className="w-full flex justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1] text-center">
                 <h2 className="text-focus-in font-poppins font-semibold xs:text-[48px] text-[40px] xs:leading-[76.8px] leading-[66.8px] w-full " style={estiloTexto}>
-                  Manuales Interactivos de Embarcaciones
+                  Manuales Interactivos de Embarcaciones  "NautiGuide"
                 </h2>
               </div>
               <div className="flex flex-wrap sm:justify-center justify-center w-full feedback-container relative z-[1] ">

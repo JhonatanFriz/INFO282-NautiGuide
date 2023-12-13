@@ -32,7 +32,6 @@ const Barco = () => {
     const navigateTo = useNavigate();
 
     const handleNavigateBarco = () => {
-        console.log(barcoSeleccionado)
         navigateTo(`/barco:${barcoId}/menuseccion`, {state: {barcoSeleccionado} });
     };
     const handleNavigateAgregar = () => {

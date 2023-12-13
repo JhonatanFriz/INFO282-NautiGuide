@@ -7,25 +7,28 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [userRole, setUserRole] = useState(localStorage.getItem('userRole') || null);
   const [userId, setUserId] = useState(localStorage.getItem('userId') || null);
+  const [userName, setUserName] = useState(localStorage.getItem('userName') || null);
 
-  const login = (newToken, newUserId, newUserRole) => {
+  const login = (newToken, newUserId, newUserRole, newUserName) => {
     setToken(newToken);
     setUserId(newUserId);
     setUserRole(newUserRole);
+    setUserName(newUserName);
     localStorage.setItem('token', newToken);
     localStorage.setItem('userId', newUserId);
     localStorage.setItem('userRole', newUserRole);
-    console.log(newUserRole);
-    console.log(localStorage);
+    localStorage.setItem('userName', newUserName);;
   };
 
   const logout = () => {
     setToken(null);
     setUserId(null);
     setUserRole(null);
+    setUserName(null);
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('userName');
   };
 
   useEffect(() => {
@@ -40,13 +43,17 @@ export const AuthProvider = ({ children }) => {
     }
 
     const storedUserId = localStorage.getItem('userId');
-  if (storedUserId) {
+    if (storedUserId) {
     setUserId(storedUserId);
-  }
+    }
+    const storedUserName = localStorage.getItem('userName');
+    if (storedUserName) {
+    setUserId(storedUserName);
+    }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, userId, userRole, login, logout }}>
+    <AuthContext.Provider value={{ token, userId, userRole, userName, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
