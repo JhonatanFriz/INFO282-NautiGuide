@@ -1,7 +1,6 @@
 import { User } from "../persintence/models/User.js";
-import { Paper } from "../persintence/models/Paper.js";
 
-import { getUsers_, createUser_, getUser_, updateUser_, deleteUser_, getUserPapers_} from "../persintence/repository/user.repository.js";
+import { getUsers_, createUser_, getUser_, updateUser_, deleteUser_} from "../persintence/repository/user.repository.js";
 
 export function getUsers(req, res) {
   getUsers_().then(data => {
@@ -92,13 +91,4 @@ export  function deleteUser(req, res) {
   })
     
   
-}
-
-export async function getUserPapers(req, res) {
-  const { id } = req.params;
-  getUserPapers_(id).then(data => {
-    res.status(200).json({status : true, data : data})
-  }, error => {
-    res.status(400).json({status : false, error : error.message })
-  })
 }

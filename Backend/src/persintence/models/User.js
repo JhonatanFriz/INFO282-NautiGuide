@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { Paper } from "./Paper.js";
 import { Barco } from "./Barco.js";
 import { Solicitud } from "./Solicitud.js";
 

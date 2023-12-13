@@ -4,7 +4,6 @@ import {
   Home,
   User,
   UserAdmin,
-  Paper,
   Barco,
   Auth,
   MenuSeccion,
@@ -33,7 +32,6 @@ const App = () => {
           <Routes>
             <Route path="/usuarios" element={<RutaProtegida requiredRole="ADMIN"><UserAdmin /></RutaProtegida>} />
             <Route path="/new-user" element={<User />} />
-            <Route path="/papers" element={<Paper />} />
             <Route path="/barco" element={<Barco />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/:barcoId/menuseccion" element={<MenuSeccion />} />
@@ -43,8 +41,8 @@ const App = () => {
             <Route path="/:barcoId/:seccionId/componente" element={<Componente_Menu />} />
             <Route path="/:barcoId/:seccionId/agregar_componente" element={<RutaProtegida requiredRole="ADMIN"><AgregarComponente /></RutaProtegida>} />
             <Route path="/solicitudes" element={<Solicitudes />} />
-            <Route path="/crear_solicitud" element={<CrearSolicitud />} />
-            <Route path="/revisar_solicitudes" element={<RevisarSolicitudes />} />
+            <Route path="/crear_solicitud" element={<RutaProtegida requiredRole="USUARIO"><CrearSolicitud /></RutaProtegida>} />
+            <Route path="/revisar_solicitudes" element={<RutaProtegida requiredRole="ADMIN"><RevisarSolicitudes /></RutaProtegida>} />
             <Route path="/" element={<Home />} />
           </Routes>
           </Router>

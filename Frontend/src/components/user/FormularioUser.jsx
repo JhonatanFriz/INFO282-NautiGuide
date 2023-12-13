@@ -74,7 +74,7 @@ const FormularioUser = ({ onRegistro }) => {
   return (
     <div className="bg-white w-1/3 h-3/4 p-4 shadow-md border-8 mr-4 flex flex-col justify-center items-center">
       <div className= "w-full">
-        <h2 className="text-xl font-semibold mb-4">FormularioUser de Registro</h2>
+        <h2 className="text-xl font-semibold mb-4">Creación cuenta de usuario</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">
             <label htmlFor="nombre" className="block font-medium mb-1">
@@ -112,19 +112,6 @@ const FormularioUser = ({ onRegistro }) => {
               onChange={(e) => setContraseña(e.target.value)}
             />
           </div>
-          {/* <div className="mb-4">
-            <label htmlFor="rol" className="block font-medium mb-1">
-              Rol
-            </label>
-            <select
-              id="rol"
-              className="w-full px-4 py-2 rounded border focus:outline-none focus:border-blue-500"
-              value={rol}
-              onChange={(e) => setRol(e.target.value)}
-            >
-              <option value="USUARIO">USUARIO</option>
-            </select>
-          </div> */}
           {error && <p className="text-red-500">{error}</p>} {/* Muestra el mensaje de error si existe */}
           {mensajeExito && <p className="text-green-500">{mensajeExito}</p>}
           <button
