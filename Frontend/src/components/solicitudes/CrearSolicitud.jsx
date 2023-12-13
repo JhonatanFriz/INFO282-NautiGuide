@@ -91,7 +91,7 @@ const CrearSolicitud = () => {
 
         <div className="mb-4">
           <label htmlFor="titulo" className="block font-medium mb-1">
-            Titulo
+            Título
           </label>
           <input
             type="text"
