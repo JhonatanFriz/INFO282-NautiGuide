@@ -61,12 +61,8 @@ const RevisarSolicitudes = () => {
                     )}
                 </ul>
               </div>
-<<<<<<< HEAD
                )}
                
-=======
-              )}
->>>>>>> d60aa419197ac6db5c1d4cabbae8ef4061c34089
           </div>
       </div>
     </div>
