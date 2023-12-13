@@ -64,7 +64,6 @@ const Auth = () => {
           <p className="ml-2">Cargando...</p>
         </div>
       )}
-      {/* {token && <button onClick={handleLogout}>Cerrar Sesión</button>} */}
     </div>
   );
 };
