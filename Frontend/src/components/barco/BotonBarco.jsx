@@ -2,8 +2,7 @@ import React from 'react';
 import { useAuth } from '../AuthContext';
 
 function BotonBarco({onClickSeleccion,onClickEliminar}) {
-  // const { userRole } = useAuth();
-  const userRole = localStorage.getItem('userRole');
+  const { userRole } = useAuth();
     return(
         <div className="flex justify-end py-1 ">
             <button

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '../AuthContext';
 
 function AgregarSeccionBoton({onClickAgregar,onClickEditar}) {
-    const userRole = localStorage.getItem('userRole');
+    const { userRole } = useAuth();
     return (
         
         <div className="flex justify-end py-1">

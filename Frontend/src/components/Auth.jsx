@@ -26,7 +26,7 @@ const Auth = () => {
         const { userId, role } = response.data;
         const userInfoResponse = await clientAxios.get(`/users/${userId}`);
         const userInfo = userInfoResponse.data;
-        localStorage.setItem('token', response.data.token);
+        // localStorage.setItem('token', response.data.token);
         login(response.data.token, userId, role);
         // login(token, role);
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -53,7 +53,7 @@ const Auth = () => {
   
   const handleLogout = () => {
     logout();
-    navigate('/auth');
+    // navigate('/auth');
   };
 
   return (

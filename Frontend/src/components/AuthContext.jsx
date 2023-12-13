@@ -5,18 +5,18 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
-  const [userRole, setUserRole] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const [userRole, setUserRole] = useState(localStorage.getItem('userRole') || null);
+  const [userId, setUserId] = useState(localStorage.getItem('userId') || null);
 
   const login = (newToken, newUserId, newUserRole) => {
     setToken(newToken);
-    localStorage.setItem('token', newToken);
     setUserId(newUserId);
-    localStorage.setItem('userId', newUserId);
     setUserRole(newUserRole);
+    localStorage.setItem('token', newToken);
+    localStorage.setItem('userId', newUserId);
     localStorage.setItem('userRole', newUserRole);
-    // const iddd = localStorage.getItem('userId');
-    // console.log(iddd);
+    console.log(newUserRole);
+    console.log(localStorage);
   };
 
   const logout = () => {
@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('userRole');
-    // console.log(localStorage);
   };
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
     const storedUserId = localStorage.getItem('userId');
   if (storedUserId) {
-    setUserRole(storedUserId);
+    setUserId(storedUserId);
   }
   }, []);
 
