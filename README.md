@@ -46,6 +46,7 @@ VITE_APP_PORT=4003
 VITE_BACKEND_URL = "http://localhost:5004"
 ```
 En phpmyadmin crear el usuario que se asignó en el .env
+
 Con Xampp encendido entrar a Frontend y Backend y escribir
 ```
 npm run dev
