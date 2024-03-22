@@ -21,14 +21,10 @@ Para desplegar utilizando docker, pasar al punto 2
 
 1. Crear archivo .env en Frontend:
 ```
-
 VITE_APP_HOST=localhost
 VITE_APP_PORT=4003
 
-
-
 VITE_BACKEND_URL = "http://localhost:5004"
-
 ```
 
 Crear archivo .env en Backend:
@@ -42,13 +38,9 @@ DB_HOST = "localhost"
 DB_DRIVER = "mysql"
 DB_PORT = "3306"
 
-
 JWT_SECRET=tu-secreto-secreto
 # configuración cors 
 ORIGIN = "http://localhost:4003"
-
-
-
 
 # configuración server 
 IP = "localhost"
@@ -58,23 +50,23 @@ Ejecutar en las carpetas Frontend y Backend
 ```
 npm install
 ```
-Ejecutar Xampp y activar apache y MySql
+Abrir Xampp y activar apache y MySql
 
-En phpmyadmin crear el usuario que se asignó en el .env
+En phpmyadmin crear la base de datos "test", y dentro de ella al usuario root con la clave pf$6#iAEQ#@y7vMnXiTXLLC#wiEHcn
 
-Crear DB "test"
 
 En carpetas Backend y Frontend ejecutar
 ```
 npm run dev
 ```
-2. Desplegar con Docker
+
+# Manual de despliegue con Docker
+
 Crear archivo .env en Frontend:
 ```
 VITE_APP_HOST=0.0.0.0
 VITE_APP_PORT=4003
 VITE_BACKEND_URL = "http://0.0.0.0:5004"
-
 ```
 
 Crear archivo .env en Backend:
