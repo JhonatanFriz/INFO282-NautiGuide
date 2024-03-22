@@ -24,26 +24,38 @@ npm install
 
 Crear archivo .env en Frontend:
 ```
-DB_NAME = "test"
-# DB
-DB_USER = "Nombre"
-DB_PASSWORD = "Contraseña" 
-DB_HOST = "localhost"
-DB_DRIVER = "mysql"
 
-# configuración cors 
-ORIGIN = "http://localhost:3000"
+VITE_APP_HOST=localhost
+VITE_APP_PORT=4003
 
-# configuración server 
-IP = "localhost"
-PORT = 4000
+
+
+VITE_BACKEND_URL = "http://localhost:5004"
+
 ```
 
 Crear archivo .env en Backend:
 ```
-VITE_APP_HOST=localhost
-VITE_APP_PORT=4003
-VITE_BACKEND_URL = "http://localhost:5004"
+DB_NAME = "test"
+
+# DB 
+DB_USER = "root"
+DB_PASSWORD = "pf$6#iAEQ#@y7vMnXiTXLLC#wiEHcn"
+DB_HOST = "localhost"
+DB_DRIVER = "mysql"
+DB_PORT = "3306"
+
+
+JWT_SECRET=tu-secreto-secreto
+# configuración cors 
+ORIGIN = "http://localhost:4003"
+
+
+
+
+# configuración server 
+IP = "localhost"
+PORT = 5004
 ```
 Ejecutar Xampp y activar apache y MySql
 
