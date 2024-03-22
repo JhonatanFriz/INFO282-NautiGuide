@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import dotenv from 'dotenv';
 
+await new Promise(r => setTimeout(r, 120000));
 //init
 dotenv.config();
 const app = express();

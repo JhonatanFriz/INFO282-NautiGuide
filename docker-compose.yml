@@ -4,17 +4,20 @@ services:
     image: mariadb
     hostname: test
     environment:
-      MYSQL_ROOT_PASSWORD: pf$6#iAEQ#@y7vMnXiTXLLC#wiEHcn
+      MYSQL_ROOT_PASSWORD: asdfghj
       MYSQL_DATABASE: test
-      MYSQL_USER: manager_test
-      MYSQL_PASSWORD: RqoKdtp88Z94v7vL#XKVHPxWdb9dw
+      MYSQL_USER: root1
+      MYSQL_PASSWORD: asdfghj
     volumes:
       - ./Base de datos/test.sql:/docker-entrypoint-initdb.d/init.sql
-      - data:/var/lib/mysql
+      - data2:/var/lib/mysql
     ports:
-      - 3312:3312
+      - 3312:3306
     networks:
       - red
+    stdin_open: true
+    tty: true
+    restart: always
 
   backend:
     build:
@@ -27,6 +30,9 @@ services:
     
     networks:
       - red
+    stdin_open: true
+    tty: true
+    restart: always
 
   frontend:
     build:
@@ -37,9 +43,12 @@ services:
     
     networks:
       - red
+    stdin_open: true
+    tty: true
+    restart: always
 
 volumes:
-  data:
+  data2:
     external: false
 
 networks:
