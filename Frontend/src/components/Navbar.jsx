@@ -31,7 +31,7 @@ function Navbar() {
           onMouseLeave={handleMouseLeave}
         >
           <img
-            src="https://cdn.discordapp.com/attachments/1091020307134939136/1184580927863652372/74820.png?ex=658c7df5&is=657a08f5&hm=da735a4ccfc015c09ac13845778c61e65b28dfe97b9140f6d8c6ce0930ddb77b&"
+            src="https://cdn.discordapp.com/attachments/1091020307134939136/1184580927863652372/74820.png?ex=662025f5&is=660db0f5&hm=32554a914d1ecef6d478fb61413b3f5aaa04c9348889aa007d86d6b229784b7a&"
             alt="hoobank"
             className="w-[50px] h-[50px]"
           />
