@@ -27,14 +27,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Build and push Docker images
+      - name: Build Backend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./Backend
           push: false
-          tags: |
-            my-backend-image:latest
-            my-frontend-image:latest
+          tags: my-backend-image:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Build Frontend Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./Frontend
+          push: false
+          tags: my-frontend-image:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
