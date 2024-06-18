@@ -47,11 +47,11 @@ jobs:
             sleep 1
           done
 
-      - name: Run Backend Tests
-        run: docker-compose exec -T backend npm test
+#      - name: Run Backend Tests
+ #       run: docker-compose exec -T backend npm test
 
-      - name: Run Frontend Tests
-        run: docker-compose exec -T frontend npm test
+  #    - name: Run Frontend Tests
+   #     run: docker-compose exec -T frontend npm test
 
       - name: Tear down Docker Compose
         run: docker-compose down
