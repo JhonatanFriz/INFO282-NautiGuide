@@ -30,7 +30,7 @@ jobs:
       - name: Build Backend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./Backend/dockerfile
+          context: ../Backend/Dockerfile
           push: false
           tags: my-backend-image:latest
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -39,7 +39,7 @@ jobs:
       - name: Build Frontend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./Frontend/dockerfile
+          context: ../Frontend/Dockerfile
           push: false
           tags: my-frontend-image:latest
           cache-from: type=local,src=/tmp/.buildx-cache
