@@ -35,7 +35,7 @@ jobs:
       - name: Wait for services to be ready
         run: |
           # Esperar a que la base de datos esté lista
-          until docker-compose exec -T db_test mysqladmin ping --host=test --user=root1 --password=asdfghj --silent; do
+          until docker-compose exec -T db_test mysql --host=test --user=root1 --password=asdfghj -e "SELECT 1"; do
             sleep 1
           done
           # Esperar a que el backend esté listo
