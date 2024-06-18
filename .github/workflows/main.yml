@@ -32,7 +32,7 @@ jobs:
       - name: Build Backend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./Backend  # Contexto de construcción es el directorio ./Backend
+          context: ../Backend  # Contexto de construcción es el directorio ./Backend
           file: Dockerfile  # Especifica solo el nombre del Dockerfile dentro del contexto
           push: false
           tags: my-backend-image:latest
@@ -42,7 +42,7 @@ jobs:
       - name: Build Frontend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./Frontend  # Contexto de construcción es el directorio ./Frontend
+          context: ../Frontend  # Contexto de construcción es el directorio ./Frontend
           file: Dockerfile  # Especifica solo el nombre del Dockerfile dentro del contexto
           push: false
           tags: my-frontend-image:latest
