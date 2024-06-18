@@ -29,28 +29,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Build Backend Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: ../Backend  # Contexto de construcción es el directorio ./Backend
-          file: Dockerfile  # Especifica solo el nombre del Dockerfile dentro del contexto
-          push: false
-          tags: my-backend-image:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
-
-      - name: Build Frontend Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: ../Frontend  # Contexto de construcción es el directorio ./Frontend
-          file: Dockerfile  # Especifica solo el nombre del Dockerfile dentro del contexto
-          push: false
-          tags: my-frontend-image:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
-
-      - name: Run Docker Compose
-        run: docker-compose up -d
+      - name: Set up Docker Compose
+        run: docker-compose up -d --build
 
       - name: Wait for services to be ready
         run: |
@@ -73,3 +53,5 @@ jobs:
       - name: Run Frontend Tests
         run: docker-compose exec frontend npm test
 
+      - name: Tear down Docker Compose
+        run: docker-compose down
