@@ -17,7 +17,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        run: |
+          echo "Setting up Docker Buildx"
+          docker run --rm --privileged tonistiigi/binfmt --install all
+          docker buildx create --use
 
       - name: Cache Docker layers
         uses: actions/cache@v3
@@ -28,7 +31,9 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Set up Docker Compose
-        run: docker-compose up -d --build
+        run: |
+          echo "Setting up Docker Compose"
+          docker-compose up -d --build
 
       - name: Wait for MySQL to be ready
         shell: bash
@@ -54,11 +59,12 @@ jobs:
             sleep 1
           done
 
-  #    - name: Run Backend Tests
-   #     run: docker-compose exec -T backend npm test
+      - name: Run Backend Tests
+        run: docker-compose exec -T backend npm test
 
-    #  - name: Run Frontend Tests
-     #   run: docker-compose exec -T frontend npm test
+      - name: Run Frontend Tests
+        run: docker-compose exec -T frontend npm test
 
       - name: Tear down Docker Compose
         run: docker-compose down
+
