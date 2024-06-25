@@ -7,8 +7,8 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: "0 0 * * *"  # Este cron ejecuta el workflow todos los días a la medianoche UTC
+  #schedule:
+    #- cron: "0 0 * * *"  # Este cron ejecuta el workflow todos los días a la medianoche UTC
 
 jobs:
   build:
