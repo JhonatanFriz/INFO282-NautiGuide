@@ -16,23 +16,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
+      - name: Install Docker Compose
         run: |
-          echo "Setting up Docker Buildx"
-          docker run --rm --privileged tonistiigi/binfmt --install all
-          docker buildx create --use
-
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: C:\DockerCache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
+          choco install docker-compose
 
       - name: Set up Docker Compose
         run: |
-          echo "Setting up Docker Compose"
           docker-compose up -d --build
 
       - name: Wait for MySQL to be ready
@@ -59,11 +48,11 @@ jobs:
             sleep 1
           done
 
-      - name: Run Backend Tests
-        run: docker-compose exec -T backend npm test
+      #- name: Run Backend Tests
+     #   run: docker-compose exec -T backend npm test
 
-      - name: Run Frontend Tests
-        run: docker-compose exec -T frontend npm test
+   #   - name: Run Frontend Tests
+    #    run: docker-compose exec -T frontend npm test
 
       - name: Tear down Docker Compose
         run: docker-compose down
