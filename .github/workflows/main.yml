@@ -1,4 +1,4 @@
-name: Run Dev Environments
+name: Run Dev Environments with MariaDB
 
 on:
   push:
@@ -9,9 +9,23 @@ on:
       - main
 
 jobs:
-  frontend:
-    name: Run Frontend
+  setup:
+    name: Setup MariaDB and Run Environments
     runs-on: ubuntu-latest
+
+    services:
+      mariadb:
+        image: mariadb:latest
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
       - name: Checkout code
@@ -37,24 +51,6 @@ jobs:
           cd Frontend
           npm run dev
         shell: /usr/bin/bash -e {0}
-
-  backend:
-    name: Run Backend
-    runs-on: ubuntu-latest
-    needs: frontend
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: List directory contents
-        run: ls -la
-        shell: /usr/bin/bash -e {0}
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
 
       - name: Install backend dependencies
         run: |
