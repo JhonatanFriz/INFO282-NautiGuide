@@ -3,7 +3,7 @@ name: CI Pipeline for Dockerized Application
 on:
   push:
     branches:
-      - test1
+      - main
   #pull_request:
    # branches:
     #  - main
