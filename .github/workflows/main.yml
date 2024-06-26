@@ -17,6 +17,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: List directory contents
+        run: ls -la
+        shell: /usr/bin/bash -e {0}
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -24,13 +28,15 @@ jobs:
 
       - name: Install frontend dependencies
         run: |
-          cd frontend
+          cd Frontend
           npm install
+        shell: /usr/bin/bash -e {0}
 
       - name: Run frontend
         run: |
           cd Frontend
           npm run dev
+        shell: /usr/bin/bash -e {0}
 
   backend:
     name: Run Backend
@@ -41,6 +47,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: List directory contents
+        run: ls -la
+        shell: /usr/bin/bash -e {0}
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -50,8 +60,10 @@ jobs:
         run: |
           cd Backend
           npm install
+        shell: /usr/bin/bash -e {0}
 
       - name: Run backend
         run: |
-          cd backend
+          cd Backend
           npm run dev
+        shell: /usr/bin/bash -e {0}
