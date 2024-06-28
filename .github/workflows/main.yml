@@ -12,22 +12,6 @@ jobs:
   start-servers:
     runs-on: ubuntu-latest
 
-    services:
-      mariadb:
-        image: mariadb:latest
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
-          MYSQL_USER: ${{ secrets.DB_USER }}
-          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -51,7 +35,7 @@ jobs:
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-          echo DB_HOST=127.0.0.1 >> .env
+          echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_DRIVER=${{ secrets.DB_DRIVER }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
@@ -66,19 +50,6 @@ jobs:
           echo VITE_APP_PORT=${{ secrets.VITE_APP_PORT }} >> .env
           echo VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} >> .env
 
-      - name: Wait for DB to be ready
-        run: |
-          for i in {1..30}; do
-            if mysqladmin ping -h 127.0.0.1 --silent; then
-              echo "Database is ready!"
-              exit 0
-            fi
-            echo "Waiting for database... $i"
-            sleep 1
-          done
-          echo "Database is not ready after 30 seconds, exiting."
-          exit 1
-
       - name: Start backend server
         working-directory: ./Backend
         run: npm run dev
@@ -92,6 +63,10 @@ jobs:
         env:
           PORT: 4003
         continue-on-error: true
+
+      - name: Keep the workflow running
+        run: sleep infinity
+
 
       - name: Keep the workflow running
         run: sleep infinity
