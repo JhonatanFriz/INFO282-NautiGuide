@@ -53,15 +53,15 @@ jobs:
       - name: Start frontend server
         working-directory: ./Frontend
         run: npm run dev
-        env:
-         PORT: 4003
+        #env:
+         #PORT: 4003
         continue-on-error: true
 
       - name: Start backend server
         working-directory: ./Backend
         run: npm run dev
-        env:
-          PORT: 5004
+        #env:
+          #PORT: 5004
         continue-on-error: true
 
 
