@@ -51,7 +51,7 @@ jobs:
           echo VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} >> .env
 
       - name: Start backend server
-        working-directory: .Backend
+        working-directory: ./Backend
         run: npm run dev
         env:
           PORT: 5004
