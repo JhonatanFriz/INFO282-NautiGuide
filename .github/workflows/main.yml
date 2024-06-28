@@ -50,6 +50,13 @@ jobs:
           echo VITE_APP_PORT=${{ secrets.VITE_APP_PORT }} >> .env
           echo VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} >> .env
 
+      - name: Start frontend server
+        working-directory: ./Frontend
+        run: npm run dev
+        env:
+         PORT: 4003
+        continue-on-error: true
+
       - name: Start backend server
         working-directory: ./Backend
         run: npm run dev
@@ -57,12 +64,6 @@ jobs:
           PORT: 5004
         continue-on-error: true
 
-      - name: Start frontend server
-        working-directory: ./Frontend
-        run: npm run dev
-        env:
-          PORT: 4003
-        continue-on-error: true
 
       - name: Keep the workflow running
         run: sleep infinity
