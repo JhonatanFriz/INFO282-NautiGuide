@@ -67,7 +67,17 @@ jobs:
           echo VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} >> .env
 
       - name: Wait for DB to be ready
-        run: sleep 30
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 --silent; then
+              echo "Database is ready!"
+              exit 0
+            fi
+            echo "Waiting for database... $i"
+            sleep 1
+          done
+          echo "Database is not ready after 30 seconds, exiting."
+          exit 1
 
       - name: Start backend server
         working-directory: ./Backend
