@@ -12,6 +12,22 @@ jobs:
   start-servers:
     runs-on: ubuntu-latest
 
+    services:
+      mariadb:
+        image: mariadb:latest
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
+          MYSQL_USER: ${{ secrets.DB_USER }}
+          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -22,20 +38,20 @@ jobs:
           node-version: '16'
 
       - name: Install backend dependencies
-        working-directory: ./Backend
+        working-directory: ./backend
         run: npm install
 
       - name: Install frontend dependencies
-        working-directory: ./Frontend
+        working-directory: ./frontend
         run: npm install
 
       - name: Create .env file for backend
-        working-directory: ./Backend
+        working-directory: ./backend
         run: |
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-          echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+          echo DB_HOST=127.0.0.1 >> .env
           echo DB_DRIVER=${{ secrets.DB_DRIVER }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
@@ -44,21 +60,24 @@ jobs:
           echo PORT=${{ secrets.PORT }} >> .env
 
       - name: Create .env file for frontend
-        working-directory: ./Frontend
+        working-directory: ./frontend
         run: |
           echo VITE_APP_HOST=${{ secrets.VITE_APP_HOST }} >> .env
           echo VITE_APP_PORT=${{ secrets.VITE_APP_PORT }} >> .env
           echo VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} >> .env
 
+      - name: Wait for DB to be ready
+        run: sleep 30
+
       - name: Start backend server
-        working-directory: ./Backend
+        working-directory: ./backend
         run: npm run dev
         env:
           PORT: 5004
         continue-on-error: true
 
       - name: Start frontend server
-        working-directory: ./Frontend
+        working-directory: ./frontend
         run: npm run dev
         env:
           PORT: 4003
@@ -66,3 +85,4 @@ jobs:
 
       - name: Keep the workflow running
         run: sleep infinity
+
