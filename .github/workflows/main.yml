@@ -38,15 +38,15 @@ jobs:
           node-version: '16'
 
       - name: Install backend dependencies
-        working-directory: ./backend
+        working-directory: ./Backend
         run: npm install
 
       - name: Install frontend dependencies
-        working-directory: ./frontend
+        working-directory: ./Frontend
         run: npm install
 
       - name: Create .env file for backend
-        working-directory: ./backend
+        working-directory: ./Backend
         run: |
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
@@ -60,7 +60,7 @@ jobs:
           echo PORT=${{ secrets.PORT }} >> .env
 
       - name: Create .env file for frontend
-        working-directory: ./frontend
+        working-directory: ./Frontend
         run: |
           echo VITE_APP_HOST=${{ secrets.VITE_APP_HOST }} >> .env
           echo VITE_APP_PORT=${{ secrets.VITE_APP_PORT }} >> .env
@@ -70,14 +70,14 @@ jobs:
         run: sleep 30
 
       - name: Start backend server
-        working-directory: ./backend
+        working-directory: ./Backend
         run: npm run dev
         env:
           PORT: 5004
         continue-on-error: true
 
       - name: Start frontend server
-        working-directory: ./frontend
+        working-directory: ./Frontend
         run: npm run dev
         env:
           PORT: 4003
